@@ -1,0 +1,27 @@
+<div id="team" class="team-area ptb-100">
+    <div class="container">
+        <div class="banner-container">
+            <div class="image-container">
+                <!--subir aqui imagenes no de strapi -->
+
+                <img [src]="environment.api_img + image" alt="Imagen de ejemplo" class="image image-1">
+                <img [src]="environment.api_img + image2" alt="Imagen de ejemplo" class="image image-2">
+            </div>
+
+            <div class="text-container">
+                <h2>{{ title }}</h2>
+                <p>
+                    {{ description }}
+                </p>
+            </div>
+
+            <div class="gradient-box" *ngFor="let button of buttons">
+
+                <a class="btn  cta-button"> {{ button.title }}</a>
+            </div>
+            <div class="gradient-box2">
+            </div>
+        </div>
+    </div>
+    <div class="shape1"><img src="images/shape1.png" alt="image"></div>
+</div>

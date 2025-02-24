@@ -1,0 +1,17 @@
+<div class="menu-desktop">
+    <div class="menu-footer-container">
+        <ul id="footer-menu" class="menu">
+            <li *ngFor="let menuItem of menuItems" [class]="menuItem.class"
+                [class.active]="menuItem.link === currentSection">
+                <div class="menu-item-container" *ngIf="currentSection !== 'banner'">
+                    <a (click)="onClick(menuItem.link)">
+                        <img [src]="menuItem.icon" [alt]="menuItem.alt" [width]="menuItem.iconWidth"
+                            [height]="menuItem.iconHeight">
+                        <!-- El span se muestra solo cuando el item es activo -->
+                        <span *ngIf="menuItem.link === currentSection">{{ menuItem.text }}</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+.blog-area {
+    z-index: 1;
+    position: relative;
+}
+.single-blog-item {
+    z-index: 1;
+	padding: 30px;
+    overflow: hidden;
+	position: relative;
+    margin-bottom: 30px;
+    border: 1px solid #eeeeee;
+    background: {
+        size: cover;
+        repeat: no-repeat;
+        position: center center;
+    };
+    &::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        content: '';
+        height: 100%;
+        position: absolute;
+        background: var(--whiteColor);
+        transition: var(--transition);
+    }
+    span {
+        display: block;
+        color: var(--mainColor);
+    }
+    span, p, h3 {
+        position: relative;
+        transition: var(--transition);
+    }
+    p {
+        font-size: 15.5px;
+    }
+    h3 {
+        line-height: 1.5;
+        margin: {
+            top: 12px;
+            bottom: 12px;
+        };
+        font: {
+            size: 20px;
+            weight: 500;
+        };
+        a {
+            display: inline-block;
+
+            &:hover {
+                color: var(--mainColor) !important;
+            }
+        }
+    }
+    .link-btn {
+        right: 0;
+        bottom: 0;
+        width: 45px;
+        height: 40px;
+        line-height: 44px;
+        position: absolute;
+        text-align: center;
+        border-radius: 50% 0 0 0;
+        box-shadow: 0px 0px 25px 0px rgba(0, 27, 103, 0.3);
+    }
+    &:hover {
+        &::before {
+            background: var(--blackColor);
+            opacity: .66;
+        }
+        span, p, h3 a {
+            color: var(--whiteColor);
+        }
+        .link-btn {
+            background: var(--mainColor);
+            color: var(--whiteColor);
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .single-blog-item {
+        padding: 20px;
+
+        h3 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+    ::ng-deep {
+        .blog-slides {
+            .owl-theme {
+                &.owl-nav.disabled+.owl-dots {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

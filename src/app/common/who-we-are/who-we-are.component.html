@@ -1,0 +1,18 @@
+<div class="who-we-are-area pt-100 pb-75" style="background-image: url('assets/images/bg2.jpg');">
+    <div class="container">
+        <div class="section-title">
+            <h2>{{ title }}</h2>
+            <p>{{ description }}</p>
+        </div>
+        <div class="row">
+            <div *ngFor="let item of list" class="col-lg-4 col-md-6 col-sm-6">
+                <div class="single-who-we-are">
+
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.content }}</p>
+                    <span>{{ item.number }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

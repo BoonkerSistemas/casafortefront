@@ -1,0 +1,250 @@
+.team-slides-proyectos {
+    position: relative;
+  }
+  
+  .single-team-box-proyectos {
+    position: relative;
+    //width: 300px; /* Tamaño inicial del item */
+    height: 500px; /* Tamaño inicial del item */
+    overflow: hidden;
+    transition: width 0.3s ease, height 0.3s ease; /* Transición para el cambio de tamaño */
+  }
+  
+  /* Contenedor que mantiene el contenido centrado */
+  .content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    overflow: hidden; /* Evita que el contenido se desborde */
+  }
+  
+  .image-container {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 25px;
+  }
+  
+  /* Overlay con el título */
+  .overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 2;
+  }
+
+  
+  ::ng-deep .team-slides-proyectos .owl-item:hover {
+    width: 600px !important;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    .image-container{
+        border-radius: 25px !important;
+    }
+    .overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: rgb(0, 0, 0);
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 2;
+        h3{
+            font-weight: 600;
+    font-style: normal;
+    color: rgb(255, 255, 255);
+    font-kerning: none;
+    text-decoration: none
+        }
+  }
+  }
+  ::ng-deep .team-slides-proyectos .owl-carousel .owl-stage-outer {
+    height: 500px !important;
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+  
+.info-box {
+    color: rgb(0, 0, 0);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    //height: 15%;
+    position: absolute;
+    //bottom: 0;
+    width: 100%;
+    display: none; /* Ocultar info-box por defecto */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    p{
+        color: black;
+        text-align: justify;
+    }
+    .info-box-text{
+        display: flex;
+    align-items: center;
+        
+        
+        h1{
+            width: 30%;
+            text-align: start;
+            font-weight: 700;
+            font-style: normal;
+            font-size: 27.6565px;
+            color: rgb(0, 0, 0);
+            line-height: 30px;
+            letter-spacing: -0.02em;
+        }
+        .text{
+            width: 60%;
+            padding-left: 15px;
+    text-align: start;
+            ul{
+                li{
+                    list-style-type: disc;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 27.6565px;
+                color: rgb(0, 0, 0);
+                line-height: 30px;
+            }
+        }
+        }
+    }
+  }
+  .single-team-box-proyectos:hover .info-box {
+    display: flex ;
+        opacity: 1;
+        justify-content: flex-start;
+        align-items: center;
+    
+}
+
+.single-team-box-proyectos:hover {
+    width: 600px !important;
+    //height: 320px !important;
+    transition: width 0.3s ease, height 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+  
+::ng-deep {
+    .team-slides-proyectos {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                    
+            }
+        }
+    }
+}
+/* Estilos para las flechas de navegación del carrusel */
+::ng-deep {
+    .team-slides-proyectos {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Flechas ocultas por defecto */
+                visibility: visible; /* Flechas ocultas por defecto */
+                //transition: opacity 0.3s ease-in-out; /* Transición para mostrar las flechas */
+
+                [class*="owl-"] {
+                    top: 50%;
+    margin: 0;
+    left: 40px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    color: var(--whiteColor);
+    transform: translateY(-50%);
+    transition: background 0.3s ease-in-out;
+    //background: rgba(199, 21, 21, 0.33);
+    background: #737373;
+
+                    &.owl-next {
+                        left: auto;
+                        right: -45px;
+                        top: 40%;
+                    }
+                    &.owl-prev {
+                        left: auto;
+                        right: -45px;
+                    }
+                    &:hover {
+                        background: #233645; /* Fondo en hover */
+                        color: var(--whiteColor); /* Color en hover */
+                    }
+                }
+            }
+
+            /* Mostrar las flechas cuando el carrusel está en hover */
+            &:hover {
+                .owl-nav {
+                    opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                }
+            }
+        }
+    }
+}
+
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .team-area {
+        .section-title {
+            h2 {
+                line-height: 1.3;
+                margin-top: -4px;
+            }
+        }
+    }
+    .single-team-box-proyectos {
+        .content {
+            .title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .post {
+                font-size: 14px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+

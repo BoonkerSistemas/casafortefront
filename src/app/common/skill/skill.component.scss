@@ -1,0 +1,150 @@
+.skill-content {
+    .section-title {
+        margin-bottom: 40px;
+    }
+    .skills-list {
+        .skill-item {
+            margin-bottom: 25px;
+        
+            .skill-header {
+                position: relative;
+                margin-bottom: 10px;
+    
+                .skill-title {
+                    margin-bottom: 0;
+                    font: {
+                        size: 16px;
+                        weight: 600;
+                    };
+                }
+                .skill-percentage {
+                    right: 0;
+                    top: -2px;
+                    position: absolute;
+                    color: var(--blackColor);
+                    font: {
+                        size: 15.5px;
+                        weight: 500;
+                    };
+                }
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+            .skill-bar {
+                position: relative;
+                width: 100%;
+    
+                .bar-inner {
+                    width: 100%;
+                    position: relative;
+                    border-radius: 30px;
+                    border-bottom: 7px solid var(--blackColor);
+    
+                    .bar {
+                        top: 0;
+                        left: 0;
+                        height: 7px;
+                        position: absolute;
+                        border-radius: 30px;
+                        transition: all 2000ms ease;
+                        background: var(--mainColor);
+                    }
+                }
+            }
+        }
+    }
+}
+.skill-video {
+    position: relative;
+
+    .video-btn {
+        left: 0;
+        top: 50%;
+        right: 0;
+        position: absolute;
+        text-align: center;
+        transform: translateY(-50%);
+
+        button {
+            z-index: 1;
+            width: 90px;
+            border: none;
+            height: 90px;
+            font-size: 35px;
+            line-height: 92px;
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            color: var(--mainColor);
+            transition: var(--transition);
+            background-color: var(--whiteColor);
+
+            &::after, &::before {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+                content: '';
+                display: block;
+                position: absolute;
+                border-radius: 50%;
+                border: 1px solid var(--whiteColor);
+            }
+            &::before {
+                animation: ripple 2s linear infinite
+            }
+            &::after {
+                animation: ripple 2s linear 1s infinite
+            }
+            &:hover {
+                background-color: var(--mainColor);
+                color: var(--whiteColor);
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .skill-video {
+        margin-top: 30px;
+
+        .video-btn {
+            button {
+                width: 70px;
+                height: 70px;
+                font-size: 25px;
+                line-height: 73px;
+            }
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .skill-video {
+        margin-top: 40px;
+        
+        img {
+            width: 100%;
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

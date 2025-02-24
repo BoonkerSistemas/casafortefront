@@ -1,0 +1,69 @@
+<div id="about" class="about-area ptb-100" style="/*background-image: url(images/bg1.jpg);*/">
+    <div class="container">
+        <div class="section-title">
+            <h1>{{ title }}</h1>
+            <h3 class="h3">{{ description }}</h3>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-12" style="height: 485px;">
+                <div class="about-content">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6 col-sm-6"
+                             *ngFor="let testimonio of testimoniosPaginados; let i = index">
+                            <div class="single-who-we-are" (click)="cargarVideo(testimonio)"
+                                 [class.selected]="testimonio === selectedTestimonio">
+                                <img [src]="environment.api_img + testimonio.icon.url" alt="testimonio"
+                                     class="testimonial-image">
+                                <h3>{{ testimonio.title }}</h3>
+                            </div>
+                        </div>
+                        <div class="pagination-table">
+                            <ul>
+                                <li *ngFor="let pagina of [].constructor(totalPaginas); let i = index">
+                                    <a href="javascript:void(0);" (click)="cambiarPagina(i + 1)"
+                                       [class.active]="paginaActual === i + 1">
+                                        {{ i + 1 }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="about-video" style="
+            height: 485px;
+            background: #c9c9c9;
+            width: 100%;
+        ">
+                    <div *ngIf="selectedVideoUrl" class="video-container" style="height: 485px;">
+                        <iframe width="100%" height="485px" [src]="selectedVideoUrl" title="Testimonio Video"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="video-btn" *ngIf="!selectedVideoUrl">
+                        <button class="popup-youtube">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Video Popup -->
+    <div class="video-popup position-fixed d-flex align-items-center justify-content-center text-center top-0 start-0 end-0 bottom-0"
+        *ngIf="isOpen">
+        <div class="popup-inner bg-white position-relative mx-auto">
+            <iframe [src]="selectedVideoUrl" title="Testimonio Video" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <button (click)="closePopup()" type="button"
+                class="close-btn p-0 border-0 d-flex align-items-center justify-content-center rounded-circle">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>

@@ -1,0 +1,47 @@
+<div class="why-we-different ptb-100 bg-f7f5f4">
+    <div class="container">
+        <div class="section-title">
+            <h2>{{title}} </h2>
+
+        </div>
+
+
+        <div class="container2">
+
+            <div class="content-container">
+                <div class="coral-box">
+                    <div class="image-text">
+                        <img [src]="environment.api_img + image?.file.url " alt="Imagen" class="image">
+
+                        <div class="text">
+                            <span style=" color: white;
+                            font-weight: 400;
+                            font-size: 36px;
+                            line-height: 36px;
+                            /* letter-spacing: -0.02em; */
+                            text-align: justify;">{{description}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuadros interactivos -->
+            <div class="image-boxes">
+                <div *ngFor="let box of imageBoxes; let i = index" (click)="changeColorAndInfo(i)"
+                    [ngStyle]="{ backgroundColor: box.color }" class="image-box">
+                    <img [src]="box.img" alt="Imagen" class="image-box-img">
+                </div>
+            </div>
+
+            <!-- Cuadro de información interactivo -->
+            <div class="info-box">
+                <div class="info-box-text">
+                    <h1 style="color: #5b6974">{{ selectedInfoTitle }}</h1>
+                    <div class="text">
+                        <div class="info-content" [innerHTML]="selectedInfo"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

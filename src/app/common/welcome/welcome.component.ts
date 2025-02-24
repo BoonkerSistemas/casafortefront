@@ -1,0 +1,88 @@
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {NgForOf, ViewportScroller} from '@angular/common';
+import {HomeService} from "../../../service/home/home.service";
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import {environment} from "@env/environment";
+
+@Component({
+    selector: 'app-welcome',
+    imports: [
+        NgForOf,
+        CarouselModule
+    ],
+    templateUrl: './welcome.component.html',
+    styleUrls: ['./welcome.component.scss'],
+    encapsulation: ViewEncapsulation.Emulated, 
+})
+export class WelcomeComponent implements OnInit, AfterViewInit {
+    title = 'Welcome';
+    description = 'Welcome';
+    lists: any;
+
+    constructor(
+        private viewportScroller: ViewportScroller,
+        private _firstComponentService: HomeService,
+    ) {}
+
+    ngAfterViewInit() {
+       
+      }
+
+    public onClick(elementId: string): void {
+        this.viewportScroller.scrollToAnchor(elementId);
+    }
+
+    teamSlides: OwlOptions = {
+		loop: true,
+		nav: true,
+		dots: false,
+		margin: 30,
+		autoplay: false,
+		smartSpeed: 500,
+		autoplayHoverPause: false,
+		navText: [
+			"<i class='fa fa-angle-left'></i>",
+			"<i class='fa fa-angle-right'></i>"
+		],
+		responsive: {
+			0: {
+				items: 1
+			},
+			576: {
+				items: 2
+			},
+			768: {
+				items: 4
+			},
+			1200: {
+				items: 4
+			}
+		}
+    }
+
+    ngOnInit(): void {
+        this.inicio();
+    }
+
+    async inicio() {
+        await this._firstComponentService.getComponentList('ComponentSecont')
+            .then((element) => {
+
+                
+                let response = element.data;
+                this.title = response.ComponentSecont.title;
+                this.description = response.ComponentSecont.description;
+
+                this.lists = response.ComponentSecont.listado;
+                this.lists.forEach((element: any) => {
+                                        element.img= environment.api_img + element.icon.url;
+                                });
+
+            })
+            .catch((error) => {
+                console.error('Error al obtener el componente Inicio', error);
+            });
+    }
+
+   
+}

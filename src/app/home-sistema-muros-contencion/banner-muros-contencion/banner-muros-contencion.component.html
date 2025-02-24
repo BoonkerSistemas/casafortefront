@@ -1,0 +1,30 @@
+<div class="main-banner">
+    <div *ngFor="let slider of sliders">
+        <ng-container *ngIf="isVideo(slider.image.url); else imageContent">
+
+            <video autoplay loop [muted]="true" playsinline class="video-background">
+                <source [src]="slider.videoUrl" type="video/mp4">
+            </video>
+        </ng-container>
+        <ng-template #imageContent>
+            <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
+                 style="width: 100%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
+        </ng-template>
+    </div>
+
+    <div class="d-table" *ngFor="let slider of sliders">
+        <div class="d-table-cell">
+            <div class="container">
+                <div class="main-banner-text">
+
+                    <h1><span>Muros de contencion</span></h1>
+                    <h4>{{ slider.title }}</h4>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

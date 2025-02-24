@@ -1,0 +1,108 @@
+.funfacts-area {
+    z-index: 1;
+    position: relative;
+    background: {
+        position: center center;
+        repeat: no-repeat;
+        size: cover;
+    };
+    &::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        content: '';
+        height: 100%;
+        opacity: .60;
+        position: absolute;
+        background: var(--blackColor);
+    }
+}
+.funfact {
+	position: relative;
+    padding-left: 65px;
+    margin-bottom: 25px;
+    
+    i {
+        color: var(--mainColor);
+        position: absolute;
+        font-size: 50px;
+        top: 2px;
+        left: 0;
+    }
+    h3 {
+        color: var(--whiteColor);
+        margin-bottom: 5px;
+        font: {
+            size: 45px;
+            weight: 600;
+        };
+    }
+    p {
+        color: var(--whiteColor);
+        font-size: 16px;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .funfact {
+        padding-left: 0;
+        text-align: center;
+        
+        i {
+            position: relative;
+            font-size: 30px;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+        h3 {
+            font-size: 30px;
+            margin-top: 15px;
+        }
+        p {
+            line-height: initial;
+            font-size: 13px;
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {
+
+    .funfact {
+        text-align: center;
+        padding-left: 0;
+
+        i {
+            top: 0;
+            left: 0;
+            right: 0;
+            font-size: 40px;
+            position: relative;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        h3 {
+            font-size: 40px;
+        }
+        p {
+            font-size: 15px;
+        }
+    }
+
+}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

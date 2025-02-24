@@ -1,0 +1,326 @@
+.menu-desktop {
+    position: fixed;
+    top: 50%;
+    right: -5px;
+    transform: translateY(-50%);
+    z-index: 999;
+  }
+  
+  .menu-footer-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .menu-item {
+    width: max-content;
+    left: 100%;
+    position: sticky;
+  }
+  .menu-item-container {
+    background-color: #161e34ba; /* Fondo negro con 50% de transparencia */
+    margin-bottom: 15px; /* Espaciado entre cada contenedor */
+    border-radius: 50px  0 0 50px; /* Bordes redondeados para cada contenedor */
+    //border-left: 5px solid var(--mainColor); /* Borde izquierdo con color principal */
+    //box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar los cuadros */
+    //transform: translateX(10px); /* Asegura que estén contraídos por defecto */
+    position: relative; /* Necesario para posicionar el span de forma absoluta */
+  }
+
+
+/*ACTIVOOO*/
+/* Estilo de los elementos dentro del menu-item cuando está activo */
+.menu-item-container:hover,
+.menu-item.active .menu-item-container {
+    background-color: rgba(0, 0, 0, 0.8); 
+    transform: translateX(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu-item.active .menu-item-container a span {
+    color: var(--whiteColor); /* Cambia el color del texto cuando está activo */
+    visibility: visible; /* Hace visible el span solo cuando el item está activo */
+    opacity: 1; /* Hace que el span sea completamente visible */
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Hace que el span se muestre suavemente */
+ margin-left: 8px;
+}
+  
+  .menu-item.active .menu-item-container img {
+    //filter: invert(1); /* Hace que el ícono sea blanco */
+    transition: filter 0.3s ease;
+  }
+/**/
+
+
+  .menu-item-container a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 15px; /* Padding para que el contenido no toque los bordes */
+  }
+  
+  .menu-item-container img {
+    margin-right: 0px;
+    //filter: invert(1); /* Hacer los íconos blancos */
+  }
+  
+ 
+  .menu-item-container span {
+    display: inline-block; /* Hace que el span ocupe su espacio cuando es visible */
+    visibility: hidden; /* El span está oculto por defecto, pero no elimina el espacio */
+    font-size: 16px;
+    color: white;
+    white-space: nowrap; /* Evita que el texto se rompa en varias líneas */
+    opacity: 0; /* El span es completamente invisible al inicio */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Transición suave para mostrar el texto */
+  }
+  
+  .menu-item.active .menu-item-container {
+    background-color: #e7283a;
+    }
+  .menu-item.active .menu-item-container span {
+    visibility: visible; /* Hace visible el span solo cuando el item está activo */
+    opacity: 1; /* Hace que el span sea completamente visible */
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Hace que el span se muestre suavemente */
+  }
+
+
+
+  .menu-item-container:hover span {
+    color: #ffffff; /* Cambia el color del texto al hacer hover */
+    visibility: visible; /* Hace visible el span solo cuando el item está activo */
+    opacity: 1; /* Hace que el span sea completamente visible */
+    transition: opacity 0.3s ease, visibility 0s linear 0s; /* Hace que el span se muestre suavemente */
+  }
+  
+  .menu-item-container:hover img {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del ícono al hacer hover */
+    transition: transform 0.3s ease;
+    //filter: invert(1);
+  }
+  
+
+.demo-modal-panel {
+    transform: translateY(-40%);
+    position: fixed;
+    z-index: 99998;
+    right: 0;
+    top: 40%;
+
+    .sidebar-demo-control {
+        padding: 0;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+        padding: 12px 0 10px;
+        display: inline-block;
+        color: var(--whiteColor);
+        text-transform: uppercase;
+        border-radius: 5px 0 0 5px;
+        transition: var(--transition);
+        background-color: var(--blackColor);
+        box-shadow: rgba(0, 0, 0, 0.15) 0 0 25px;
+        font: {
+            weight: 600;
+            size: 13px;
+        };
+        span {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            padding: {
+                left: 5px;
+                right: 5px;
+            };
+        }
+        &:hover {
+            color: var(--whiteColor);
+            background-color: var(--mainColor);
+        }
+    }
+}
+.sidebar-demo-modal {
+    top: 0;
+    right: 0;
+    opacity: 0;
+    right: -100%;
+    z-index: 99999;
+    transition: .9s;
+    position: fixed;
+    overflow: hidden;
+    visibility: hidden;
+    border-left: 1px solid #eeeeee;
+
+    .inner {
+        width: 500px;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 90px 30px 30px 30px;
+        background-color: var(--whiteColor);
+        box-shadow: 0 0 30px 0 rgba(67, 67, 67, 0.15);
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            margin: {
+                left: -10px;
+                right: -10px;
+                bottom: -20px;
+            };
+            li {
+                flex: 0 0 50%;
+                max-width: 50%;
+                padding: {
+                    left: 10px;
+                    right: 10px;
+                    bottom: 20px;
+                };
+                .single-demo {
+                    position: relative;
+                    text-align: center;
+                    border-radius: 5px;
+
+                    img {
+                        border-radius: 5px;
+                        border: 5px solid var(--whiteColor);
+                        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+                    }
+                    &::before {
+                        top: 0;
+                        left: 0;
+                        opacity: 0;
+                        width: 100%;
+                        content: '';
+                        height: 100%;
+                        position: absolute;
+                        visibility: hidden;
+                        border-radius: 5px;
+                        transition: var(--transition);
+                        background-color: var(--mainColor);
+                    }
+                    span {
+                        left: 0;
+                        right: 0;
+                        top: 50%;
+                        z-index: 1;
+                        opacity: 0;
+                        margin-top: 15px;
+                        visibility: hidden;
+                        position: absolute;
+                        color: var(--whiteColor);
+                        transform: translateY(-50%);
+                        transition: var(--transition);
+                        font: {
+                            size: 16px;
+                            weight: 600;
+                        };
+                    }
+                    .link-btn {
+                        top: 0;
+                        left: 0;
+                        z-index: 3;
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        position: absolute;
+                    }
+                    &:hover {
+                        &::before {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        span {
+                            opacity: 1;
+                            visibility: visible;
+                            margin-top: 0;
+                        }
+                    }
+                }
+            }
+        }
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+    .header-title {
+        left: 0;
+        right: 0;
+        top: -1px;
+        z-index: 5;
+        position: absolute;
+        border-bottom: 1px solid #eeeeee;
+        background-color: var(--whiteColor);
+        padding: {
+            top: 18px;
+            left: 30px;
+            right: 30px;
+            bottom: 15px;
+        };
+        .example-demo-modal-control {
+            top: 15px;
+            padding: 0;
+            right: 25px;
+            border: none;
+            font-size: 20px;
+            position: absolute;
+            display: inline-block;
+            color: var(--blackColor);
+            transition: var(--transition);
+            background-color: transparent;
+    
+            &:hover {
+                color: var(--mainColor);
+            }
+        }
+        .title {
+            color: var(--blackColor);
+            margin-bottom: 0;
+            font: {
+                size: 18px;
+                weight: 600;
+            };
+        }
+    }
+    &.active {
+        right: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width : 767px) {
+
+    .sidebar-demo-modal {
+        .inner {
+            width: 320px;
+            padding: 90px 15px 30px 15px;
+        }
+        .header-title {
+            padding: {
+                left: 15px;
+                right: 15px;
+                bottom: 14px;
+            };
+        }
+    }
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width : 576px) and (max-width : 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width : 768px) and (max-width : 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width : 992px) and (max-width : 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}

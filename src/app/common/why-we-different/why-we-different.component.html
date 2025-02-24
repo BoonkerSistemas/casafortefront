@@ -1,0 +1,34 @@
+<div class="why-we-different ptb-100 bg-f7f5f4">
+    <div class="container">
+        <div class="section-title">
+            <h2><span>{{ title }}</span></h2>
+        </div>
+        <div class="tabset why-we-different-tabset">
+            <!-- Tab 1 -->
+            <input type="radio" name="tabset" id="tab1" aria-controls="speed-flexibility" checked>
+
+
+            <div class="tab-panels">
+                <div id="speed-flexibility" class="tab-panel">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-md-12">
+                            <div class="why-we-different-img">
+                                <img [src]="image" alt="Diferenciador">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="why-we-different-content">
+                                <ul>
+                                    <li *ngFor="let item of lists">
+                                        <i class="fas fa-check"></i> {{ item.title }}
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

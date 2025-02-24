@@ -1,0 +1,218 @@
+/* Contenedor principal */
+.banner-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 400px; /* Ajusta la altura según sea necesario */
+}
+
+/* Contenedor de las imágenes */
+.image-container {
+    position: relative;
+    width: 50%;
+    z-index: 9;
+}
+
+/* Estilo común para las imágenes */
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: absolute;
+    opacity: 1;
+    transform: translateY(0); /* Empieza en su posición normal */
+    transition: transform 1s ease, opacity 1s ease; /* Transición suave para la animación */
+
+}
+/* Imagen 1: posicionada a la izquierda */
+.image-1 {
+    width: 60%;
+    //transform: translateY(0);
+    //transition-delay: 1s; /* Retraso para la imagen 1 */
+    animation: subirImagen 1s ease forwards; /* Animación para imagen 1 */
+  animation-delay: 0.5s; /* Retraso para que la imagen 1 se anime primero */
+}
+
+/* Imagen 2: posicionada a la derecha y en el fondo */
+.image-2 {
+    left: 35%;
+    bottom: 0%;
+    width: 60%;
+//transform: translateY(0);
+//transition-delay: 3s; /* Retraso para la imagen 2 */
+animation: subirImagen 1s ease forwards; /* Animación para imagen 2 */
+animation-delay: 1s; /* Retraso para que la imagen 2 se anime después */
+}
+
+/* Las imágenes deben comenzar invisibles y fuera de la vista */
+.image-container img {
+    opacity: 1;
+    transform: translateY(100%); /* Fuera de la vista, abajo */
+    transition: transform 1s ease, opacity 1s ease; /* Transición para animar */
+  }
+  
+  /* Al hacer hover sobre el contenedor #team, las imágenes deben animarse */
+#team:hover .image-1 {
+    animation: subirImagen 1s ease forwards;
+    animation-delay: 0.5s; /* Retraso para que la imagen 1 se anime primero */
+  }
+  
+  #team:hover .image-2 {
+    animation: subirImagen 1s ease forwards;
+    animation-delay: 1s; /* Retraso para que la imagen 2 se anime después */
+  }
+  /* Reiniciar la animación cuando el mouse salga del área */
+#team:not(:hover) .image-1,
+#team:not(:hover) .image-2 {
+  animation: none; /* Eliminar la animación cuando no esté en hover */
+  opacity: 1; /* Asegura que las imágenes estén invisibles */
+  //transform: translateY(100%); /* Mantener fuera de la vista */
+  transform: translateY(0);
+}
+/* Animación para mover hacia arriba */
+@keyframes subirImagen {
+    from {
+      transform: translateY(100%); /* Comienza desplazada hacia abajo */
+      opacity: 1; /* Comienza invisible */
+    }
+    to {
+      transform: translateY(0); /* Se mueve a su posición original */
+      opacity: 1; /* Se vuelve completamente visible */
+    }
+  }
+
+/* Contenedor de texto */
+.text-container {
+    width: 50%;
+    height: 80%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    line-height: 1.2;
+}
+
+/* Título */
+.text-container h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-kerning: none;
+    font-size: 37px;
+    line-height: 36px;
+    letter-spacing: -0.02em;
+}
+
+.text-container p {
+    font-weight: 200;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-kerning: none;
+    text-decoration: none;
+    font-size: 23px;
+    line-height: 36px;
+    text-align: center;
+}
+
+/* Rectángulo degradado */
+.gradient-box {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to right, #e67068, #5b6974, #c16561);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Asegura que el degradado no tape otros elementos */
+}
+.gradient-box2 {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9; /* Asegura que el degradado no tape otros elementos */
+}
+
+/* Estilo del botón */
+.cta-button {
+    background-color: white;
+    //border: 2px solid #000;
+    font-size: 16px;
+    color: #000;
+    border-radius: 25px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 3; /* Asegura que el botón esté encima de otros elementos */
+    left: 70%;
+    position: absolute;
+}
+
+/* Efecto hover del botón */
+.cta-button:hover {
+    background-color: #d1d1d1;
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .team-area {
+        .section-title {
+            h2 {
+                line-height: 1.3;
+                margin-top: -4px;
+            }
+        }
+    }
+    .single-team-box {
+        .content {
+            .title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .post {
+                font-size: 14px;
+            }
+        }
+    }
+    /*::ng-deep {
+        .team-slides {
+            &.owl-theme .owl-nav.disabled + .owl-dots {
+                margin-top: 5px;
+            }
+        }
+    }*/
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+::ng-deep .owl-carousel.owl-drag .owl-item {
+    //width: 7% !important;
+}
+

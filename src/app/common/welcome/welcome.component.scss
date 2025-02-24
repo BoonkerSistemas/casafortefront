@@ -1,0 +1,323 @@
+.team-area {
+    position: relative;
+    z-index: 1;
+}
+
+.single-team-box {
+    height: 30vh;
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Asegura que el contenido no se desborde fuera de la tarjeta */
+    transition: all 0.3s ease-in-out;
+    background: #d9d9d9;
+    border-radius: 8%; /* Esquinas redondeadas */
+
+    .icon {
+        position: absolute;
+        top: 0px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        color: var(--whiteColor);
+        transition: color 0.3s ease;
+        background: #233645;
+        //box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+        width: 100%;
+        height: 8vh;
+        padding: 5%;
+        display: flex;
+    justify-content: center;
+        //border-radius: 8%;
+    }
+
+    
+
+    .link-btn{
+    color: transparent;
+    top: 85%;
+    position: absolute;
+    left: 90%;
+    border-radius: 50%;
+    }
+
+    .image {
+        img {
+            width: 100%;
+        }
+    }
+
+    .content {
+       /* left: 0;
+        right: 0;
+        z-index: 1;
+        padding: 20px;
+        top: 50%; 
+        margin-left: 15px;
+        position: absolute;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+        margin: {
+            left: 15px;
+            right: 15px;
+        };*/
+        left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 20px;
+    top: 8vh;
+    margin-left: 15px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 22vh;
+    display: flex
+;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+        .title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: black; /* Color original */
+            transition: all 0.3s ease-in-out;
+            line-height: 1.3;
+        }
+        .post {
+            font-size: 20px;
+            color: transparent; /* Color original */
+            transition: all 0.3s ease-in-out;
+        }
+        .link-btn{
+            color: transparent;
+        }
+    }
+
+    .social {
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0.3) 80%);
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        height: 100%;
+        width: 100%;
+        top: 0;
+
+        ul {
+            left: 0;
+            right: 0;
+            top: 50%;
+            margin-top: -50px;
+            position: absolute;
+            transform: translateY(-35px);
+            transition: transform 0.3s ease-in-out;
+
+            li {
+                display: inline-block;
+                margin-left: 3px;
+                margin-right: 3px;
+                a {
+                    width: 35px;
+                    height: 35px;
+                    display: block;
+                    line-height: 35px;
+                    border-radius: 50%;
+                    color: var(--whiteColor);
+                    border: 1px solid var(--whiteColor);
+                    text-align: center;
+
+                    &:hover {
+                        border-color: var(--mainColor);
+                        background: var(--mainColor);
+                    }
+                }
+            }
+        }
+    }
+
+    &:hover {
+        background: #233645; /* Cambia el fondo del contenedor al hacer hover */
+        box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.5); /* Sombra más fuerte */
+        
+        /* Contenido */
+        .content {
+            top: 0%; /* Mueve el contenido hacia abajo en hover */
+            background: transparent;
+            box-shadow: unset;
+
+
+                /*bottom: 0; 
+                visibility: visible;
+                opacity: 1;
+                background: transparent;
+                box-shadow: unset;*/
+
+            .title {
+                color: transparent; /* Cambia el color del título */
+                visibility: hidden; /* Esconde el título en hover */
+            }
+
+            .post {
+                color: white;
+                visibility: visible;
+                position: absolute;
+                top: 10vh;
+            }
+            .link-btn{
+                color: white;
+            }
+        }
+
+        .link-btn{
+            //color: transparent;
+            top: 85%;
+        position: absolute;
+        left: 90%;
+        border-radius: 50%;
+        color: #ffffff;
+        }
+
+        /* Mostrar las redes sociales */
+        .social {
+            opacity: 1;
+            visibility: visible;
+
+            ul {
+                transform: translateY(0);
+            }
+        }
+
+        /* Cambiar el color del ícono */
+        .icon {
+            color: var(--whiteColor);
+        }
+    }
+}
+
+::ng-deep {
+    .team-slides {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                    
+            }
+        }
+    }
+}
+/* Estilos para las flechas de navegación del carrusel */
+::ng-deep {
+    .team-slides {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Flechas ocultas por defecto */
+                visibility: visible; /* Flechas ocultas por defecto */
+                //transition: opacity 0.3s ease-in-out; /* Transición para mostrar las flechas */
+
+                [class*="owl-"] {
+                    top: 50%;
+    margin: 0;
+    left: 40px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    color: var(--whiteColor);
+    transform: translateY(-50%);
+    transition: background 0.3s ease-in-out;
+    //background: rgba(199, 21, 21, 0.33);
+    background: #737373;
+
+                    &.owl-next {
+                        left: auto;
+                        right: -45px;
+                        top: 35%;
+                    }
+                    &.owl-prev {
+                        left: auto;
+                        right: -45px;
+                    }
+                    &:hover {
+                        background: #233645; /* Fondo en hover */
+                        color: var(--whiteColor); /* Color en hover */
+                    }
+                }
+            }
+
+            /* Mostrar las flechas cuando el carrusel está en hover */
+            &:hover {
+                .owl-nav {
+                    opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                }
+            }
+        }
+    }
+}
+
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .team-area {
+        .section-title {
+            h2 {
+                line-height: 1.3;
+                margin-top: -4px;
+            }
+        }
+    }
+    .single-team-box {
+        .content {
+            .title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .post {
+                font-size: 14px;
+            }
+        }
+    }
+    /*::ng-deep {
+        .team-slides {
+            &.owl-theme .owl-nav.disabled + .owl-dots {
+                margin-top: 5px;
+            }
+        }
+    }*/
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+::ng-deep .owl-carousel.owl-drag .owl-item {
+    //width: 7% !important;
+}
+
+/*::ng-deep .owl-item:hover {
+    width: auto !important; 
+    transition: none; 
+     z-index: none;
+}*/
