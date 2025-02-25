@@ -24,10 +24,11 @@ import { CalidadComponent } from '../common/calidad/calidad.component';
 import { CotizacionComponent } from '../common/cotizacion/cotizacion.component';
 import { ProyectosComponent } from '../common/proyectos/proyectos.component';
 import { TestimoniosComponent } from '../common/testimonios/testimonios.component';
+import { CasaforteproyectosComponent } from '../common/casaforteproyectos/casaforteproyectos.component';
 
 @Component({
     selector: 'app-home-two',
-    imports: [BannerComponent, WelcomeComponent,CalidadComponent,CotizacionComponent,ProyectosComponent,TestimoniosComponent, AboutComponent],
+    imports: [BannerComponent, WelcomeComponent,CasaforteproyectosComponent, WorkComponent,CalidadComponent,CotizacionComponent,ProyectosComponent,TestimoniosComponent, AboutComponent],
     templateUrl: './home-two.component.html',
     styleUrls: ['./home-two.component.scss']
 })

@@ -1,32 +1,24 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {CommonModule, NgForOf, ViewportScroller} from '@angular/common';
+import {NgForOf, ViewportScroller} from '@angular/common';
 import {HomeService} from "../../../service/home/home.service";
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import {environment} from "@env/environment";
 
 @Component({
-    selector: 'app-welcome',
+    selector: 'app-casaforteproyectos',
     imports: [
         NgForOf,
-        CarouselModule,
-        CommonModule 
+        CarouselModule
     ],
-    templateUrl: './welcome.component.html',
-    styleUrls: ['./welcome.component.scss'],
+    templateUrl: './casaforteproyectos.component.html',
+    styleUrls: ['./casaforteproyectos.component.scss'],
     encapsulation: ViewEncapsulation.Emulated, 
 })
-export class WelcomeComponent implements OnInit, AfterViewInit {
-    title = 'Welcome';
-    description = 'Welcome';
+export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
+    title = 'casaforteproyectos';
+    description = 'casaforteproyectos';
     lists: any;
-    beneficios = [
-        { titulo: 'Simplifica', descripcion: 'la construcción de viviendas en serie' },
-        { titulo: 'Eleva', descripcion: 'la calidad estructural' },
-        { titulo: 'Reduce', descripcion: 'los costos y tiempos de ejecución de obra' },
-        { titulo: 'Dinamiza', descripcion: 'el diseño arquitectónico de los proyectos' },
-        { titulo: 'Elimina', descripcion: 'el incumplimiento de presupuestos y cronogramas' },
-        { titulo: 'Potencia', descripcion: 'el éxito comercial de tus proyectos' }
-      ];
+
     constructor(
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
@@ -39,13 +31,34 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
     }
-    getTituloClase(index: number): string {
-        const columna = index % 3; // Calculamos la posición en la fila
-        if (columna === 0) return 'clip-columna-1'; // Izquierda
-        if (columna === 1) return 'clip-columna-2'; // Centro
-        return 'clip-columna-3'; // Derecha
-      }
-    
+
+    teamSlides: OwlOptions = {
+		loop: true,
+		nav: true,
+		dots: false,
+		margin: 30,
+		autoplay: false,
+		smartSpeed: 500,
+		autoplayHoverPause: false,
+		navText: [
+			"<i class='fa fa-angle-left'></i>",
+			"<i class='fa fa-angle-right'></i>"
+		],
+		responsive: {
+			0: {
+				items: 1
+			},
+			576: {
+				items: 2
+			},
+			768: {
+				items: 4
+			},
+			1200: {
+				items: 4
+			}
+		}
+    }
 
     ngOnInit(): void {
         this.inicio();

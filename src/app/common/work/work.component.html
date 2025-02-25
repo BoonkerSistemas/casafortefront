@@ -1,278 +1,74 @@
-<div id="work" class="work-area pt-100 pb-75">
+<div id="work" class="work-area pt-100 ">
     <div class="container">
-        <div class="section-title">
-            <h2>Our <span>Work</span></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="section-title-casa">
+            <h2>Construcciones más rápidas, seguras y económicas con muros de hormigón industrial CasaForte</h2>
+            <p>La mejor solución estructural para proyectos de viviendas de 50m² a 120m²</p>
         </div>
     </div>
-    <div class="container-fluid">
+
+    <div class="container">
         <div class="work-tabs">
             <ul class="nav-tabset">
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab1'}">
-                    <span (click)="switchTab($event, 'tab1')">
-                        All
-                    </span>
-                </li>
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab2'}">
-                    <span (click)="switchTab($event, 'tab2')">
-                        Brand
-                    </span>
-                </li>
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab3'}">
-                    <span (click)="switchTab($event, 'tab3')">
-                        Design
-                    </span>
-                </li>
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab4'}">
-                    <span (click)="switchTab($event, 'tab4')">
-                        Graphic
-                    </span>
-                </li>
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab5'}">
-                    <span (click)="switchTab($event, 'tab5')">
-                        Photoshop
-                    </span>
-                </li>
-                <li class="nav-tab" [ngClass]="{'active': currentTab === 'tab6'}">
-                    <span (click)="switchTab($event, 'tab6')">
-                        Illustrator
+                <li *ngFor="let tab of tabs" class="nav-tab" [ngClass]="{'active': currentTab === tab.id}">
+                    <span (click)="switchTab($event, tab.id)">
+                        {{ tab.name }}
                     </span>
                 </li>
             </ul>
+
             <div class="tabs-container">
-                <div class="pane" id="tab1" *ngIf="currentTab === 'tab1'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img1.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
+                <div *ngFor="let tab of tabs">
+                    <div class="pane" [id]="tab.id" *ngIf="currentTab === tab.id">
+                        <div *ngFor="let work of works">
+                            <div *ngIf="work.tab === tab.id ">
+
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="single-work">
+                                            <img [src]="work.img" alt="work-img">
+                                            <div class="work-content">
+                                                <h3>{{ work.title }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7">
+                                        <div class="work-content">
+                                            <h3>{{ work.title }}</h3>
+                                            <p>{{ work.descripcion}}</p>
+                                            <ul class="nav-tabset-categorias">
+                                                <li *ngFor="let tabCategorias of work.categorias"
+                                                    class="nav-tab-categorias"
+                                                    [ngClass]="{'active': currentTab2 === tabCategorias.tabId}">
+
+                                                    <span (click)="switchTab2($event, tabCategorias)">
+                                                        <img class="imgCategorias" [src]="tabCategorias.imagen"
+                                                            alt="work-img">
+                                                        {{ tabCategorias.titulo }}
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                            <div *ngIf="currentTab2 === workSelected.tabId ">
+                                                {{workSelected.descripcion}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img2.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Games Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">IT</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Games</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img3.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img4.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img5.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img6.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane" id="tab2" *ngIf="currentTab === 'tab2'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img1.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img6.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane" id="tab3" *ngIf="currentTab === 'tab3'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img1.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img2.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Games Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">IT</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Games</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane" id="tab4" *ngIf="currentTab === 'tab4'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img2.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Games Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">IT</a></li>
-                                        <li> . </li>
-                                        <li><a routerLink="/">Games</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img3.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane" id="tab5" *ngIf="currentTab === 'tab5'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img3.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img4.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pane" id="tab6" *ngIf="currentTab === 'tab6'">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img4.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single-work">
-                                <img src="images/work-img5.jpg" alt="work-img">
-                                <div class="work-content">
-                                    <h3>Creative Design</h3>
-                                    <ul>
-                                        <li><a routerLink="/">Design</a></li>
-                                        <li>.</li>
-                                        <li><a routerLink="/">Brand</a></li>
-                                    </ul>
-                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="bg-black">
+        <h1 class="container " style="color: white; padding: 4%; text-align: center;">Simplificamos la construccion para
+            hacer que los
+            proyectos sean
+            mucho mas rentables</h1>
     </div>
 </div>

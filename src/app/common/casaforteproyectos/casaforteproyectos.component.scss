@@ -1,0 +1,222 @@
+.team-area {
+    position: relative;
+    z-index: 1;
+}
+
+.section-title-casa{
+    margin-bottom: 60px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--blackColor);
+}
+
+.single-team-box {
+    //height: 30vh;
+    margin-bottom: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Asegura que el contenido no se desborde fuera de la tarjeta */
+    transition: all 0.3s ease-in-out;
+    background: #d9d9d9;
+    clip-path: polygon(0 50%, 100% 0, 100% 100%, 0% 100%);
+
+   .image {
+        img {
+            width: 100%;
+        }
+    }
+
+    .content {
+        left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 20px;
+    top: 8.5vh;
+    margin-left: 15px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.2);
+    margin-left: 15px;
+    margin-right: 15px;
+    height: 22vh;
+    display: flex
+;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+        .title {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: black; /* Color original */
+            transition: all 0.3s ease-in-out;
+            line-height: 1.3;
+        }
+    }
+
+    
+    &:hover {
+        box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.5); /* Sombra más fuerte */
+        
+        /* Contenido */
+        .content {
+           // top: 0%; /* Mueve el contenido hacia abajo en hover */
+            background: transparent;
+            box-shadow: unset;
+            transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+            .title {
+                color: black; /* Cambia el color del título */
+                //visibility: hidden; /* Esconde el título en hover */
+            }
+
+        }
+
+       
+        
+    }
+}
+
+::ng-deep {
+    .team-slides {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                    
+            }
+        }
+    }
+}
+/* Estilos para las flechas de navegación del carrusel */
+::ng-deep {
+    .team-slides {
+        .owl-theme {
+            .owl-nav {
+                opacity: 1; /* Flechas ocultas por defecto */
+                visibility: visible; /* Flechas ocultas por defecto */
+                //transition: opacity 0.3s ease-in-out; /* Transición para mostrar las flechas */
+
+                [class*="owl-"] {
+                    top: 50%;
+    margin: 0;
+    left: 40px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    color: #f5a414;
+    transform: translateY(-50%);
+    transition: background 0.3s ease-in-out;
+    //background: rgba(199, 21, 21, 0.33);
+    background: #73737300;
+
+                    &.owl-next {
+                        left: auto;
+                        right: 48.4%;
+                        top: 2vh;
+                        display: flex;
+                        align-items: center;
+                    
+                    }
+                    &.owl-prev {
+                        left: auto;
+    right: 50%;
+    top: 2vh;
+    display: flex;
+                        align-items: center;
+                    }
+                    &:hover {
+                        color: #f5a414;
+                    }
+                }
+            }
+
+            /* Mostrar las flechas cuando el carrusel está en hover */
+            &:hover {
+                .owl-nav {
+                    opacity: 1; /* Hacer las flechas visibles */
+                    visibility: visible; /* Asegura que las flechas sean visibles */
+                }
+            }
+        }
+    }
+}
+
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .team-area {
+        .section-title {
+            h2 {
+                line-height: 1.3;
+                margin-top: -4px;
+            }
+        }
+    }
+    .single-team-box {
+        .content {
+            .title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .post {
+                font-size: 14px;
+            }
+        }
+    }
+    /*::ng-deep {
+        .team-slides {
+            &.owl-theme .owl-nav.disabled + .owl-dots {
+                margin-top: 5px;
+            }
+        }
+    }*/
+
+}
+
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {}
+
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {}
+
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {}
+
+/* Min width 1200px to Max width 1399px */
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
+
+/* Min width 1600px */
+@media only screen and (min-width: 1600px) {}
+
+::ng-deep .owl-carousel.owl-drag .owl-item {
+    //width: 7% !important;
+}
+
+/*::ng-deep .owl-item:hover {
+    width: auto !important; 
+    transition: none; 
+     z-index: none;
+}*/
+
+
+::ng-deep  .owl-prev::after {
+    content: "•";
+    font-size: 50px;
+    color: #f5a414;
+    margin-left: 8px; /* Espacio entre la flecha y el punto */
+}
+
+::ng-deep  .owl-next::before {
+    content: "•";
+    font-size: 50px;
+    color: #f5a414;
+    margin-right: 8px; /* Espacio entre el punto y la flecha */
+}

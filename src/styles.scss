@@ -99,6 +99,12 @@ img {
 .bg-f7f5f4 {
     background-color: #f7f5f4;
 }
+.bg-primary-color {
+    background-color: var(--mainColor);
+}
+.bg-black-color {
+    background-color: var(--blackColor);
+}
 .ml-auto {
     margin-left: auto;
 }

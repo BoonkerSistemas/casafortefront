@@ -10,4 +10,5 @@ export const environment = {
   title: 'Preuniversitario Pedro de Valdivia: Preparación para la PAES 2024',
   url: 'http://boonkerdigital.com:1337',
   sitemapUrl: 'http://boonkerdigital.com:1337/sitemap.xml',
+  apiGoogle: 'AIzaSyBXCDLujiJkJrac7EKVRq5yYM74dIvdvNA',
 };

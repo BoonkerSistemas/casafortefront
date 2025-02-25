@@ -2,13 +2,86 @@
     position: relative;
     z-index: 1;
 }
+.section-title-casa{
+    margin-bottom: 60px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--blackColor);
+    text-align: center;
+}
+
+.imgCategorias {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+}
+
+.imgCategorias:hover {
+    filter: grayscale(0%);
+}
+
+.work-tabs{
+.nav-tabset-categorias {
+    //padding: 20px;
+    max-width: 1320px;
+    border-radius: 50px;
+    list-style-type: none;
+    //box-shadow: 0 0 30px 0 rgba(67, 67, 67, 0.15);
+    margin: {
+        left: auto;
+        right: auto;
+        bottom: 40px;
+    };
+    .nav-tab-categorias {
+        display: inline-block;
+        margin-right: 10px;
+        margin-top: 10px;
+    width: min-content;
+text-align: center;
+        span {
+            border: none;
+            display: block;
+            cursor: pointer;
+            padding: 9px 10px;
+            width: 14vh;
+            transition: var(--transition);
+            border-bottom: 3px solid #f4f4f4;
+            font: {
+                size: 16px;
+                weight: 500;
+            };
+            &:hover {
+                //background: var(--blackColor);
+                //color: var(--whiteColor);
+                border-bottom: 10px solid var(--mainColor);
+                .imgCategorias{
+                    filter: grayscale(0%);
+                }
+            }
+        }
+        &.active {
+            span {
+                //background: var(--blackColor);
+                //color: var(--whiteColor);
+                border-bottom: 10px solid var(--mainColor);
+                .imgCategorias {
+                    filter: grayscale(0%);
+                }
+            }
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+}
+
 .work-tabs {
     .nav-tabset {
-        padding: 20px;
+        //padding: 20px;
         max-width: 1320px;
         border-radius: 50px;
         list-style-type: none;
-        box-shadow: 0 0 30px 0 rgba(67, 67, 67, 0.15);
+        //box-shadow: 0 0 30px 0 rgba(67, 67, 67, 0.15);
         margin: {
             left: auto;
             right: auto;
@@ -17,13 +90,15 @@
         .nav-tab {
             display: inline-block;
             margin-right: 10px;
+            margin-top: 10px;
+        
 
             span {
                 border: none;
                 display: block;
                 cursor: pointer;
-                padding: 9px 30px;
-                border-radius: 30px;
+                padding: 9px 9px;
+               // border-radius: 30px;
                 background: #f4f4f4;
                 color: var(--blackColor);
                 transition: var(--transition);
@@ -32,13 +107,13 @@
                     weight: 500;
                 };
                 &:hover {
-                    background: var(--mainColor);
+                    background: var(--blackColor);
                     color: var(--whiteColor);
                 }
             }
             &.active {
                 span {
-                    background: var(--mainColor);
+                    background: var(--blackColor);
                     color: var(--whiteColor);
                 }
             }
@@ -66,29 +141,29 @@
         transition: var(--transition);
     }
     .work-content {
-        background: var(--whiteColor);
+        //background: var(--whiteColor);
         transition: var(--transition);
         position: absolute;
-        visibility: hidden;
-        opacity: 0;
+        //visibility: visible;
+        //opacity: 0;
         bottom: 0;
         right: 0;
-        left: 0;
+        //left: 0;
         margin: {
             left: 20px;
             right: 20px;
         };
         padding: {
             top: 20px;
-            left: 10px;
-            right: 10px;
-            bottom: 20px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
         };
         h3 {
             margin-bottom: 10px;
             font: {
-                weight: 600;
-                size: 20px;
+                weight: 700;
+                size: 25px;
             };
         }
         ul {

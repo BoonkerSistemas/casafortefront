@@ -29,31 +29,29 @@
                     <ul class="navbar-nav ml-auto" style="gap: 6px;">
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
-                                style="color: rgb(255, 255, 255);">
+                                style="color: var(--mainColor);">
                                 <i class="fab fa-instagram" style="font-weight: 600;"></i>
                             </a>
                         </li>
                         <li class="nav-item social">
-                            <a class="nav-link" [href]="'tel:' + phone" title="Llamar"
-                                style="color: rgb(255, 255, 255);">
+                            <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
                                 <i class="fab fa-youtube"></i>
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link social" [href]="'mailto:' + mail" title="Correo" target="_blank"
-                                style="color: rgb(255, 255, 255);">
+                                style="color: var(--mainColor);">
                                 <i class="fa fa-envelope"></i>
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
-                                style="color: rgb(255, 255, 255);">
+                                style="color: var(--mainColor);">
                                 <i class="fab fa-whatsapp" style="font-weight: 600;"></i>
                             </a>
                         </li>
                         <li class="nav-item social">
-                            <a class="nav-link" [href]="'tel:' + phone" title="Llamar"
-                                style="color: rgb(255, 255, 255);">
+                            <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
                                 <i class="fa fa-phone"></i>
                             </a>
                         </li>
@@ -70,7 +68,8 @@
                     display: flex;
                     flex-direction: row;
                     align-items: center;
-                    border-radius: 15px;
+                    clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+                    padding-left: 10%;
                 ">
                                 <span class="nav-link dropdown-toggle" [ngClass]="{'active': isActive(item)}"
                                     (click)="toggleDropdown(item.title)"

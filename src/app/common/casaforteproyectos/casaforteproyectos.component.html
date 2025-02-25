@@ -1,0 +1,19 @@
+<div id="team" class="team-area ptb-100 bg-black-color">
+    <div class="container">
+        <div class="section-title-casa">
+            <h1 [innerHTML]="title" style="color: white;"></h1>
+        </div>
+        <div class="team-slides">
+            <owl-carousel-o [options]="teamSlides">
+                <ng-template carouselSlide *ngFor="let item of lists">
+                    <div class="single-team-box" (click)="onClick('about')">
+                        <div class="content">
+                            <h4 class="title">{{ item.title }}</h4>
+                        </div>
+                    </div>
+                </ng-template>
+            </owl-carousel-o>
+        </div>
+    </div>
+    <!--<div class="shape1"><img src="images/shape1.png" alt="image"></div>-->
+</div>
