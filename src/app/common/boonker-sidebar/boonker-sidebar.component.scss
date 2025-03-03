@@ -24,10 +24,7 @@
   .menu-item-container {
     background-color: #161e34ba; /* Fondo negro con 50% de transparencia */
     margin-bottom: 15px; /* Espaciado entre cada contenedor */
-    border-radius: 50px  0 0 50px; /* Bordes redondeados para cada contenedor */
-    //border-left: 5px solid var(--mainColor); /* Borde izquierdo con color principal */
-    //box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar los cuadros */
-    //transform: translateX(10px); /* Asegura que estén contraídos por defecto */
+    clip-path: polygon(20% 0%, 100% 0, 100% 100%, 0% 100%);
     position: relative; /* Necesario para posicionar el span de forma absoluta */
   }
 
@@ -52,7 +49,8 @@
   .menu-item.active .menu-item-container img {
     //filter: invert(1); /* Hace que el ícono sea blanco */
     transition: filter 0.3s ease;
-  }
+margin-left: 15px; 
+ }
 /**/
 
 
@@ -80,7 +78,7 @@
   }
   
   .menu-item.active .menu-item-container {
-    background-color: #e7283a;
+    background-color: var(--blackColor);
     }
   .menu-item.active .menu-item-container span {
     visibility: visible; /* Hace visible el span solo cuando el item está activo */

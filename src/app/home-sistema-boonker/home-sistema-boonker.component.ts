@@ -6,10 +6,12 @@ import {FaqBoonkerComponent} from "./faq/faq-boonker.component";
 import {WhyWeDifferentComponent} from "./why-we-different/why-we-different.component";
 import {BannerBoonkerComponent} from "./banner-boonker/banner-boonker.component";
 import {Router, RouterLink, RouterModule} from "@angular/router";
+import { CasafortesistemaComponent } from '../common/casafortesistema/casafortesistema.component';
 
 @Component({
     selector: 'app-home-sistema-boonker',
     imports: [
+        CasafortesistemaComponent,
         WhoIsBoonkerComponent,
         CotizacionComponent,
         ServicesBoonkerComponent,

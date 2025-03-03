@@ -77,6 +77,8 @@ export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
                 this.lists.forEach((element: any) => {
                                         element.img= environment.api_img + element.icon.url;
                                 });
+                console.log(this.lists);
+                
 
             })
             .catch((error) => {

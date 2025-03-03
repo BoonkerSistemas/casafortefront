@@ -11,7 +11,8 @@
 
                 <a class="navbar-brand" routerLink="/" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}">
-                    <img [src]="logos" alt="Logo" class="logo">
+                    <!--<img [src]="logos" alt="Logo" class="logo">-->
+                    <img src="images/CasaForte/casaForte.png" alt="Logo" class="logo">
 
                 </a>
                 <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
@@ -30,29 +31,40 @@
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
                                 style="color: var(--mainColor);">
-                                <i class="fab fa-instagram" style="font-weight: 600;"></i>
+                                <!--<i class="fab fa-instagram" style="font-weight: 600;"></i>-->
+                                <img src="images/CasaForte/header/instagram.png" alt="WhatsApp Icon"
+                                    style="width: 30px; ">
+
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
-                                <i class="fab fa-youtube"></i>
+                                <!--<i class="fab fa-youtube"></i>-->
+                                <img src="images/CasaForte/header/youtube.png" alt="WhatsApp Icon"
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link social" [href]="'mailto:' + mail" title="Correo" target="_blank"
                                 style="color: var(--mainColor);">
-                                <i class="fa fa-envelope"></i>
+                                <!--<i class="fa fa-envelope"></i>-->
+                                <img src="images/CasaForte/header/mensaje.png" alt="WhatsApp Icon"
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
                                 style="color: var(--mainColor);">
-                                <i class="fab fa-whatsapp" style="font-weight: 600;"></i>
+                                <!--<i class="fab fa-whatsapp" style="font-weight: 600;"></i>-->
+                                <img src="images/CasaForte/header/whatsaap.png" alt="WhatsApp Icon"
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
-                                <i class="fa fa-phone"></i>
+                                <!--<i class="fa fa-phone"></i>-->
+                                <img src="images/CasaForte/header/telefono.png" alt="WhatsApp Icon"
+                                    style="width: 30px; ">
                             </a>
                         </li>
                     </ul>
@@ -65,21 +77,27 @@
 
                             <div style="
                     background: #ffffff;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
-                    padding-left: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+    padding-left: 10%;
+    margin-right: -20%;
+    justify-content: center;
                 ">
                                 <span class="nav-link dropdown-toggle" [ngClass]="{'active': isActive(item)}"
-                                    (click)="toggleDropdown(item.title)"
-                                    style="color: black;padding-left: 10px;max-width: 120px;">
+                                    (click)="toggleDropdown(item.title)" style="color: black;
+                                    /* padding-left: 10px; */
+                                    max-width: min-content;
+                                    display: flex
+                                ;">
                                     {{ item.title }}
                                 </span>
-                                <i class="fa fa-user" style="
+                                <!--<i class="fa fa-user" style="
                         padding-right: 10px;
                         font-size: xx-large;
-                    "></i>
+                    "></i>-->
+                                <img src="images/CasaForte/header/user.png" alt="WhatsApp Icon" style="width: 30px; ">
                             </div>
 
                             <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen[item.title]}"

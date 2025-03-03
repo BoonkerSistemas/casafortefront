@@ -3,49 +3,34 @@
 	left: 0;
 	z-index: 2;
 	width: 100%;
-	//position: fixed ;
     transition: var(--transition);
-    //background: #161e34ba  !important;
-    background:rgb(245 164 20) !important;
-    padding: {
-        top: 15px;
-        bottom: 30px;
-    };
+    background: rgb(245 164 20) !important;
     padding: 0px !important;
     display: flex;
     flex-direction: column;
     border-bottom: 4px solid white;
     &.sticky {
-        z-index: 999;
+        z-index: 999; // Asegúrate de que este valor sea menor que el de navbar2
         position: fixed;
-        //background: var(--whiteColor) !important;
-        //box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
         top: 0px;
     }
 }
+
 .navbar2 {
 	top: 0;
 	left: 0;
 	z-index: 2;
 	width: 100%;
-	//position: fixed ;
     transition: var(--transition);
-    //background: #161e34ba  !important;
-    background:rgb(0, 0, 0) !important;
-    padding: {
-        top: 15px;
-        bottom: 30px;
-    };
+    background: rgb(0, 0, 0) !important;
     padding: 0px !important;
     display: flex;
     flex-direction: column;
     border-bottom: 4px solid white;
     &.sticky {
-        z-index: 99;
+        z-index: 101; // Mayor que el navbar principal para asegurar que esté por encima
         position: fixed;
-        //background: var(--whiteColor) !important;
-        //box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
-        top: 9.9vh;
+        // No definimos top aquí ya que lo estableceremos dinámicamente en JavaScript
     }
 }
 .navbar-light {
@@ -394,9 +379,14 @@
 @media only screen and (min-width: 1600px) {}
 
 .logo{
-    max-width: 10rem;
+    /*max-width: 10rem;
     max-height: 80px;
+    width: auto;*/
+    max-width: 50rem;
+    max-height: 5vw;
     width: auto;
+    left: -20px;
+    position: relative;
 }
 .dropdown-item{
     font-size: 14px;
@@ -454,7 +444,7 @@
 
 .social{
     border-radius: 50%;
-    background: rgb(0, 0, 0);
+    //background: rgb(0, 0, 0);
     width: 20px;
     height: 20px !important;
     display: flex;
@@ -464,3 +454,7 @@
     color: black;
 }
 
+img {
+    height: auto;
+    /* max-width: 100%; */
+}

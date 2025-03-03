@@ -29,7 +29,7 @@
     font-weight: bold;
     padding: 10px;
     background: #3F2E1F;
-    color: var(--mainColor);
+    color: white;
     border-radius: 5px;
     width: 100%;
     transition: all 0.3s ease-in-out;
@@ -38,6 +38,9 @@
 .description {
     color: black;
     font-size: 16px;
+    line-height: 1;
+    top: 8px;
+    position: relative;
 }
 
 /* Responsive Design */

@@ -1,0 +1,81 @@
+<div id="work" class="work-area pt-100 ">
+    <div class="container">
+        <div class="section-title-casa">
+            <h2>Elementos estructurales del Sistema CasaForte</h2>
+            <!--<p>La mejor solución estructural para proyectos de viviendas de 50m² a 120m²</p>-->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="work-tabs">
+            <ul class="nav-tabset">
+                <li *ngFor="let tab of tabs" class="nav-tab" [ngClass]="{'active': currentTab === tab.id}">
+                    <span (click)="switchTab($event, tab.id)">
+                        {{ tab.name }}
+                    </span>
+                </li>
+            </ul>
+
+            <div class="tabs-container">
+                <div *ngFor="let tab of tabs">
+                    <div class="pane" [id]="tab.id" *ngIf="currentTab === tab.id">
+                        <div *ngFor="let work of works">
+                            <div *ngIf="work.tab === tab.id ">
+
+                                <div class="row">
+                                    <div class="col-lg-4 ">
+                                        <div style="background: black;height: 100%;">
+
+                                            <h3 style="color: white;">{{ work.title }}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p>{{ work.descripcion}}</p>
+                                    </div>
+                                    <!--<div class="col-lg-5">
+                                        <div class="single-work">
+                                            <img [src]="work.img" alt="work-img">
+                                            <div class="work-content">
+                                                <h3>{{ work.title }}</h3>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <div class="col-lg-16">
+                                        <div class="work-content">
+                                            <ul class="nav-tabset-categorias">
+                                                <li *ngFor="let tabCategorias of work.categorias"
+                                                    class="nav-tab-categorias"
+                                                    [ngClass]="{'active': currentTab2 === tabCategorias.tabId}">
+
+                                                    <span (click)="switchTab2($event, tabCategorias)">
+                                                        <img class="imgCategorias" [src]="tabCategorias.imagen"
+                                                            alt="work-img">
+                                                        {{ tabCategorias.titulo }}
+                                                    </span>
+                                                </li>
+                                            </ul>
+
+                                            <div *ngIf="currentTab2 === workSelected.tabId ">
+                                                {{workSelected.descripcion}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-black">
+        <h1 class="container " style="color: white; padding: 4%; text-align: center;">Simplificamos la construccion para
+            hacer que los
+            proyectos sean
+            mucho mas rentables</h1>
+    </div>
+</div>

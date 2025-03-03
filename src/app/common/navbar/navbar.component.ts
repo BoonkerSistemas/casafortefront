@@ -71,6 +71,8 @@ export class NavbarComponent implements OnInit {
     classApplied: boolean = false;
     dropdownOpen: { [key: string]: boolean } = {};
     activeItem: string | null = null;  // Estado para saber cuál item está activo
+    private navbarResizeObserver: ResizeObserver | null = null;
+  
 
     constructor(
         private viewportScroller: ViewportScroller,
@@ -84,6 +86,7 @@ export class NavbarComponent implements OnInit {
     async ngOnInit(): Promise<void> {
         await this.loadMenu();
         await this.loadGeneralData();
+        await this.setupResizeObserver();
     }
 
     private async loadMenu(): Promise<void> {
@@ -98,6 +101,33 @@ export class NavbarComponent implements OnInit {
             console.error('Error al obtener el menú', error);
         }
     }
+
+    ngOnDestroy() {
+        // Limpiar el observer al destruir el componente
+        if (this.navbarResizeObserver) {
+          this.navbarResizeObserver.disconnect();
+        }
+      }
+
+      setupResizeObserver() {
+        const navbarElement = document.querySelector('.navbar');
+        
+        if (navbarElement && 'ResizeObserver' in window) {
+          this.navbarResizeObserver = new ResizeObserver(entries => {
+            for (const entry of entries) {
+              if (this.isSticky) {
+                const height = entry.contentRect.height;
+                const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
+                navbar2Elements.forEach((element: any) => {
+                  element.style.top = `${height}px`;
+                });
+              }
+            }
+          });
+          
+          this.navbarResizeObserver.observe(navbarElement);
+        }
+      }
 
     private async loadGeneralData(): Promise<void> {
         try {
@@ -138,6 +168,28 @@ export class NavbarComponent implements OnInit {
         this.logos =  environment.api_img + this.logoNegro; // Logo original cuando no es sticky
       }
     }
+
+    @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    
+    if (scrollPosition > 100) {
+      if (!this.isSticky) {
+        this.isSticky = true;
+        
+        // Esperar a que se aplique la clase sticky y luego calcular la altura
+        setTimeout(() => {
+          const navbarHeight = document.querySelector('.navbar.sticky')?.clientHeight || 0;
+          const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
+          navbar2Elements.forEach((element: any) => {
+            element.style.top = `${navbarHeight}px`;
+          });
+        }, 0);
+      }
+    } else {
+      this.isSticky = false;
+    }
+  }
 
     public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);

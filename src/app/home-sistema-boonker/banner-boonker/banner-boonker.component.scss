@@ -1,11 +1,12 @@
 .main-banner {
-	height: 850px;
+	height: 750px;
     overflow: hidden;
 	position: relative;
     background: {
         position: center center;
         repeat: no-repeat;
         size: cover;
+        color: var(--mainColor);
     };
     &::before {
         top: 0;
@@ -15,35 +16,28 @@
         height: 100%;
         opacity: .58;
         position: absolute;
-        background: var(--blackColor);
+        background: var(--mainColor);
     }
 }
 .main-banner-text {
     position: relative;
-    text-align: center;
+    //text-align: center;
     z-index: 1;
+    padding-right: 15%;
 
     h4 {
-        color: var(--whiteColor);
+        color: var(--blackColor);
         font: {
             weight: 400;
-            size: 20px;
+            size: 40px;
         };
     }
     h1 {
-        color: var(--whiteColor);
-        margin: {
-            top: 30px;
-            bottom: 30px;
-        };
-        font: {
-            weight: 400;
-            size: 55px;
-        };
-        span {
-            color: #ff2c57;
-            font-weight: 600;
-        }
+        color: var(--blackColor);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 25px;
     }
     p {
         color: var(--whiteColor);
@@ -75,15 +69,20 @@
         }
     }
 }
+.video-container{
+    width: 100%;
+    height: 100%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
 .video-background {
-	right: 0;
-    bottom: 0;
-	z-index: -100;
-	position: absolute;
-    min: {
-        height: 100%;
-        width: 100%;
-    };
+	width: 80%;
+    height: 60%;
+    object-fit: cover;
+    position: absolute;
 }
 
 /* Max width 767px */
@@ -169,4 +168,23 @@
         height: 100vh;
     }
 
+}
+
+.custom-button {
+    background-color: #ffffff !important; /* Color de fondo similar al de la imagen */
+    color: black; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    border: none;
+    padding-right: 30px !important;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    font-size: 14px;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
+    border-radius: 0px !important;
+}
+
+.custom-button:hover {
+    background-color: #000000; /* Efecto hover con un tono más oscuro */
 }
