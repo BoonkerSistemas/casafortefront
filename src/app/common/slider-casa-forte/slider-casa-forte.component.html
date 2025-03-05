@@ -1,43 +1,26 @@
-<div id="work" class="work-area pt-100 ">
+<div id="work" class="work-area pt-100 bg-primary-color" style="margin-bottom: 1%;">
     <div class="container">
         <div class="section-title-casa">
-            <h2>Grandes beneficios para viviendas en serie </h2>
-            <!--<p>La mejor solución estructural para proyectos de viviendas de 50m² a 120m²</p>-->
+            <h2>Conoce todos nuestros proyectos </h2>
         </div>
     </div>
 
-
-
-
-
-    <div class="home-slides" id="banner">
+    <div class="home-slides" id="bannerSlides">
         <owl-carousel-o [options]="homeSlides">
 
             <ng-template carouselSlide *ngFor="let slider of sliders">
-                <!--<div class="main-banner" [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'">
-                -->
                 <div class="main-banner">
                     <div class="banner-container">
-                        <div class="banner-izquierdo">
-                            <h5 style="padding-left: 25%;padding-bottom: 10px;">CONSTRUCTIVO EJECUCIONAL</h5>
-                            <div class="contenedor-titulo">
-                                <h2 class="titulo">
-                                    <span class="primera-palabra">Simplifica</span>
-                                </h2>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="images/services-img8.jpg" alt="work-img">
                             </div>
-                            <div class="contenedor-titulo1">
-                                <h2 class="titulo1">
-                                    <span class="segunda-linea">al máximo</span>
-                                    <span class="tercera-linea">la construcción</span>
-                                </h2>
+                            <div class="col-lg-4">
+                                <img src="images/services-img8.jpg" alt="work-img">
                             </div>
-                        </div>
-                        <div class="banner-derecho">
-                            <p class="descripcion">
-                                Permite obras grises en pasos muy sencillos de realizar, minimizando los posibles
-                                errores humanos a
-                                nivel estructural y acortando tiempos de ejecución.
-                            </p>
+                            <div class="col-lg-4">
+                                <img src="images/services-img8.jpg" alt="work-img">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,4 +29,5 @@
 
         </owl-carousel-o>
     </div>
+    <div class="shape1"><img src="images/404.png" alt="image"></div>
 </div>

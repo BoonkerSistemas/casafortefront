@@ -25,7 +25,7 @@ export class SliderCasaForteComponent implements OnInit, AfterViewInit  {
 
     homeSlides: OwlOptions = {
             items: 1,
-            nav: true,
+            nav: false,
             loop: true,
             dots: true,
             autoplay: false,

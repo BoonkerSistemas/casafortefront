@@ -4,7 +4,7 @@
     line-height: 0.9;
 }
 ::ng-deep {
-    .owl-theme .owl-dots, .owl-theme .owl-nav {
+    #banner .owl-theme .owl-dots, .owl-theme .owl-nav {
     top: -5vh !important;
     position: relative;
     .owl-theme .owl-dots .owl-dot span {
@@ -72,8 +72,8 @@
     }
 }
 ::ng-deep {
-    .home-slides {
-        .owl-theme {
+    
+    #banner    .owl-theme {
             .owl-nav {
                 /*opacity: 0;
                 margin-top: 0;
@@ -121,7 +121,7 @@ display: none;
                 }
             }
         }
-    }
+    
 }
 
 .container-text {
@@ -171,7 +171,7 @@ display: none;
         }
     }
     ::ng-deep {
-        .home-slides {
+        #banner .home-slides {
             .owl-theme {
                 .owl-nav {
                     opacity: 1;
@@ -230,7 +230,7 @@ display: none;
             };
         }
     }
-    .home-slides {
+    #banner .home-slides {
         .owl-theme {
             .owl-nav {
                 opacity: 1;

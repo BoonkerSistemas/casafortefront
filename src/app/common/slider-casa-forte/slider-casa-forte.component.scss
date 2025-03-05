@@ -1,14 +1,13 @@
 .section-title-casa{
     margin-bottom: 30px;
+    width: 38%;
     position: relative;
     color: var(--blackColor);
-    text-align: center;
     h2{
         font-size: 40px;
         line-height: 1.2;
         font-weight: 600;
-        text-align: center;
-        color: #333333;
+        color: #000000;
     }
     p{
         font-size: 28px;
@@ -18,12 +17,20 @@
         color: black;
     }
 }
+.shape1 {
+    right: 0;
+    z-index: 0;
+    top: 100%;
+    position: absolute;
+}
 .banner-container {
     display: flex;
     position: relative;
     width: 100%;
     overflow: hidden;
     height: 20rem;
+    padding-left: 5%;
+    padding-right: 5%;
   }
 
   .banner-izquierdo {
@@ -213,7 +220,15 @@
     }
 }
 ::ng-deep {
-    .home-slides {
+    #bannerSlides .owl-theme .owl-dots .owl-dot.active span {
+        width: 35px;
+        height: 10px;
+        border-radius: 5px;
+        background: #869791;
+        background: #000000;
+        border-color: #000000;
+    }
+    #bannerSlides .home-slides {
         .owl-theme {
             .owl-nav {
                 opacity: 0;
@@ -310,7 +325,7 @@
         }
     }
     ::ng-deep {
-        .home-slides {
+        #bannerSlides .home-slides {
             .owl-theme {
                 .owl-nav {
                     opacity: 1;
@@ -369,7 +384,7 @@
             };
         }
     }
-    .home-slides {
+    #bannerSlides .home-slides {
         .owl-theme {
             .owl-nav {
                 opacity: 1;
@@ -431,7 +446,7 @@
   
   img {
     flex: 1; /* Hace que la imagen ocupe la otra columna */
-    width: 2rem; /* Mantén el tamaño de la imagen */
+    width: 30rem; /* Mantén el tamaño de la imagen */
   }
 
   .video-background {
