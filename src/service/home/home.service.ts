@@ -125,4 +125,19 @@ export class HomeService {
             throw error;
         }
     }
+
+    async getComponentSliderBeneficios() {
+        const url: string = `${environment.api_url}/beneficios?[populate]=*`;
+        const headers = {
+            Authorization: 'Bearer ' + environment.token,
+        };
+
+        try {
+            const response = await axios.get(url, {headers});
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener los datos', error);
+            throw error;
+        }
+    }
 }
