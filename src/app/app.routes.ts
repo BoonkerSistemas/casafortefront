@@ -23,8 +23,7 @@ import { GaleriaCasaForteComponent } from './galeria-casa-forte/galeria-casa-for
 export const routes: Routes = [
     {path: '', component: HomeTwoComponent},
     {path: 'home', component: HomeTwoComponent},
-    {path: 'sistema-boonker', component: HomeSistemaBoonkerComponent},
-    {path: 'sistema-casa-forte', component: HomeSistemaCasaForteComponent},
+    {path: 'sistema-casa-forte', component: HomeSistemaBoonkerComponent},
     {path: 'galeria-casa-forte', component: GaleriaCasaForteComponent},
     {path: 'sistema-muros-contencion', component: HomeSistemaMurosContencionComponent},
     {path: 'productos-complementarios', component: HomeSixComponent},
