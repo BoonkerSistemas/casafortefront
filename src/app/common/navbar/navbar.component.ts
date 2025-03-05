@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, HostListener, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
 import {NgClass, NgForOf, NgIf, ViewportScroller} from '@angular/common';
-import { MenuService } from '../../../service/menu/menu.service';
-import { environment } from '@env/environment';
+import {MenuService} from '../../../service/menu/menu.service';
+import {environment} from '@env/environment';
 import {NavigationEnd, Router, RouterLink, RouterModule} from "@angular/router";
-import { ActivatedRoute } from '@angular/router';
-import { __await } from 'tslib';
-import { filter } from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {__await} from 'tslib';
+import {filter} from 'rxjs';
 
 interface MenuItem {
     title: string;
@@ -28,7 +28,7 @@ interface MenuItem {
 })
 export class NavbarComponent implements OnInit {
     menus: MenuItem[] = [];
-    menuCliente= [{
+    menuCliente = [{
         "id": 320,
         "title": "Acceso Clientes",
         "url": null,
@@ -72,16 +72,17 @@ export class NavbarComponent implements OnInit {
     dropdownOpen: { [key: string]: boolean } = {};
     activeItem: string | null = null;  // Estado para saber cuál item está activo
     private navbarResizeObserver: ResizeObserver | null = null;
-  
+
 
     constructor(
         private viewportScroller: ViewportScroller,
         private menuService: MenuService,
         private router: Router,
-        private activatedRoute: ActivatedRoute, 
+        private activatedRoute: ActivatedRoute,
         private location: Location,
         private changeDetectorRef: ChangeDetectorRef
-    ) {}
+    ) {
+    }
 
     async ngOnInit(): Promise<void> {
         await this.loadMenu();
@@ -102,29 +103,29 @@ export class NavbarComponent implements OnInit {
     ngOnDestroy() {
         // Limpiar el observer al destruir el componente
         if (this.navbarResizeObserver) {
-          this.navbarResizeObserver.disconnect();
+            this.navbarResizeObserver.disconnect();
         }
-      }
+    }
 
-      setupResizeObserver() {
+    setupResizeObserver() {
         const navbarElement = document.querySelector('.navbar');
-        
+
         if (navbarElement && 'ResizeObserver' in window) {
-          this.navbarResizeObserver = new ResizeObserver(entries => {
-            for (const entry of entries) {
-              if (this.isSticky) {
-                const height = entry.contentRect.height;
-                const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
-                navbar2Elements.forEach((element: any) => {
-                  element.style.top = `${height}px`;
-                });
-              }
-            }
-          });
-          
-          this.navbarResizeObserver.observe(navbarElement);
+            this.navbarResizeObserver = new ResizeObserver(entries => {
+                for (const entry of entries) {
+                    if (this.isSticky) {
+                        const height = entry.contentRect.height;
+                        const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
+                        navbar2Elements.forEach((element: any) => {
+                            element.style.top = `${height}px`;
+                        });
+                    }
+                }
+            });
+
+            this.navbarResizeObserver.observe(navbarElement);
         }
-      }
+    }
 
     private async loadGeneralData(): Promise<void> {
         try {
@@ -158,35 +159,35 @@ export class NavbarComponent implements OnInit {
     checkScroll(): void {
         this.logos = '';
         this.isSticky = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) >= 50;
-         // Cambiar el logo cuando la navbar sea sticky
-    if (!this.isSticky) {
-        this.logos = environment.api_img + this.logoBlanco; // Cambia el logo cuando es sticky
-      } else {
-        this.logos =  environment.api_img + this.logoNegro; // Logo original cuando no es sticky
-      }
+        // Cambiar el logo cuando la navbar sea sticky
+        if (!this.isSticky) {
+            this.logos = environment.api_img + this.logoBlanco; // Cambia el logo cuando es sticky
+        } else {
+            this.logos = environment.api_img + this.logoNegro; // Logo original cuando no es sticky
+        }
     }
 
     @HostListener('window:scroll', [])
-  onWindowScroll() {
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    
-    if (scrollPosition > 100) {
-      if (!this.isSticky) {
-        this.isSticky = true;
-        
-        // Esperar a que se aplique la clase sticky y luego calcular la altura
-        setTimeout(() => {
-          const navbarHeight = document.querySelector('.navbar.sticky')?.clientHeight || 0;
-          const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
-          navbar2Elements.forEach((element: any) => {
-            element.style.top = `${navbarHeight}px`;
-          });
-        }, 0);
-      }
-    } else {
-      this.isSticky = false;
+    onWindowScroll() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+        if (scrollPosition > 100) {
+            if (!this.isSticky) {
+                this.isSticky = true;
+
+                // Esperar a que se aplique la clase sticky y luego calcular la altura
+                setTimeout(() => {
+                    const navbarHeight = document.querySelector('.navbar.sticky')?.clientHeight || 0;
+                    const navbar2Elements = document.querySelectorAll('.navbar2.sticky');
+                    navbar2Elements.forEach((element: any) => {
+                        element.style.top = `${navbarHeight}px`;
+                    });
+                }, 0);
+            }
+        } else {
+            this.isSticky = false;
+        }
     }
-  }
 
     public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
@@ -200,7 +201,7 @@ export class NavbarComponent implements OnInit {
         this.menus.forEach(menu => {
             this.dropdownOpen[menu.title] = false;
         });
-        
+
     }
 
     toggleDropdown(menu: string): void {
@@ -229,52 +230,80 @@ export class NavbarComponent implements OnInit {
     }
 
     selectItem(title: string) {
-        // Marcar el item como activo
 
-        
+
         this.activeItem = title;
         this.dropdownOpen[title] = false;  // Cerrar el dropdown después de seleccionar el item
-      }
+    }
 
-      checkActiveLink(url: string): boolean {
+    checkActiveLink(url: string): boolean {
         return this.router.url.includes(url);  // Verificar si la URL contiene la ruta actual
-      }
-
-     // Método que verifica si la ruta del menú o submenú está activa
-    isActive(item:any): boolean {
-    if (item.url && this.router.url.includes(item.url)) {
-      return true;
     }
 
-    // Verifica si alguna de las rutas de los submenús está activa
-    if (item.submenu) {
-      return item.submenu.some((subItem: any) => this.router.url.includes(subItem.url));
+    // Método que verifica si la ruta del menú o submenú está activa
+    isActive(item: any): boolean {
+        if (item.url && this.router.url.includes(item.url)) {
+            return true;
+        }
+
+        // Verifica si alguna de las rutas de los submenús está activa
+        if (item.submenu) {
+            return item.submenu.some((subItem: any) => this.router.url.includes(subItem.url));
+        }
+
+        return false;
     }
 
-    return false;
-  }
 
-   
-   async navigateToLandingAndSection(landingUrl: any, sectionUrl: any) {
-    
-    if (!this.isOnLanding(landingUrl)) {
-        // Si no estamos en la landing, navegamos a ella
-        await this.router.navigate([landingUrl]).then(() => {
-          // Usamos ChangeDetectorRef para asegurarnos de que Angular haya actualizado la vista
-          this.changeDetectorRef.detectChanges();
-    
-          // Luego hacemos el scroll
-          console.log('Navigated to landing, scrolling to section', sectionUrl);
-          this.viewportScroller.scrollToAnchor(sectionUrl);
-        });
-      } else {
-      this.viewportScroller.scrollToAnchor(sectionUrl);
+    async navigateToLandingAndSection(landingUrl: any, sectionUrl: any) {
+
+        if (!this.isOnLanding(landingUrl)) {
+            // Si no estamos en la landing, navegamos a ella
+            await this.router.navigate([landingUrl]).then(() => {
+                // Usamos ChangeDetectorRef para asegurarnos de que Angular haya actualizado la vista
+                this.changeDetectorRef.detectChanges();
+
+                // Luego hacemos el scroll
+                console.log('Navigated to landing, scrolling to section', sectionUrl);
+                this.viewportScroller.scrollToAnchor(sectionUrl);
+            });
+        } else {
+            this.viewportScroller.scrollToAnchor(sectionUrl);
+        }
     }
-  }
 
- 
-  isOnLanding(url: string): boolean {
-    const currentUrl = this.location.path(); 
-    return currentUrl.includes(url); 
-  }
+    handleNavigation(item: any) {
+        if (!item.url) return; // Prevenir errores si no hay URL
+
+        this.selectItem(item.title);
+        this.navigateToLandingAndSectionSimple(item.url);
+    }
+
+    async navigateToLandingAndSectionSimple(landingUrl: string) {
+        const [currentPath, queryString] = landingUrl.split('?'); // Extraer solo el path
+        console.log('Landing Path:', currentPath); // "/sistema-casa-forte"
+
+        const urlParams = new URLSearchParams(queryString);
+        const sectionUrl = urlParams.get('section') || 'beneficios'; // Si no hay sección, usar "beneficios"
+        console.log('Section:', sectionUrl);
+
+        if (!this.isOnLanding(currentPath)) {
+            // Si no estamos en la landing, navegamos primero
+            await this.router.navigate([currentPath]).then(() => {
+                this.changeDetectorRef.detectChanges(); // Forzar actualización de vista
+                console.log('Navigated to landing, scrolling to section:', sectionUrl);
+                this.viewportScroller.scrollToAnchor(sectionUrl);
+            });
+        } else {
+            // Si ya estamos en la landing, solo hacemos scroll
+            console.log('Already on landing, scrolling to section:', sectionUrl);
+            this.viewportScroller.scrollToAnchor(sectionUrl);
+        }
+    }
+
+
+    isOnLanding(url: string): boolean {
+        const currentUrl = this.location.path();
+        return currentUrl.includes(url);
+    }
 }
