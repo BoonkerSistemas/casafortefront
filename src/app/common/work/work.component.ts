@@ -1,90 +1,133 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgClass, NgFor, NgIf, ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { HomeService } from '../../../service/home/home.service';
+import {environment} from "@env/environment";
+
+interface Categoria {
+    titulo: string;
+    descripcion: string;
+    tabId: string;
+    icon: any;
+}
+
+interface Work {
+    img: string;
+    title: string;
+    descripcion?: string;
+    tab: any;
+    categorias?: any;
+}
 
 @Component({
     selector: 'app-work',
+    standalone: true,
     imports: [RouterLink, NgClass, NgIf, NgFor, CommonModule],
     templateUrl: './work.component.html',
     styleUrls: ['./work.component.scss']
 })
-export class WorkComponent {
+export class WorkComponent implements OnInit {
+    title = 'casaforteproyectos';
+    description = 'casaforteproyectos';
+    lists: any;
+    content: any;
+    currentTab: string = 'tab1';
+    currentTab2: string = '';
+    workSelected: any;
+    tabs: any;
+    works: Work[] = []; // 🔹 Se inicializa correctamente como un array vacío
 
     constructor(
-        private viewportScroller: ViewportScroller
+        private viewportScroller: ViewportScroller,
+        private homeService: HomeService
     ) {}
 
-    public onClick(elementId: string): void { 
+    ngOnInit(): void {
+        this.inicio();
+        this.product();
+    }
+
+    public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
     }
 
-    currentTab: string = 'tab1';
-    currentTab2: string = '';
-    workSelected: any = '';
+    async inicio() {
+        try {
+            const element = await this.homeService.getComponentList('Proyectos');
+            const response = element.data;
 
-    // Datos dinámicos de las pestañas y sus contenidos
-    tabs = [
-      { id: 'tab1', name: 'Mamposteria Estructural' },
-      { id: 'tab2', name: 'Complementos Estructurales' },
-      { id: 'tab3', name: 'Linea de Premezclas' },
-      { id: 'tab4', name: 'Linea Hormigones Estructurales' },
-      { id: 'tab5', name: 'Linea Recubrimientos' },
-    ];
-  
-    // Datos dinámicos de los trabajos
-    works = [
-      { 
-        img: 'images/Maestra.png', 
-        title: 'Maestra',  
-        descripcion: 'La mampostería estructural es un sistema constructivo que se basa en la utilización de unidades de mampostería (bloques de hormigón, ladrillos, etc.).',
-        tab: 'tab1' , 
-        categorias:[
-            {
-        titulo: 'Maestra',
-        descripcion: 'Categoria 1',
-        tabId: '1',
-        imagen: 'images/Maestra.png'
-    },
-    {
-        titulo: '3 Ductos',
-        descripcion: 'Categoria 2 ',
-        tabId: '2',
-        imagen: 'images/Maestra.png'
-    },
-    {
-      titulo: '2 Ductos',
-      descripcion: 'Categoria 3 ',
-      tabId: '3',
-      imagen: 'images/Maestra.png'
-  },
-  {
-    titulo: '1 Ducto',
-    descripcion: 'Categoria 4 ',
-    tabId: '4',
-    imagen: 'images/Maestra.png'
-},
-    {
-      titulo: 'Mixta',
-      descripcion: 'Categoria 5',
-      tabId: '5',
-      imagen: 'images/Maestra.png'
-  }
-]},
-      { img: 'images/work-img2.jpg', title: 'TABLA 2',  tab: 'tab2' },
-      { img: 'images/work-img3.jpg', title: 'TABLA 3',  tab: 'tab3' },
-      { img: 'images/work-img4.jpg', title: 'TABLA 4',  tab: 'tab4' },
-      { img: 'images/work-img5.jpg', title: 'TABLA 5',  tab: 'tab5' }
-    ];
-  
-    switchTab(event: Event, tabId: string) {
-      event.preventDefault();
-      this.currentTab = tabId;
+            if (response?.Proyectos) {
+                this.title = response.Proyectos.title;
+                this.description = response.Proyectos.description;
+                this.content = response.Proyectos.content;
+                this.tabs = response.Proyectos.listado;
+            } else {
+                console.warn('No se encontraron datos en Proyectos');
+            }
+        } catch (error) {
+            console.error('Error al obtener el componente Inicio:', error);
+        }
     }
-    switchTab2(event: Event, tab:any) {
+
+    async product() {
+        try {
+            const element = await this.homeService.getComponentProduct();
+            const response = element.data;
+
+            console.log('Datos cargados:', response);
+
+            if (Array.isArray(response)) {  // 🔹 Verifica que `response` sea un array antes de iterar
+                response.forEach((work: any) => {
+                    console.log('------------------------', work);
+
+                    let json: Work = {
+                        img: 'images/Maestra.png',
+                        title: work.Titulo,
+                        descripcion: work.Descripcion,
+                        tab: work.numero,
+                        categorias: work.variedades
+                    };
+
+                    this.works.push(json);
+                    console.log('------------------------');
+                });
+            } else {
+                console.warn('El formato de `response` no es el esperado:', response);
+            }
+        } catch (error) {
+            console.error('Error al obtener el componente Productos:', error);
+        }
+    }
+
+    switchTab(event: Event, tabId: string) {
         event.preventDefault();
-        this.currentTab2 = tab.tabId;
-        this.workSelected = tab;
-        console.log(tab);
-        
-      }
+        this.currentTab = tabId;
+    }
+
+    switchTab2(event: Event, categoria: any) {
+        console.log('Tab seleccionado:', categoria);
+        event.preventDefault();
+        this.currentTab2 = categoria.id;
+        this.workSelected = categoria;
+
+        this.works = this.works.map(work => {
+            if (work.tab === this.currentTab) {
+                return {
+                    ...work,
+                    img: environment.api_img + (categoria.icon?.url || 'images/Maestra.png')
+                };
+            }
+            return work;
+        });
+
+        console.log('Categoría seleccionada:', categoria);
+    }
+
+
+
+    hasWorksForCurrentTab(): boolean {
+        return this.works.some((work) => work.tab === this.currentTab);
+    }
+
+    protected readonly environment = environment;
 }

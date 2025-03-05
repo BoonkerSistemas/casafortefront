@@ -110,4 +110,19 @@ export class HomeService {
                 throw error; // Lanza el error para manejarlo en el componente
             });
     }
+
+    async getComponentProduct() {
+        const url: string = `${environment.api_url}/productos?[populate]=variedades.icon`;
+        const headers = {
+            Authorization: 'Bearer ' + environment.token,
+        };
+
+        try {
+            const response = await axios.get(url, {headers});
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener los datos', error);
+            throw error;
+        }
+    }
 }

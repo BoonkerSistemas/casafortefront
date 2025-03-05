@@ -1,62 +1,61 @@
-<div id="work" class="work-area pt-100 ">
+<div id="work" class="work-area pt-100">
     <div class="container">
         <div class="section-title-casa">
-            <h2>Construcciones más rápidas, seguras y económicas con muros de hormigón industrial CasaForte</h2>
-            <p>La mejor solución estructural para proyectos de viviendas de 50m² a 120m²</p>
+            <h2>{{ title }}</h2>
+            <p>{{ description }}</p>
         </div>
     </div>
 
     <div class="container">
         <div class="work-tabs">
+            <!-- Navegación de pestañas principales -->
             <ul class="nav-tabset">
-                <li *ngFor="let tab of tabs" class="nav-tab" [ngClass]="{'active': currentTab === tab.id}">
-                    <span (click)="switchTab($event, tab.id)">
-                        {{ tab.name }}
+                <li *ngFor="let tab of tabs"
+                    class="nav-tab"
+                    [ngClass]="{ 'active': currentTab === tab.number }">
+                    <span (click)="switchTab($event, tab.number)">
+                        {{ tab.title }}
                     </span>
                 </li>
             </ul>
 
+            <!-- Contenedor de pestañas -->
             <div class="tabs-container">
-                <div *ngFor="let tab of tabs">
-                    <div class="pane" [id]="tab.id" *ngIf="currentTab === tab.id">
-                        <div *ngFor="let work of works">
-                            <div *ngIf="work.tab === tab.id ">
-
-                                <div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="single-work">
-                                            <img [src]="work.img" alt="work-img">
-                                            <div class="work-content">
-                                                <h3>{{ work.title }}</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">
-                                        <div class="work-content">
-                                            <h3>{{ work.title }}</h3>
-                                            <p>{{ work.descripcion}}</p>
-                                            <ul class="nav-tabset-categorias">
-                                                <li *ngFor="let tabCategorias of work.categorias"
-                                                    class="nav-tab-categorias"
-                                                    [ngClass]="{'active': currentTab2 === tabCategorias.tabId}">
-
-                                                    <span (click)="switchTab2($event, tabCategorias)">
-                                                        <img class="imgCategorias" [src]="tabCategorias.imagen"
-                                                            alt="work-img">
-                                                        {{ tabCategorias.titulo }}
-                                                    </span>
-                                                </li>
-                                            </ul>
-
-                                            <div *ngIf="currentTab2 === workSelected.tabId ">
-                                                {{workSelected.descripcion}}
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                <div *ngIf="hasWorksForCurrentTab()">
+                    <div class="pane" *ngFor="let work of works" [hidden]="work.tab !== currentTab">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="single-work">
+                                    <img [src]="work.img" alt="work-img">
                                 </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="work-content">
+                                    <h3>{{ work.title }}</h3>
+                                    <p>{{ work.descripcion }}</p>
 
+                                    <!-- Categorías -->
+                                    <ul class="nav-tabset-categorias" *ngIf="work.categorias?.length">
+                                        <li *ngFor="let categoria of work.categorias"
+                                            class="nav-tab-categorias"
+                                            [ngClass]="{ 'active': currentTab2 === categoria.id }">
+                                            <span (click)="switchTab2($event, categoria)">
+                                                <img class="imgCategorias"
+                                                     [src]="environment.api_img + categoria.icon.url"
+                                                     alt="work-img">
+                                                <p>{{ categoria.title }}</p>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Descripción de la categoría seleccionada -->
+                                    <div *ngIf="workSelected && currentTab2 === workSelected.id" style="
+    width: 343px;
+    padding-bottom: 16px;
+">
+                                        {{ workSelected.content || '' }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -66,9 +65,8 @@
     </div>
 
     <div class="bg-black">
-        <h1 class="container " style="color: white; padding: 4%; text-align: center;">Simplificamos la construccion para
-            hacer que los
-            proyectos sean
-            mucho mas rentables</h1>
+        <h1 class="container" style="color: white; padding: 4%; text-align: center;">
+           {{content || ''  }}
+        </h1>
     </div>
 </div>
