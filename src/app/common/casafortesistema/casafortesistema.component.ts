@@ -17,10 +17,10 @@ export class CasafortesistemaComponent implements OnInit, AfterViewInit {
     description = 'casaforteproyectos';
     lists: any;
     content: any;
-    currentTab: string = 'tab1';
+    currentTab: string = '1';
     currentTab2: string = '';
     workSelected: any;
-    clicSelect : any;
+    clicSelect : any = 'Mampostería Estructural';
     tabs: any;
     works: Work[] = [];
 

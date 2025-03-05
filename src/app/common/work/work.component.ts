@@ -31,7 +31,7 @@ export class WorkComponent implements OnInit {
     description = 'casaforteproyectos';
     lists: any;
     content: any;
-    currentTab: string = 'tab1';
+    currentTab: string = '1';
     currentTab2: string = '';
     workSelected: any;
     tabs: any;
