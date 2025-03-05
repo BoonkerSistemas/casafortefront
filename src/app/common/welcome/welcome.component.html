@@ -10,8 +10,8 @@
                 <div class="row">
                     <div *ngFor="let beneficio of beneficios; let i = index" class="col-12 col-md-4 mb-3">
                         <div class="beneficio">
-                            <span class="titulo" [ngClass]="getTituloClase(i)">{{ beneficio.titulo }}</span>
-                            <p class="description">{{ beneficio.descripcion }}</p>
+                            <span class="titulo" [ngClass]="getTituloClase(i)">{{ beneficio.title }}</span>
+                            <p class="description">{{ beneficio.content }}</p>
                         </div>
                     </div>
                 </div>

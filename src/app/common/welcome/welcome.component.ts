@@ -19,14 +19,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
     title = 'Welcome';
     description = 'Welcome';
     lists: any;
-    beneficios = [
-        { titulo: 'Simplifica', descripcion: 'la construcción de viviendas en serie' },
-        { titulo: 'Eleva', descripcion: 'la calidad estructural' },
-        { titulo: 'Reduce', descripcion: 'los costos y tiempos de ejecución de obra' },
-        { titulo: 'Dinamiza', descripcion: 'el diseño arquitectónico de los proyectos' },
-        { titulo: 'Elimina', descripcion: 'el incumplimiento de presupuestos y cronogramas' },
-        { titulo: 'Potencia', descripcion: 'el éxito comercial de tus proyectos' }
-      ];
+    beneficios: any;
     constructor(
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
@@ -60,10 +53,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit {
                 this.title = response.ComponentSecont.title;
                 this.description = response.ComponentSecont.description;
 
-                this.lists = response.ComponentSecont.listado;
-                this.lists.forEach((element: any) => {
-                                        element.img= environment.api_img + element.icon.url;
-                                });
+                this.beneficios = response.ComponentSecont.listado;
+
 
             })
             .catch((error) => {
