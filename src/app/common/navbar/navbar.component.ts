@@ -93,9 +93,6 @@ export class NavbarComponent implements OnInit {
         try {
             const response = await this.menuService.getComponentList('Menu');
             this.menus = response.data.Menu || [];
-
-            
-            
             this.initDropdownState();
         } catch (error) {
             console.error('Error al obtener el menú', error);
@@ -259,7 +256,6 @@ export class NavbarComponent implements OnInit {
 
    
    async navigateToLandingAndSection(landingUrl: any, sectionUrl: any) {
-
     
     if (!this.isOnLanding(landingUrl)) {
         // Si no estamos en la landing, navegamos a ella

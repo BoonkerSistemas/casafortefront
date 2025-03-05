@@ -135,10 +135,18 @@
                 flex-direction: column;
                 justify-content: center;
             ">
-                    <span class="nav-link dropdown-toggle" [ngClass]="{'active': isActive(item)}"
-                        (click)="toggleDropdown(item.title)">
+                    <span *ngIf="item.url !== null" class="nav-link dropdown-toggle"
+                        [ngClass]="{'active': isActive(item)}" [routerLink]="item.url" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        (click)="selectItem(item.title); $event.stopPropagation();">
                         {{ item.title }}
                     </span>
+
+                    <span *ngIf="item.url === null" class="nav-link dropdown-toggle"
+                        [ngClass]="{'active': isActive(item)}" (click)="toggleDropdown(item.title)">
+                        {{ item.title }}
+                    </span>
+
 
                     <ul class="dropdown-menu dropdown-menu2" [ngClass]="{'show': dropdownOpen[item.title]}"
                         *ngIf="item.submenu?.length">
