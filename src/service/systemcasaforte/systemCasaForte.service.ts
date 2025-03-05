@@ -28,7 +28,7 @@ export class SystemCasaForteService {
         const headers = {
             Authorization: 'Bearer ' + environment.token,
         };
-        const url: string = `${environment.api_url}/home?populate[${home}][populate]=*`;
+        const url: string = `${environment.api_url}/sistema-casa-forte?populate[${home}][populate]=*`;
 
         try {
             const response = await axios.get(url, {headers});
@@ -43,7 +43,7 @@ export class SystemCasaForteService {
         const headers = {
             Authorization: 'Bearer ' + environment.token,
         };
-        const url: string = `${environment.api_url}/home?populate[${home}][populate]=Button.icon`;
+        const url: string = `${environment.api_url}/sistema-casa-forte?populate[${home}][populate]=Button.icon`;
 
         try {
             const response = await axios.get(url, {headers});
@@ -59,7 +59,7 @@ export class SystemCasaForteService {
         const headers = {
             Authorization: 'Bearer ' + environment.token,
         };
-        const url: string = `${environment.api_url}/home?populate[${home}][populate]=image.file`;
+        const url: string = `${environment.api_url}/sistema-casa-forte?populate[${home}][populate]=image.file`;
 
         try {
             const response = await axios.get(url, {headers});
@@ -75,7 +75,7 @@ export class SystemCasaForteService {
         const headers = {
             Authorization: 'Bearer ' + environment.token,
         };
-        const url: string = `${environment.api_url}/home?populate[${home}][populate]=listado.icon`;
+        const url: string = `${environment.api_url}/sistema-casa-forte?populate[${home}][populate]=listado.icon`;
 
         try {
             const response = await axios.get(url, {headers});

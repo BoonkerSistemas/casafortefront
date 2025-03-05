@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule, NgClass, NgFor, NgIf, ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { HomeService } from "../../../service/home/home.service";
+import { environment } from "@env/environment";
+import { SystemCasaForteService } from "../../../service/systemcasaforte/systemCasaForte.service";
 
 @Component({
     selector: 'app-casafortesistema',
@@ -8,91 +11,121 @@ import { RouterLink } from '@angular/router';
     templateUrl: './casafortesistema.component.html',
     styleUrls: ['./casafortesistema.component.scss']
 })
-export class CasafortesistemaComponent implements OnInit, AfterViewInit  {
+export class CasafortesistemaComponent implements OnInit, AfterViewInit {
+
+    title = 'casaforteproyectos';
+    description = 'casaforteproyectos';
+    lists: any;
+    content: any;
+    currentTab: string = '1';
+    currentTab2: string = '';
+    workSelected: any;
+    clicSelect : any = 'Mampostería Estructural';
+    tabs: any;
+    works: Work[] = [];
 
     constructor(
-        private viewportScroller: ViewportScroller
+        private viewportScroller: ViewportScroller,
+        private homeService: SystemCasaForteService,
+        private home2Service: HomeService
     ) {}
 
-    public onClick(elementId: string): void { 
+    ngOnInit(): void {
+        this.inicio();
+        this.product();
+    }
+
+    public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
     }
 
-    ngOnInit(): void {
-  }
+    async inicio() {
+        try {
+            const element = await this.homeService.getComponentList('CasaForte');
+            const response = element.data;
 
-  ngAfterViewInit() {
-       
-  }
-
-
-    currentTab: string = 'tab1';
-    currentTab2: string = '';
-    workSelected: any = '';
-
-    // Datos dinámicos de las pestañas y sus contenidos
-    tabs = [
-      { id: 'tab1', name: 'Mamposteria Estructural' },
-      { id: 'tab2', name: 'Complementos Estructurales' },
-      { id: 'tab3', name: 'Linea de Premezclas' },
-      { id: 'tab4', name: 'Linea Hormigones Estructurales' },
-      { id: 'tab5', name: 'Linea Recubrimientos' },
-    ];
-  
-    // Datos dinámicos de los trabajos
-    works = [
-      { 
-        img: 'images/Maestra.png', 
-        title: 'Maestra',  
-        descripcion: 'La mampostería estructural es un sistema constructivo que se basa en la utilización de unidades de mampostería (bloques de hormigón, ladrillos, etc.).',
-        tab: 'tab1' , 
-        categorias:[
-            {
-        titulo: 'Maestra',
-        descripcion: 'Categoria 1',
-        tabId: '1',
-        imagen: 'images/Maestra.png'
-    },
-    {
-        titulo: '3 Ductos',
-        descripcion: 'Categoria 2 ',
-        tabId: '2',
-        imagen: 'images/Maestra.png'
-    },
-    {
-      titulo: '2 Ductos',
-      descripcion: 'Categoria 3 ',
-      tabId: '3',
-      imagen: 'images/Maestra.png'
-  },
-  {
-    titulo: '1 Ducto',
-    descripcion: 'Categoria 4 ',
-    tabId: '4',
-    imagen: 'images/Maestra.png'
-},
-    {
-      titulo: 'Mixta',
-      descripcion: 'Categoria 5',
-      tabId: '5',
-      imagen: 'images/Maestra.png'
-  }
-]},
-      { img: 'images/work-img2.jpg', title: 'TABLA 2',  tab: 'tab2' },
-      { img: 'images/work-img3.jpg', title: 'TABLA 3',  tab: 'tab3' },
-      { img: 'images/work-img4.jpg', title: 'TABLA 4',  tab: 'tab4' },
-      { img: 'images/work-img5.jpg', title: 'TABLA 5',  tab: 'tab5' }
-    ];
-  
-    switchTab(event: Event, tabId: string) {
-      event.preventDefault();
-      this.currentTab = tabId;
+            if (response?.CasaForte) {
+                this.title = response.CasaForte.title;
+                this.description = response.CasaForte.description;
+                this.content = response.CasaForte.content;
+                this.tabs = response.CasaForte.listado;
+            } else {
+                console.warn('No se encontraron datos en CasaForte');
+            }
+        } catch (error) {
+            console.error('Error al obtener el componente Inicio:', error);
+        }
     }
-    switchTab2(event: Event, tab:any) {
+
+    async product() {
+        try {
+            const element = await this.home2Service.getComponentProduct();
+            const response = element.data;
+
+            if (Array.isArray(response)) {
+                response.forEach((work: any) => {
+                    const json: Work = {
+                        img: 'images/Maestra.png',
+                        title: work.Titulo,
+                        descripcion: work.Descripcion,
+                        tab: work.numero,
+                        categorias: work.variedades
+                    };
+                    this.works.push(json);
+                });
+            } else {
+                console.warn('El formato de `response` no es el esperado:', response);
+            }
+        } catch (error) {
+            console.error('Error al obtener el componente Productos:', error);
+        }
+    }
+
+    switchTab(event: Event, tabId: string, title: string) {
         event.preventDefault();
-        this.currentTab2 = tab.tabId;
-        this.workSelected = tab;
-        console.log(tab);
-        
-      }
+        this.currentTab = tabId;
+        this.clicSelect = title;
+    }
+
+    switchTab2(event: Event, categoria: any) {
+        event.preventDefault();
+        this.currentTab2 = categoria.id;
+        console.log('Tab seleccionado:', categoria);
+        this.workSelected = categoria;
+
+        this.works = this.works.map(work => {
+            if (work.tab === this.currentTab) {
+                return {
+                    ...work,
+                    img: environment.api_img + (categoria.icon?.url || 'images/Maestra.png')
+                };
+            }
+            return work;
+        });
+    }
+
+    hasWorksForCurrentTab(): boolean {
+        return this.works.some(work => work.tab === this.currentTab);
+    }
+
+    ngAfterViewInit(): void {}
+
+    protected readonly environment = environment;
+}
+
+interface Work {
+    img: string;
+    title: string;
+    descripcion: string;
+    tab: string;
+    categorias: any; // Using Categoria interface for better type safety
+}
+
+interface Categoria {
+    id: string;
+    titulo: string;
+    tabId: string;
+    imagen: string;
+    icon?: { url: string };
+    descripcion: string;
 }

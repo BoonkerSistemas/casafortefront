@@ -13,12 +13,7 @@ import { BeneficiosComponent } from '../common/beneficios/beneficios.component';
     selector: 'app-home-sistema-boonker',
     imports: [
         CasafortesistemaComponent,
-        WhoIsBoonkerComponent,
-        CotizacionComponent,
         BeneficiosComponent,
-        ServicesBoonkerComponent,
-        FaqBoonkerComponent,
-        WhyWeDifferentComponent,
         BannerBoonkerComponent,
         RouterModule
     ],
