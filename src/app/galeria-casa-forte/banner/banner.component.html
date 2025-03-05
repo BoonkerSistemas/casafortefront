@@ -1,0 +1,52 @@
+<div class="home-slides" id="banner">
+    <owl-carousel-o [options]="homeSlides">
+
+        <ng-template carouselSlide *ngFor="let slider of sliders">
+            <!--<div class="main-banner" [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'">
+            -->
+            <div class="main-banner">
+                <ng-container *ngIf="isVideo(slider.image.url); else imageContent">
+                    <!-- Video como fondo -->
+                    <video autoplay loop [muted]="true" playsinline class="video-background">
+                        <source [src]="slider.videoUrl" type="video/mp4">
+                    </video>
+                </ng-container>
+                <ng-template #imageContent>
+                    <!-- Imagen como fondo -->
+                    <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
+                        style="width: 60%;height: 100%;z-index: 1;position: absolute;background-size: cover;"></div>
+                </ng-template>
+
+                <div class="d-table">
+                    <div class="  d-table-cell">
+                        <div class="container-text">
+                            <div class="main-banner-text">
+
+                                <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
+                                    style="color: rgb(0, 0, 0) !important;text-align: left;text-align: left;margin: 4%;"
+                                    [innerHTML]="slider?.Title"></h1>
+
+                                <p class=" container md:text-subtitle text-sm font-medium lg:text-[20px] white-text"
+                                    style="color: rgb(0, 0, 0) !important;text-align: left;
+                                    font-size: 25px;
+                                    line-height: 33px;
+                                    margin: 4%;" [innerHTML]="slider.description[0].children[0].text "></p>
+
+
+                                <b>
+                                </b>
+                                <div class=" container flex-container">
+                                    <button (click)="onClick('work')" class="btn btn-primary view-work custom-button"
+                                        style="max-width: 40%;margin-left: 4%;"> Cotiza Aquí</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+
+    </owl-carousel-o>
+</div>

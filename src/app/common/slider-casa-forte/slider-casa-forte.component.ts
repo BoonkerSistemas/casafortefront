@@ -6,12 +6,12 @@ import { HomeService } from 'src/service/home/home.service';
 import { log } from 'console';
 
 @Component({
-    selector: 'app-beneficios',
+    selector: 'app-slider-casa-forte',
     imports: [RouterLink, NgClass, NgIf, NgFor, CommonModule, CarouselModule],
-    templateUrl: './beneficios.component.html',
-    styleUrls: ['./beneficios.component.scss']
+    templateUrl: './slider-casa-forte.component.html',
+    styleUrls: ['./slider-casa-forte.component.scss']
 })
-export class BeneficiosComponent implements OnInit, AfterViewInit  {
+export class SliderCasaForteComponent implements OnInit, AfterViewInit  {
   sliders: any = [];
     constructor(
         private viewportScroller: ViewportScroller,
