@@ -16,7 +16,7 @@
                     </button>
                 </div>
 
-                <div class="navegacion-secciones">
+                <div class="navegacion-secciones" *ngIf="vistaActual === 'losas'">
                     <div class="plano-container">
                         <img src="images/CasaForte/plano.png" alt="Plano" class="plano-imagen" />
 
@@ -42,7 +42,36 @@
                     <div style="flex: 1;">
                         <!-- Tarjetas de información -->
                         <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
-                            [class.visible]="seccion.destacada">
+                            [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
+                            <div class="seccion-header">
+                                Sección {{ seccion.id }}:
+                                <br>{{ seccion.nombre }}
+                            </div>
+                            <div class="seccion-info">
+                                <p>Volumen: {{ seccion.volumen }} m²</p>
+                                <p>Ejecución: {{ seccion.ejecucion }} días</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navegacion-secciones" *ngIf="vistaActual === 'muros'">
+                    <div class="plano-container">
+                        <img src="images/CasaForte/planomuro.png" alt="Plano" class="plano-imagen" />
+                    </div>
+
+                    <div class="estructura-3d-container">
+                        <div class="estructura-3d">
+                            <img src="images/CasaForte/muro3d.png" alt="Estructura 3D" class="estructura-imagen" />
+                            <div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva-3d"
+                                [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
+                                (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
+                            [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
                             <div class="seccion-header">
                                 Sección {{ seccion.id }}:
                                 <br>{{ seccion.nombre }}
@@ -56,6 +85,83 @@
                 </div>
             </div>
             <!--FINNNN-->
+            <!--INICIO 2-->
+            <div class="dinteles-container">
+                <h1 class="titulo">Dinteles por piso (secciones pares)</h1>
+
+                <div class="secciones-grid">
+                    <!-- Sección Piso 1 -->
+                    <div class="seccion-item ">
+                        <div class="plano-container">
+                            <img src="images/CasaForte/dintel1.png" alt="Plano Piso 1" class="plano-imagen">
+                            <!-- Las líneas azules se pueden implementar como divs posicionados sobre la imagen -->
+                            <div class="lineas-estructurales"></div>
+                        </div>
+
+                        <div class="detalles-container">
+                            <div class="seccion-header">
+                                Piso 1, sección 2:<br>
+                                Muros estructurales 1
+                            </div>
+
+                            <table class="tabla-detalles">
+                                <thead>
+                                    <tr>
+                                        <th>Cantidad</th>
+                                        <th>Longitud (m)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dintel of dinteles[0].dinteles">
+                                        <td>{{ dintel.cantidad }}</td>
+                                        <td>{{ dintel.longitud }} m</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>{{ dinteles[0].cantidadTotal }}</td>
+                                        <td>{{ dinteles[0].longitudTotal }} m</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Sección Piso 2 -->
+                    <div class="seccion-item">
+                        <div class="plano-container">
+                            <img src="images/CasaForte/dintel2.png" alt="Plano Piso 2" class="plano-imagen">
+                            <!-- Las líneas azules se pueden implementar como divs posicionados sobre la imagen -->
+                            <div class="lineas-estructurales"></div>
+                        </div>
+
+                        <div class="detalles-container">
+                            <div class="seccion-header">
+                                Piso 2, sección 4:<br>
+                                Muros estructurales 2
+                            </div>
+
+                            <table class="tabla-detalles">
+                                <thead>
+                                    <tr>
+                                        <th>Cantidad</th>
+                                        <th>Longitud (m)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dintel of dinteles[1].dinteles">
+                                        <td>{{ dintel.cantidad }}</td>
+                                        <td>{{ dintel.longitud }} m</td>
+                                    </tr>
+                                    <tr class="total-row">
+                                        <td>{{ dinteles[1].cantidadTotal }}</td>
+                                        <td>{{ dinteles[1].longitudTotal }} m</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FIN2-->
         </div>
     </div>
 </div>

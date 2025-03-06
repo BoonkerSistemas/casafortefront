@@ -27,6 +27,37 @@ export class CtaVista3dComponent implements OnInit {
       { id: 4, nombre: 'Muro planta alta', tipo: 'muro', volumen: 22.3, ejecucion: 6, destacada: false },
       { id: 5, nombre: 'Losa de cubierta', tipo: 'losa', volumen: 41.83, ejecucion: 3, destacada: false }
     ];
+
+    dinteles: any = [
+        {
+          id: 2,
+          piso: 1,
+          nombre: 'Muros estructurales 1',
+          dinteles: [
+            { cantidad: 1, longitud: 0.63 },
+            { cantidad: 1, longitud: 1.13 },
+            { cantidad: 1, longitud: 1.25 },
+            { cantidad: 1, longitud: 1.63 },
+            { cantidad: 1, longitud: 3.13 }
+          ],
+          longitudTotal: 7.77,
+          cantidadTotal: 5
+        },
+        {
+          id: 4,
+          piso: 2,
+          nombre: 'Muros estructurales 2',
+          dinteles: [
+            { cantidad: 2, longitud: 0.63 },
+            { cantidad: 1, longitud: 0.88 },
+            { cantidad: 5, longitud: 1.13 },
+            { cantidad: 2, longitud: 1.63 },
+            { cantidad: 1, longitud: 2.13 }
+          ],
+          longitudTotal: 13.18,
+          cantidadTotal: 11
+        }
+      ];
   
     seccionesFiltradas: Seccion[] = [];
     constructor(
@@ -66,5 +97,10 @@ export class CtaVista3dComponent implements OnInit {
     
       ocultarInfoSeccion(): void {
         this.seccionSeleccionada = null;
+      }
+
+      calcularTotales(seccion: any): void {
+        seccion.cantidadTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + dintel.cantidad, 0);
+        seccion.longitudTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + (dintel.cantidad * dintel.longitud), 0);
       }
 }
