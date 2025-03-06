@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from 'src/service/home/home.service';
 import { log } from 'console';
+import {environment} from "@env/environment";
 
 @Component({
     selector: 'app-slider-casa-forte-galeria',
@@ -13,6 +14,7 @@ import { log } from 'console';
 })
 export class SliderCasaForteGaleriaComponent implements OnInit, AfterViewInit  {
   sliders: any = [];
+  protected readonly environment = environment;
     constructor(
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
@@ -38,13 +40,13 @@ export class SliderCasaForteGaleriaComponent implements OnInit, AfterViewInit  {
             ],*/
       responsive: {
         0: {
-          items: 1
+          items: 3
         },
         600: {
-          items: 1
+          items: 3
         },
         1000: {
-          items: 1
+          items: 3
         }
       }
         }
@@ -53,24 +55,23 @@ export class SliderCasaForteGaleriaComponent implements OnInit, AfterViewInit  {
       this.inicio();
   }
 
-  inicio() {
-          this._firstComponentService.getComponentSlider()
-          .then((element) => {
-            //let response = element.data;
-            console.log('Elemento de inicio', element.data);
-            
-            this.sliders = element.data;
-        
-            // Detecta manualmente los cambios después de la actualización de los datos
-            this.cdr.detectChanges();
-        
+   inicio() {
+    this._firstComponentService.getComponentSliderProyectos()
+    .then((element) => {
+      //let response = element.data;
+      console.log('Elemento de inicio', element.data);
+      
+      this.sliders = element.data;
   
-          })
-          .catch((error) => {
-            console.error('Error al obtener el componente Inicio', error);
-          });
-      }
+      // Detecta manualmente los cambios después de la actualización de los datos
+      this.cdr.detectChanges();
+  
 
+    })
+    .catch((error) => {
+      console.error('Error al obtener el componente Inicio', error);
+    });
+}
   ngAfterViewInit() {
        
   }
