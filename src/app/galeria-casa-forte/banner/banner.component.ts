@@ -56,14 +56,16 @@ export class BannerComponent {
     }
 
     inicio() {
-        this._firstComponentService.getComponentSlider()
+        this._firstComponentService.getComponentSliderProyectos()
         .then((element) => {
           let response = element.data;
           //this.sliders.element.data;
           this.sliders = response.map((slider: any) => {
-            if (slider.image && slider.image.url) {
+              console.log(slider.imagenes.url);
+
+            if (slider.imagenes && slider.imagenes.url) {
                 
-              slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl( environment.api_img + slider.image.url );
+              slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl( environment.api_img + slider.imagenes.url );
             }
             return slider;
           });
