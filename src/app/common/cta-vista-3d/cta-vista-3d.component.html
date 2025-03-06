@@ -1,0 +1,61 @@
+<div class="cta-area ptb-100">
+    <div class="container">
+        <div class="cta-content">
+            <!--INICIO-->
+            <div class="proyecto-container">
+                <h1 class="titulo">Secciones del Proyecto: {{ totalSecciones }}</h1>
+
+                <div class="botones-vista">
+                    <button [class.activo]="vistaActual === 'losas'" (click)="cambiarVista('losas')"
+                        class="btn-vista losas">
+                        Secciones impares: LOSAS
+                    </button>
+                    <button [class.activo]="vistaActual === 'muros'" (click)="cambiarVista('muros')"
+                        class="btn-vista muros">
+                        Secciones pares: MUROS
+                    </button>
+                </div>
+
+                <div class="navegacion-secciones">
+                    <div class="plano-container">
+                        <img src="images/CasaForte/plano.png" alt="Plano" class="plano-imagen" />
+
+                        <!-- Áreas interactivas sobre el plano -->
+                        <!--<div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva"
+                            [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
+                            (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
+                        </div>-->
+                    </div>
+
+                    <div class="estructura-3d-container">
+                        <div class="estructura-3d">
+                            <img src="images/CasaForte/estructura3d.png" alt="Estructura 3D"
+                                class="estructura-imagen" />
+
+                            <!-- Áreas interactivas sobre la estructura 3D -->
+                            <div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva-3d"
+                                [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
+                                (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <!-- Tarjetas de información -->
+                        <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
+                            [class.visible]="seccion.destacada">
+                            <div class="seccion-header">
+                                Sección {{ seccion.id }}:
+                                <br>{{ seccion.nombre }}
+                            </div>
+                            <div class="seccion-info">
+                                <p>Volumen: {{ seccion.volumen }} m²</p>
+                                <p>Ejecución: {{ seccion.ejecucion }} días</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--FINNNN-->
+        </div>
+    </div>
+</div>

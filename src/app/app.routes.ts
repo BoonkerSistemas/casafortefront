@@ -19,12 +19,18 @@ import { CalidadGarantizadaComponent } from './calidad-garantizada/calidad-garan
 import { ProductsSistemaBoonkerComponent } from './products-sistema-boonker/products-sistema-boonker.component';
 import {MapaEcuadorComponent} from "./mapa/mapa.component";
 import { GaleriaCasaForteComponent } from './galeria-casa-forte/galeria-casa-forte.component';
+import { DescripcionCasaForteComponent } from './descripcion-casa-forte/descripcion-casa-forte.component';
 
 export const routes: Routes = [
     {path: '', component: HomeTwoComponent},
     {path: 'home', component: HomeTwoComponent},
     {path: 'sistema-casa-forte', component: HomeSistemaBoonkerComponent},
-    {path: 'galeria-casa-forte', component: GaleriaCasaForteComponent},
+    {path: 'galeria-casa-forte', component: GaleriaCasaForteComponent/*,
+        children: [
+            { path: ':id', component: DescripcionCasaForteComponent },
+        ]*/
+    },
+    {path: 'galeria-casa-forte/:id', component: DescripcionCasaForteComponent},
     {path: 'sistema-muros-contencion', component: HomeSistemaMurosContencionComponent},
     {path: 'productos-complementarios', component: HomeSixComponent},
     {path: 'edificios', component: HomeSevenComponent},

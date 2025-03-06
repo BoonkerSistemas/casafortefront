@@ -8,7 +8,7 @@
 
 
                 <a class="navbar-brand" routerLink="/" routerLinkActive="active"
-                   [routerLinkActiveOptions]="{exact: true}">
+                    [routerLinkActiveOptions]="{exact: true}">
                     <img [src]="logos" alt="Logo" class="logo">
                     <!--<img src="images/CasaForte/casaForte.png" alt="Logo" class="logo">-->
 
@@ -28,10 +28,10 @@
                     <ul class="navbar-nav ml-auto" style="gap: 6px;">
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
-                               style="color: var(--mainColor);">
+                                style="color: var(--mainColor);">
                                 <!--<i class="fab fa-instagram" style="font-weight: 600;"></i>-->
                                 <img src="images/CasaForte/header/instagram.png" alt="WhatsApp Icon"
-                                     style="width: 30px; ">
+                                    style="width: 30px; ">
 
                             </a>
                         </li>
@@ -39,30 +39,30 @@
                             <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
                                 <!--<i class="fab fa-youtube"></i>-->
                                 <img src="images/CasaForte/header/youtube.png" alt="WhatsApp Icon"
-                                     style="width: 30px; ">
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link social" [href]="'mailto:' + mail" title="Correo" target="_blank"
-                               style="color: var(--mainColor);">
+                                style="color: var(--mainColor);">
                                 <!--<i class="fa fa-envelope"></i>-->
                                 <img src="images/CasaForte/header/mensaje.png" alt="WhatsApp Icon"
-                                     style="width: 30px; ">
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
-                               style="color: var(--mainColor);">
+                                style="color: var(--mainColor);">
                                 <!--<i class="fab fa-whatsapp" style="font-weight: 600;"></i>-->
                                 <img src="images/CasaForte/header/whatsaap.png" alt="WhatsApp Icon"
-                                     style="width: 30px; ">
+                                    style="width: 30px; ">
                             </a>
                         </li>
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
                                 <!--<i class="fa fa-phone"></i>-->
                                 <img src="images/CasaForte/header/telefono.png" alt="WhatsApp Icon"
-                                     style="width: 30px; ">
+                                    style="width: 30px; ">
                             </a>
                         </li>
                     </ul>
@@ -84,7 +84,7 @@
     justify-content: center;
                 ">
                                 <span class="nav-link dropdown-toggle" [ngClass]="{'active': isActive(item)}"
-                                      (click)="toggleDropdown(item.title)" style="color: black;
+                                    (click)="toggleDropdown(item.title)" style="color: black;
                                     /* padding-left: 10px; */
                                     max-width: min-content;
                                     display: flex
@@ -102,8 +102,8 @@
                                 *ngIf="item.submenu?.length">
                                 <li *ngFor="let subItem of item.submenu">
                                     <a class="dropdown-item" [routerLink]="subItem.url" routerLinkActive="active"
-                                       [routerLinkActiveOptions]="{exact: true}"
-                                       (click)="selectItem(item.title); $event.stopPropagation();">
+                                        [routerLinkActiveOptions]="{exact: true}"
+                                        (click)="selectItem(item.title); $event.stopPropagation();">
                                         {{ subItem.title }}
                                     </a>
                                 </li>
@@ -133,16 +133,15 @@
                 flex-direction: column;
                 justify-content: center;
             ">
-                    <span *ngIf="item.url !== null"
-                          class="nav-link dropdown-toggle"
-                          [ngClass]="{'active': isActive(item)}"
-                          (click)="handleNavigation(item); $event.stopPropagation();">
-    {{ item.title }}
-</span>
+                    <span *ngIf="item.url !== null" class="nav-link dropdown-toggle"
+                        [ngClass]="{'active': isActive(item)}"
+                        (click)="handleNavigation(item); $event.stopPropagation();">
+                        {{ item.title }}
+                    </span>
 
 
                     <span *ngIf="item.url === null" class="nav-link dropdown-toggle"
-                          [ngClass]="{'active': isActive(item)}" (click)="toggleDropdown(item.title)">
+                        [ngClass]="{'active': isActive(item)}" (click)="toggleDropdown(item.title)">
                         {{ item.title }}
                     </span>
 
@@ -152,13 +151,13 @@
                         <li *ngFor="let subItem of item.submenu">
                             <!-- Si item.url no es null (es decir, es una landing), redirige a la landing y luego a la sección -->
                             <a *ngIf="item.url !== null" class="dropdown-item"
-                               (click)="navigateToLandingAndSection(item.url, subItem.url); $event.stopPropagation();">
+                                (click)="navigateToLandingAndSection(item.url, subItem.url); $event.stopPropagation();">
                                 {{ subItem.title }}
                             </a>
 
                             <a *ngIf="item.url === null" class="dropdown-item" [routerLink]="subItem.url"
-                               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
-                               (click)="selectItem(item.title); $event.stopPropagation();">
+                                routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                                (click)="selectItem(item.title); $event.stopPropagation();">
                                 {{ subItem.title }}
                             </a>
                         </li>
