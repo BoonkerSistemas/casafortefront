@@ -1,0 +1,34 @@
+<div id="work" class="work-area pt-100 bg-black-color" style="margin-bottom: 1%;">
+    <div class="container">
+        <div class="section-title-casa">
+            <h2>VER MAS PROYECTOS </h2>
+        </div>
+    </div>
+
+    <div class="home-slides" id="bannerSlides">
+        <owl-carousel-o [options]="homeSlides">
+
+            <ng-template carouselSlide *ngFor="let slider of sliders">
+                <div class="main-banner">
+                    <div class="banner-container">
+                        <div class="row">
+                            <div class="col-lg-4" [routerLink]="['/galeria-casa-forte/1']"
+                                routerLinkActive="router-link-active">
+                                <img src="images/services-img8.jpg" alt="work-img">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="images/services-img8.jpg" alt="work-img">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="images/services-img8.jpg" alt="work-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+
+
+        </owl-carousel-o>
+    </div>
+    <div class="shape1"><img src="images/CasaForte/fondo.png" alt="image"></div>
+</div>
