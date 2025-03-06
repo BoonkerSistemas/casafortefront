@@ -20,15 +20,15 @@ import {SubscribeComponent} from '../common/subscribe/subscribe.component';
 import {ContactComponent} from '../common/contact/contact.component';
 import {WelcomeComponent} from '../common/welcome/welcome.component';
 import {CommonModule} from "@angular/common";
-import { CalidadComponent } from '../common/calidad/calidad.component';
-import { CotizacionComponent } from '../common/cotizacion/cotizacion.component';
-import { ProyectosComponent } from '../common/proyectos/proyectos.component';
-import { TestimoniosComponent } from '../common/testimonios/testimonios.component';
-import { CasaforteproyectosComponent } from '../common/casaforteproyectos/casaforteproyectos.component';
+import {CalidadComponent} from '../common/calidad/calidad.component';
+import {CotizacionComponent} from '../common/cotizacion/cotizacion.component';
+import {ProyectosComponent} from '../common/proyectos/proyectos.component';
+import {TestimoniosComponent} from '../common/testimonios/testimonios.component';
+import {CasaforteproyectosComponent} from '../common/casaforteproyectos/casaforteproyectos.component';
 
 @Component({
     selector: 'app-home-two',
-    imports: [BannerComponent, WelcomeComponent,CasaforteproyectosComponent, WorkComponent,CalidadComponent,CotizacionComponent,ProyectosComponent,TestimoniosComponent, AboutComponent],
+    imports: [BannerComponent, WelcomeComponent, CasaforteproyectosComponent, WorkComponent,],
     templateUrl: './home-two.component.html',
     styleUrls: ['./home-two.component.scss']
 })

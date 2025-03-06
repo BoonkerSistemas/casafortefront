@@ -59,7 +59,7 @@ export class BannerComponent {
         this._firstComponentService.getComponentSliderProyectos()
         .then((element) => {
           let response = element.data;
-          //this.sliders.element.data;
+          console.log(response);
           this.sliders = response.map((slider: any) => {
               console.log(slider.imagenes.url);
 

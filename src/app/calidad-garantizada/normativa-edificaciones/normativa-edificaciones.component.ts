@@ -30,11 +30,11 @@ export class NormativaEdificacionesComponent implements OnInit {
         this._firstComponentService.getComponentList('NormativaCalidadEsencial')
             .then((element) => {
                 const response = element.data;
-                console.log(response);
+
                 this.title = response.NormativaCalidadEsencial?.title || '';
                 this.description = response.NormativaCalidadEsencial?.description || '';
                 this.list = response.NormativaCalidadEsencial?.listado || [];
-                console.log(this.list);
+
             })
             .catch((error) => {
                 console.error('Error al obtener el componente Inicio', error);

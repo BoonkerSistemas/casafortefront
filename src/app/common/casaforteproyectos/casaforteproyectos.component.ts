@@ -75,7 +75,7 @@ export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
 
                 this.lists = response.ComponentSecont.listado;
 
-                console.log(this.lists);
+
                 
 
             })
