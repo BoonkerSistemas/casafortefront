@@ -10,13 +10,15 @@
             <ng-template carouselSlide *ngFor="let slider of sliders">
                 <div class="main-banner">
                     <div class="banner-container">
-                        <div class="single-work" [routerLink]="['/galeria-casa-forte/1']"
-                            routerLinkActive="router-link-active">
+                        <div class="single-work">
                             <img [src]=" environment.api_img + slider.imagenes.url " alt="work-img"
                                 style="height: -webkit-fill-available;">
                             <div class="work-content">
                                 <h3>{{slider.titulo}}</h3>
-                                <button class="button-img">{{slider.button}}</button>
+                                <button class="button-img" [routerLink]="['/galeria-casa-forte/' + slider.id]"
+                                    routerLinkActive="router-link-active">
+                                    {{slider.button}}
+                                </button>
                             </div>
                         </div>
                     </div>

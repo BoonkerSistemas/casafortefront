@@ -279,7 +279,7 @@ export class NavbarComponent implements OnInit {
         this.navigateToLandingAndSectionSimple(item.url);
     }
 
-    async navigateToLandingAndSectionSimple(landingUrl: string) {
+    /*async navigateToLandingAndSectionSimple(landingUrl: string) {
         const [currentPath, queryString] = landingUrl.split('?'); // Extraer solo el path
         console.log('Landing Path:', currentPath); // "/sistema-casa-forte"
 
@@ -299,7 +299,54 @@ export class NavbarComponent implements OnInit {
             console.log('Already on landing, scrolling to section:', sectionUrl);
             this.viewportScroller.scrollToAnchor(sectionUrl);
         }
-    }
+    }*/
+        async navigateToLandingAndSectionSimple(landingUrl: string) {
+            // Extraer solo el path base sin parámetros
+            let currentPath = landingUrl;
+            let sectionUrl = 'beneficios'; // Valor por defecto
+            
+            // Si hay un signo de interrogación, extraer query params
+            if (landingUrl.includes('?')) {
+                const [pathPart, queryString] = landingUrl.split('?');
+                currentPath = pathPart;
+                const urlParams = new URLSearchParams(queryString);
+                sectionUrl = urlParams.get('section') || 'beneficios';
+            }
+            
+            // Normalizar la ruta: eliminar barra final si existe
+            currentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+            
+            console.log('Normalized Landing Path:', currentPath);
+            console.log('Section:', sectionUrl);
+            
+            // Obtener y normalizar la ruta actual
+            let currentRoute = this.router.url.split('?')[0];
+            currentRoute = currentRoute.endsWith('/') ? currentRoute.slice(0, -1) : currentRoute;
+            console.log('Current route:', currentRoute);
+            
+            // Comprobar si estamos en la misma ruta base
+            const isSameRoute = currentRoute === currentPath;
+            console.log('Is same route:', isSameRoute);
+            
+            if (!isSameRoute) {
+                // Navegamos a la nueva ruta
+                console.log('Navigating to:', currentPath);
+                try {
+                    await this.router.navigateByUrl(currentPath);
+                    // Pequeño retraso para asegurar que la navegación se complete
+                    setTimeout(() => {
+                        console.log('Scrolling to section:', sectionUrl);
+                        this.viewportScroller.scrollToAnchor(sectionUrl);
+                    }, 500); // Aumentado el tiempo de espera para sistemas más lentos
+                } catch (error) {
+                    console.error('Navigation failed:', error);
+                }
+            } else {
+                // Ya estamos en la landing, solo hacemos scroll
+                console.log('Already on landing, scrolling to section:', sectionUrl);
+                this.viewportScroller.scrollToAnchor(sectionUrl);
+            }
+        }
 
 
     isOnLanding(url: string): boolean {
