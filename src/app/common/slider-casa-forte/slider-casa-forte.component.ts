@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { HomeService } from 'src/service/home/home.service';
 import { log } from 'console';
+import {environment} from "@env/environment";
 
 @Component({
     selector: 'app-slider-casa-forte',
@@ -13,6 +14,7 @@ import { log } from 'console';
 })
 export class SliderCasaForteComponent implements OnInit, AfterViewInit  {
   sliders: any = [];
+  protected readonly environment = environment;
     constructor(
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
@@ -38,13 +40,13 @@ export class SliderCasaForteComponent implements OnInit, AfterViewInit  {
             ],*/
       responsive: {
         0: {
-          items: 1
+          items: 3
         },
         600: {
-          items: 1
+          items: 3
         },
         1000: {
-          items: 1
+          items: 3
         }
       }
         }
@@ -54,7 +56,7 @@ export class SliderCasaForteComponent implements OnInit, AfterViewInit  {
   }
 
   inicio() {
-          this._firstComponentService.getComponentSlider()
+          this._firstComponentService.getComponentSliderProyectos()
           .then((element) => {
             //let response = element.data;
             console.log('Elemento de inicio', element.data);

@@ -148,3 +148,119 @@
     background-color: #d98d1a;
   }
 }
+
+.single-work {
+  margin-bottom: 25px;
+  position: relative;
+  text-align: center;
+
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    content: '';
+    position: absolute;
+    visibility: hidden;
+    background: var(--blackColor);
+    transition: var(--transition);
+  }
+
+  .work-content {
+    //background: var(--whiteColor);
+    //transition: var(--transition);
+    position: absolute;
+    //visibility: visible;
+    //opacity: 0;
+    bottom: 0;
+    right: 0;
+    //left: 0;
+    margin: {
+      left: 20px;
+      right: 20px;
+    };
+    padding: {
+      top: 20px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+    };
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+
+    h3 {
+      padding-top: 5%;
+      padding-left: 10%;
+      margin-bottom: 10px;
+      font-weight: 700;
+      font-size: 25px;
+      color: white;
+      text-align: justify;
+    }
+
+    ul {
+      li {
+        display: inline-block;
+        font-size: 15px;
+        margin: {
+          left: 1px;
+          right: 1px;
+        };
+      }
+    }
+  }
+
+  .popup-btn {
+    top: 20px;
+    opacity: 0;
+    width: 45px;
+    right: 40px;
+    height: 45px;
+    font-size: 22px;
+    line-height: 45px;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    color: var(--whiteColor);
+    transition: var(--transition);
+    border: 1px solid var(--whiteColor);
+
+    &:hover {
+      background: var(--mainColor);
+      border-color: var(--mainColor);
+    }
+  }
+
+  &:hover {
+    &::before {
+      margin: 10px;
+      opacity: .50;
+      visibility: visible;
+    }
+
+    .popup-btn {
+      top: 35px;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .work-content {
+      bottom: 20px;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .button-img{
+    top: 70%;
+    position: relative;
+    right: 0;
+    left: 30%;
+    border: 1px solid white;
+    color: white;
+    background: #00ffff00;
+  }
+}
