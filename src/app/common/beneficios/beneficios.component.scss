@@ -52,15 +52,14 @@
     flex-direction: column;
     width: 65%;
     background: #f5a414;
-    clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 98% 0, 100% 100%, 0 100%);
     padding-left: 25%;
   }
 
   .titulo {
     font-size: 3rem;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.2;
-    text-transform: uppercase;
   }
 
   .contenedor-titulo1 {
@@ -75,7 +74,7 @@
   .titulo1 {
     padding-left: 3%;
     font-size: 3rem;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1.2;
     max-width: 590px;
     color: #ffffff;
@@ -456,17 +455,28 @@
 .custom-button {
     background-color: #F4A623 !important; /* Color de fondo similar al de la imagen */
     color: black; /* Color del texto */
-    font-weight: bold; /* Negrita */
+    font-weight: 400; /* Negrita */
     border: none;
     padding: 8px 16px;
     cursor: pointer;
     display: inline-block;
     text-align: center;
     font-size: 14px;
-    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%);
     border-radius: 0px !important;
 }
 
 .custom-button:hover {
     background-color: #d98d1a; /* Efecto hover con un tono más oscuro */
 }
+
+#beneficios .owl-theme .owl-dots .owl-dot span {
+  background: var(--blackColor) !important;  /* Puntos de color negro */
+  border-color: var(--blackColor) !important; /* Borde negro */
+}
+
+#beneficios .owl-theme .owl-dots .owl-dot.active span {
+  background: var(--blackColor) !important;  /* Puntos activos de color negro */
+  border-color: var(--blackColor) !important; /* Borde negro */
+}
+
