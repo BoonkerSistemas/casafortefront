@@ -71,7 +71,7 @@
    
     
     &:hover {
-        box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.5); /* Sombra más fuerte */
+        //box-shadow: 0px 8px 16px 0px rgba(146, 184, 255, 0.5); /* Sombra más fuerte */
         
         /* Contenido */
         .content {
@@ -83,6 +83,7 @@
                 color: black; /* Cambia el color del título */
                 //visibility: hidden; /* Esconde el título en hover */
                 display: none; /* Ocultar el título en hover */
+                font-size: 40px !important;
             }
             .subtitle {
                 display: block; /* Mostrar el contenido en hover */

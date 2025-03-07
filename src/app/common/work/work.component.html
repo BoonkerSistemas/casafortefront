@@ -1,7 +1,7 @@
 <div id="work" class="work-area pt-100">
     <div class="container">
         <div class="section-title-casa">
-            <h2>{{ title }}</h2>
+            <h2 style="letter-spacing: 0">{{ title }}</h2>
             <p>{{ description }}</p>
         </div>
     </div>
@@ -31,27 +31,30 @@
                             </div>
                             <div class="col-lg-7">
                                 <div class="work-content">
-                                    <h3>{{ work.title }}</h3>
-                                    <p>{{ work.descripcion }}</p>
+                                    <h3 style="letter-spacing: 0">{{ work.title }}</h3>
+                                    <p style="margin-top:4px;line-height: 20px">{{ work.descripcion }}</p>
 
                                     <!-- Categorías -->
                                     <ul class="nav-tabset-categorias" *ngIf="work.categorias?.length">
                                         <li *ngFor="let categoria of work.categorias"
                                             class="nav-tab-categorias"
                                             [ngClass]="{ 'active': currentTab2 === categoria.id }">
-                                            <span (click)="switchTab2($event, categoria)">
-                                                <img class="imgCategorias"
-                                                     [src]="environment.api_img + categoria.icon.url"
-                                                     alt="work-img">
-                                                <p>{{ categoria.title }}</p>
-                                            </span>
+        <span (click)="switchTab2($event, categoria)">
+            <img class="imgCategorias"
+                 [src]="environment.api_img + categoria.icon.url"
+                 alt="work-img">
+            <p style="margin-top:10px;letter-spacing: 0; font-size: 14px;">{{ categoria.title }}</p>
+        </span>
                                         </li>
                                     </ul>
 
+
                                     <!-- Descripción de la categoría seleccionada -->
                                     <div *ngIf="workSelected && currentTab2 === workSelected.id" style="
-    width: 343px;
+    max-width: 643px;
     padding-bottom: 16px;
+    color: #6f6f6e;
+    font-size: 15px;
 ">
                                         {{ workSelected.content || '' }}
                                     </div>
@@ -65,8 +68,8 @@
     </div>
 
     <div class="bg-black">
-        <h1 class="container" style="color: white; padding: 4%; text-align: center;">
-           {{content || ''  }}
+        <h1 class="container" style="color: white; padding: 4%; font-weight: 500; text-align: center; line-height: 50px; letter-spacing: 0">
+            {{ content || '' }}
         </h1>
     </div>
 </div>

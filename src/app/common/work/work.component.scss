@@ -28,7 +28,7 @@
 }
 
 .imgCategorias {
-  filter: grayscale(100%);
+  filter: grayscale(100%) brightness(1.3);
   transition: filter 0.3s ease-in-out;
 }
 
@@ -52,10 +52,11 @@
     .nav-tab-categorias {
       display: inline-block;
       margin-right: 10px;
-      padding-left: 32px;
+      padding-left: 8px;
       margin-top: 10px;
       width: min-content;
       text-align: center;
+      color: var(--blackColor);
 
       span {
         border: none;
@@ -74,6 +75,7 @@
           //background: var(--blackColor);
           //color: var(--whiteColor);
           border-bottom: 10px solid var(--mainColor);
+          color: black;
 
           .imgCategorias {
             filter: grayscale(0%);
@@ -82,10 +84,14 @@
       }
 
       &.active {
+        p{
+          color: black;
+        }
         span {
           //background: var(--blackColor);
           //color: var(--whiteColor);
           border-bottom: 10px solid var(--mainColor);
+          color: black;
 
           .imgCategorias {
             filter: grayscale(0%);
@@ -122,10 +128,11 @@
       span {
         border: none;
         display: block;
+        letter-spacing: 0;
         cursor: pointer;
         padding: 9px 9px;
         // border-radius: 30px;
-        background: #f4f4f4;
+        background: #e4e4e4;
         color: var(--blackColor);
         transition: var(--transition);
         font: {
@@ -156,7 +163,9 @@
 .single-work {
   margin-bottom: 25px;
   position: relative;
+  padding: 80px;
   text-align: center;
+  background-color: var(--mainColor);
 
   &::before {
     top: 0;
@@ -352,4 +361,12 @@
     }
   }
 
+}
+
+.nav-tab-categorias {
+  color: gray;
+}
+
+.nav-tab-categorias.active {
+  color: #007bff; /* Color cuando está seleccionado */
 }
