@@ -27,6 +27,7 @@
 
     h4 {
         color: var(--blackColor);
+        letter-spacing: 0px;
         font: {
             weight: 400;
             size: 40px;
@@ -179,6 +180,7 @@
     padding-right: 30px !important;
     padding: 8px 16px;
     cursor: pointer;
+    letter-spacing: -0.5px;
     display: inline-block;
     text-align: center;
     font-size: 14px;
@@ -188,4 +190,5 @@
 
 .custom-button:hover {
     background-color: #000000; /* Efecto hover con un tono más oscuro */
+    letter-spacing: 0px;
 }
