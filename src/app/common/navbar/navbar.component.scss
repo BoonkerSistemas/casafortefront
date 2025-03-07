@@ -79,7 +79,8 @@
                 transition: var(--transition);
                 color: var(--whiteColor);
                 position: relative;
-                font-weight: 200;
+                letter-spacing: 0px !important;
+                font-weight: 400;
                 cursor: pointer;
                 padding: 0;
                 font-size: 14px; // Reducido de tamaño normal
@@ -102,8 +103,9 @@
                 &.active, &:hover, &:focus {
                     color: var(--mainColor);
                     font: {
-                        weight: 700;
+                        weight: 500;
                     };
+                    letter-spacing: 0px !important;
 
                     &::before {
                         transform: scaleX(1);
@@ -383,7 +385,7 @@
     max-height: 80px;
     width: auto;*/
     max-width: 50rem;
-    max-height: 5vw;
+    height: 100px;
     width: auto;
     left: -20px;
     position: relative;

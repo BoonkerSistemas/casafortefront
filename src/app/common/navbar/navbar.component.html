@@ -25,13 +25,13 @@
                 align-items: center;
                 width: 100%;
             ">
-                    <ul class="navbar-nav ml-auto" style="gap: 6px;">
+                    <ul class="navbar-nav ml-auto" style="">
                         <li class="nav-item social">
                             <a class="nav-link" [href]="'https://wa.me/' + whatsapp" target="_blank" title="WhatsApp"
                                 style="color: var(--mainColor);">
                                 <!--<i class="fab fa-instagram" style="font-weight: 600;"></i>-->
                                 <img src="images/CasaForte/header/instagram.png" alt="WhatsApp Icon"
-                                    style="width: 30px; ">
+                                    style="width: 30px;  ">
 
                             </a>
                         </li>
@@ -39,7 +39,7 @@
                             <a class="nav-link" [href]="'tel:' + phone" title="Llamar" style="color: var(--mainColor);">
                                 <!--<i class="fab fa-youtube"></i>-->
                                 <img src="images/CasaForte/header/youtube.png" alt="WhatsApp Icon"
-                                    style="width: 30px; ">
+                                    style="width: 30px;height: 18px ">
                             </a>
                         </li>
                         <li class="nav-item social">
@@ -80,14 +80,19 @@
     align-items: center;
     clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
     padding-left: 10%;
+    letter-spacing: 0px !important;
     margin-right: -20%;
     justify-content: center;
                 ">
                                 <span class="nav-link dropdown-toggle" [ngClass]="{'active': isActive(item)}"
                                     (click)="toggleDropdown(item.title)" style="color: black;
                                     /* padding-left: 10px; */
+                                    font-weight: 400;
+                                    line-height: 11px;
+                                    font-size: 12px;
                                     max-width: min-content;
                                     display: flex
+
                                 ;">
                                     {{ item.title }}
                                 </span>

@@ -14,7 +14,7 @@
                 <ng-template #imageContent>
                     <!-- Imagen como fondo -->
                     <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
-                        style="width: 60%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
+                         style="width: 60%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
                 </ng-template>
 
                 <div class="d-table">
@@ -23,29 +23,23 @@
                             <div class="main-banner-text">
 
                                 <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
-                                    style="color: rgb(0, 0, 0) !important;text-align: left;text-align: left;margin: 4%;"
+                                    style="color: rgb(0, 0, 0) !important;text-align: left;text-align: left;margin: 4%; letter-spacing: -2px !important"
                                     [innerHTML]="slider?.Title"></h1>
 
                                 <p class=" container md:text-subtitle text-sm font-medium lg:text-[20px] white-text"
-                                    style="color: rgb(0, 0, 0) !important;text-align: left;
+                                   style="color: rgb(0, 0, 0) !important;text-align: left;
                                     font-size: 25px;
                                     line-height: 33px;
+                                    letter-spacing: 0px !important;
                                     margin: 4%;" [innerHTML]="slider.description[0].children[0].text "></p>
 
 
                                 <b>
-                                    <!--<p class="text-center text-lg font-bold" [innerHTML]="slider.content | markdown">
-                                    </p>-->
                                 </b>
                                 <div class=" container flex-container">
-                                    <!--<img [src]="slider.banner?.url ? environment.api_img + slider.banner.url : 'images/logo/Boonker_blanco.png'"
-                                        alt="blog-details" style="max-width: 20%;">
-                                    <img [src]="slider.banner?.url ? environment.api_img + slider.banner.url : 'images/logo/Boonker_blanco.png'"
-                                        alt="blog-details" style="max-width: 20%;">
-                                    <img [src]="slider.banner?.url ? environment.api_img + slider.banner.url : 'images/logo/Boonker_blanco.png'"
-                                        alt="blog-details" style="max-width: 20%;">-->
                                     <button (click)="onClick('work')" class="btn btn-primary view-work custom-button"
-                                        style="max-width: 40%;margin-left: 4%;"> Cotiza Aquí</button>
+                                            style="max-width: 30%;margin-left: 4%;"> Cotiza Aquí
+                                    </button>
 
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
     overflow: hidden;
 	position: relative;
     line-height: 0.9;
+    letter-spacing: -2px !important;
     /*background: {
         position: center center;
         repeat: no-repeat;
@@ -328,17 +329,17 @@
 .custom-button {
     background-color: #F4A623 !important; /* Color de fondo similar al de la imagen */
     color: black; /* Color del texto */
-    font-weight: bold; /* Negrita */
+
     border: none;
-    padding: 8px 16px;
+    padding: 8px 4px;
     cursor: pointer;
     display: inline-block;
-    text-align: center;
-    font-size: 14px;
-    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
+    font-size: 18px;
+    //clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
     border-radius: 0px !important;
 }
 
 .custom-button:hover {
     background-color: #d98d1a; /* Efecto hover con un tono más oscuro */
+
 }
