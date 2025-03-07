@@ -1,59 +1,54 @@
 <div class="home-slides" id="banner" style="background: #e4e4e4;padding: 5%;">
-
-
     <div class="home-slides container" id="bannerSlides">
         <div style="text-align: center;padding-bottom: 2%;">
-            <h2 style="font-weight: 600;">Nuestro sistema constructivo por secciones reduce hasta un
-                60% el tiempo de ejecución de tus obras grises </h2>
+            <h2 style="font-weight: 600;">
+                Nuestro sistema constructivo por secciones reduce hasta un 60% el tiempo de ejecución de tus obras grises
+            </h2>
         </div>
 
+        <div class="main-banner" style="position: relative;">
+            <ng-container *ngIf="isVideo(sliders?.imagenes?.url); else imageContent">
+                <!-- Video como fondo -->
+                <video autoplay loop muted [muted]="true" playsinline class="video-background">
+                    <source [src]="sliders?.videoUrl" type="video/mp4">
+                </video>
+            </ng-container>
+            <ng-template #imageContent>
+                <!-- Imagen como fondo -->
+                <div *ngIf="sliders?.imagenes?.url"
+                     [style.background-image]="'url(' + environment.api_img + sliders.imagenes.url + ')'"
+                     class="banner-image">
+                </div>
+            </ng-template>
 
-                <div class="main-banner">
-                    <ng-container *ngIf="isVideo(sliders.imagenes.url); else imageContent">
-                        <!-- Video como fondo -->
-                        <video autoplay loop [muted]="true" playsinline class="video-background">
-                            <source [src]="sliders.videoUrl" type="video/mp4">
-                        </video>
-                    </ng-container>
-                    <ng-template #imageContent>
-                        <!-- Imagen como fondo -->
-                        <div [style.background-image]="'url(' + environment.api_img + sliders.imagenes.url + ')'"
-                            style="width: 50%;height: 100%;z-index: 1;position: absolute;background-size: cover;"></div>
-                    </ng-template>
-
-                    <div class="d-table table-new">
-                        <div class="  d-table-cell">
-                            <div class="">
-                                <div class="main-banner-text" style="background-color: black;">
-
-                                    <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
-                                        style="color: rgb(255, 255, 255) !important;text-align: left;text-align: left;margin: 4%;">
-                                        {{sliders.ubicacion}}</h1>
-                                    <div class=" container flex-container">
-                                        <button class="btn btn-primary view-work custom-button"
-                                            style="left: -5%;position: relative;"> {{sliders.titulo}}</button>
-
-                                    </div>
-                                    <p
-                                        class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        {{sliders.m2}} m2</p>
-                                    <p
-                                        class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        {{sliders.pisos}} pisos</p>
-                                    <p
-                                        class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        {{sliders.dias}} laborables</p>
-                                    <p
-                                        class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        {{sliders.cuadrilla}} personas</p>
-                                    <b>
-                                    </b>
-
-                                </div>
-                            </div>
+            <div class="d-table table-new">
+                <div class="d-table-cell">
+                    <div class="main-banner-text" style="background-color: black; padding: 4%;">
+                        <h1 *ngIf="sliders?.ubicacion" class="container mb-4 text-left text-[31px] lg:text-[20px]"
+                            style="color: rgb(255, 255, 255);">
+                            {{ sliders.ubicacion }}
+                        </h1>
+                        <div class="container flex-container">
+                            <button *ngIf="sliders?.titulo" class="btn btn-primary view-work custom-button">
+                                {{ sliders.titulo }}
+                            </button>
                         </div>
+                        <p *ngIf="sliders?.m2" class="container text-sm font-medium text-[25px]">
+                            {{ sliders.m2 }} m2
+                        </p>
+                        <p *ngIf="sliders?.pisos" class="container text-sm font-medium text-[25px]">
+                            {{ sliders.pisos }} pisos
+                        </p>
+                        <p *ngIf="sliders?.dias" class="container text-sm font-medium text-[25px]">
+                            {{ sliders.dias }} laborables
+                        </p>
+                        <p *ngIf="sliders?.cuadrilla" class="container text-sm font-medium text-[25px]">
+                            {{ sliders.cuadrilla }} personas
+                        </p>
                     </div>
                 </div>
-
+            </div>
+        </div>
     </div>
 </div>
+

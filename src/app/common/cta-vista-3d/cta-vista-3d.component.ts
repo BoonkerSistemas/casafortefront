@@ -25,14 +25,7 @@ export class CtaVista3dComponent implements OnInit {
     id: any;
     slider: any;
 
-    secciones: Seccion[] = [
-        { id: 1, nombre: 'Losa de cimentación', tipo: 'losa', volumen: 37.81, ejecucion: 4, destacada: false },
-        { id: 2, nombre: 'Muro planta baja', tipo: 'muro', volumen: 24.5, ejecucion: 7, destacada: false },
-        { id: 3, nombre: 'Losa de entrepiso', tipo: 'losa', volumen: 37.69, ejecucion: 4, destacada: false },
-        { id: 4, nombre: 'Muro planta alta', tipo: 'muro', volumen: 22.3, ejecucion: 6, destacada: false },
-        { id: 5, nombre: 'Losa de cubierta', tipo: 'losa', volumen: 41.83, ejecucion: 3, destacada: false }
-    ];
-
+    secciones: Seccion[] = [];
     dinteles: any = [
         {
             id: 2,
@@ -63,7 +56,6 @@ export class CtaVista3dComponent implements OnInit {
             cantidadTotal: 11
         }
     ];
-
     seccionesFiltradas: Seccion[] = [];
 
     constructor(
@@ -92,8 +84,13 @@ export class CtaVista3dComponent implements OnInit {
     async inicio() {
         try {
             const element = await this._firstComponentService.getComponentSliderProyectosById(this.id);
-            console.log('Elemento de inicio', element.data);
+            console.log('Datos recibidos de la API:', element.data);
             this.slider = element.data;
+
+            if (!this.slider.seccion || !Array.isArray(this.slider.seccion)) {
+                console.warn('No hay secciones en los datos recibidos.');
+                return;
+            }
 
             this.secciones = this.slider.seccion.map((seccion: any) => ({
                 id: seccion.id,
@@ -104,7 +101,8 @@ export class CtaVista3dComponent implements OnInit {
                 destacada: false
             }));
 
-            console.log('Secciones', this.secciones);
+            console.log('Secciones actualizadas:', this.secciones);
+            this.filtrarSecciones();
             this.cdr.detectChanges();
         } catch (error) {
             console.error('Error al obtener el componente Inicio', error);
@@ -117,8 +115,13 @@ export class CtaVista3dComponent implements OnInit {
     }
 
     filtrarSecciones(): void {
-        if (!this.secciones.length) return;
+        if (!this.secciones.length) {
+            console.warn('No hay secciones disponibles para filtrar.');
+            return;
+        }
         this.seccionesFiltradas = this.secciones.filter(seccion => seccion.tipo === this.vistaActual);
+        console.log('Secciones filtradas:', this.seccionesFiltradas);
+        this.cdr.detectChanges();
     }
 
     mostrarInfoSeccion(seccion: Seccion): void {

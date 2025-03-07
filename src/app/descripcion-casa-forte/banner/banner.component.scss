@@ -333,3 +333,16 @@
 .custom-button:hover {
     background-color: #d98d1a; /* Efecto hover con un tono más oscuro */
 }
+
+ .banner-image {
+     width: 100%;
+     height: 100%;
+     background-size: cover;
+     background-position: center;
+     position: absolute;
+     z-index: 1;
+ }
+
+.flex-container {
+
+}
