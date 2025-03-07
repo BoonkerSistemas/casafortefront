@@ -1,11 +1,10 @@
 import {CarouselModule, OwlOptions} from 'ngx-owl-carousel-o';
-import { MarkdownPipe } from '../../../pipe/markdown.pipe';
-import {Component} from "@angular/core";
+import {ChangeDetectorRef, Component} from "@angular/core";
 import {CommonModule, ViewportScroller} from "@angular/common";
 import {HomeService} from "../../../service/home/home.service";
-import {DomSanitizer, Meta} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 import {environment} from "@env/environment";
-import { ChangeDetectorRef } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
     selector: 'app-banner',
@@ -15,12 +14,14 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class BannerComponent {
     sliders: any = [];
+    id: any;
 
     constructor(
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
         private sanitizer: DomSanitizer,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private route: ActivatedRoute,
     ) {}
 
     public onClick(elementId: string): void {
@@ -53,23 +54,26 @@ export class BannerComponent {
     }
 
     ngOnInit(): void {
-        this.inicio();
         console.log('sliders', this.sliders);
-        
+
+        // Obtener el ID de la ruta
+        this.id = this.route.snapshot.paramMap.get('id');
+        console.log('ID de la galería:', this.id);
+
+        // Verificar si el ID es válido antes de ejecutar `inicio()`
+        if (this.id) {
+            this.inicio();
+        } else {
+            console.warn('No se encontró un ID válido en la URL.');
+        }
     }
 
     inicio() {
-        this._firstComponentService.getComponentSlider()
+        this._firstComponentService.getComponentSliderProyectosById(this.id)
         .then((element) => {
-          let response = element.data;
-          //this.sliders.element.data;
-          this.sliders = response.map((slider: any) => {
-            if (slider.image && slider.image.url) {
-                
-              slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl( environment.api_img + slider.image.url );
-            }
-            return slider;
-          });
+
+            console.log('Elemento de inicio', element.data);
+            this.sliders = element.data;
       
           // Detecta manualmente los cambios después de la actualización de los datos
           this.cdr.detectChanges();

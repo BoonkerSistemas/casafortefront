@@ -6,20 +6,18 @@
             <h2 style="font-weight: 600;">Nuestro sistema constructivo por secciones reduce hasta un
                 60% el tiempo de ejecución de tus obras grises </h2>
         </div>
-        <owl-carousel-o [options]="homeSlides">
 
-            <ng-template carouselSlide *ngFor="let slider of sliders">
 
                 <div class="main-banner">
-                    <ng-container *ngIf="isVideo(slider.image.url); else imageContent">
+                    <ng-container *ngIf="isVideo(sliders.imagenes.url); else imageContent">
                         <!-- Video como fondo -->
                         <video autoplay loop [muted]="true" playsinline class="video-background">
-                            <source [src]="slider.videoUrl" type="video/mp4">
+                            <source [src]="sliders.videoUrl" type="video/mp4">
                         </video>
                     </ng-container>
                     <ng-template #imageContent>
                         <!-- Imagen como fondo -->
-                        <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
+                        <div [style.background-image]="'url(' + environment.api_img + sliders.imagenes.url + ')'"
                             style="width: 50%;height: 100%;z-index: 1;position: absolute;background-size: cover;"></div>
                     </ng-template>
 
@@ -30,24 +28,24 @@
 
                                     <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
                                         style="color: rgb(255, 255, 255) !important;text-align: left;text-align: left;margin: 4%;">
-                                        QUEVEDO</h1>
+                                        {{sliders.ubicacion}}</h1>
                                     <div class=" container flex-container">
                                         <button class="btn btn-primary view-work custom-button"
-                                            style="left: -5%;position: relative;"> Cotiza Aquí</button>
+                                            style="left: -5%;position: relative;"> {{sliders.titulo}}</button>
 
                                     </div>
                                     <p
                                         class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        83,62 m2</p>
+                                        {{sliders.m2}} m2</p>
                                     <p
                                         class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        2 pisos</p>
+                                        {{sliders.pisos}} pisos</p>
                                     <p
                                         class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        17 días laborables</p>
+                                        {{sliders.dias}} laborables</p>
                                     <p
                                         class=" container md:text-subtitle text-sm font-medium lg:text-[20px];font-size: 25px;line-height: 33px;margin: 4%;">
-                                        7 personas</p>
+                                        {{sliders.cuadrilla}} personas</p>
                                     <b>
                                     </b>
 
@@ -56,9 +54,6 @@
                         </div>
                     </div>
                 </div>
-            </ng-template>
 
-
-        </owl-carousel-o>
     </div>
 </div>
