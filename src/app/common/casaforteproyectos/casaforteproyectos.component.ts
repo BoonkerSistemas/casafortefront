@@ -65,18 +65,13 @@ export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
     }
 
     async inicio() {
-        await this._firstComponentService.getComponentList('ComponentSecont')
+        await this._firstComponentService.getComponentList('Quality')
             .then((element) => {
 
-                
                 let response = element.data;
-                this.title = response.ComponentSecont.title;
-                this.description = response.ComponentSecont.description;
-
-                this.lists = response.ComponentSecont.listado;
-
-
-                
+                this.title = response.Quality.title;
+                this.description = response.Quality.description;
+                this.lists = response.Quality.listado;
 
             })
             .catch((error) => {

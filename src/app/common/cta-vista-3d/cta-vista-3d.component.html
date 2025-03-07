@@ -20,11 +20,6 @@
                     <div class="plano-container">
                         <img src="images/CasaForte/plano.png" alt="Plano" class="plano-imagen" />
 
-                        <!-- Áreas interactivas sobre el plano -->
-                        <!--<div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva"
-                            [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
-                            (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
-                        </div>-->
                     </div>
 
                     <div class="estructura-3d-container">
@@ -44,11 +39,10 @@
                         <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
                             [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
                             <div class="seccion-header">
-                                Sección {{ seccion.id }}:
-                                <br>{{ seccion.nombre }}
+                                {{ seccion.nombre }}
                             </div>
                             <div class="seccion-info">
-                                <p>Volumen: {{ seccion.volumen }}</p>
+                                <p> {{ seccion.volumen }}</p>
                             </div>
                         </div>
                     </div>
@@ -72,11 +66,10 @@
                         <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
                             [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
                             <div class="seccion-header">
-                                Sección {{ seccion.id }}:
-                                <br>{{ seccion.nombre }}
+                               {{ seccion.nombre }}
                             </div>
                             <div class="seccion-info">
-                                <p>Volumen: {{ seccion.volumen }}</p>
+                                <p> {{ seccion.volumen }}</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +82,7 @@
 
                 <div class="secciones-grid">
                     <!-- Sección Piso 1 -->
-                    <div class="seccion-item ">
+                    <div class="seccion-item " *ngFor="let dintel of dinteles">
                         <div class="plano-container">
                             <img src="images/CasaForte/dintel1.png" alt="Plano Piso 1" class="plano-imagen">
                             <!-- Las líneas azules se pueden implementar como divs posicionados sobre la imagen -->
@@ -98,8 +91,7 @@
 
                         <div class="detalles-container">
                             <div class="seccion-header">
-                                Piso 1, sección 2:<br>
-                                Muros estructurales 1
+                                {{dintel.nombre }}
                             </div>
 
                             <table class="tabla-detalles">
@@ -110,9 +102,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let dintel of dinteles[0].dinteles">
-                                        <td>{{ dintel.cantidad }}</td>
-                                        <td>{{ dintel.longitud }} m</td>
+                                    <tr *ngFor="let dintelN of dintel.dinteles">
+                                        <td>{{ dintelN.title }}</td>
+                                        <td>{{ dintelN.url }} </td>
                                     </tr>
                                     <tr class="total-row">
                                         <td>{{ dinteles[0].cantidadTotal }}</td>
@@ -123,40 +115,7 @@
                         </div>
                     </div>
 
-                    <!-- Sección Piso 2 -->
-                    <div class="seccion-item">
-                        <div class="plano-container">
-                            <img src="images/CasaForte/dintel2.png" alt="Plano Piso 2" class="plano-imagen">
-                            <!-- Las líneas azules se pueden implementar como divs posicionados sobre la imagen -->
-                            <div class="lineas-estructurales"></div>
-                        </div>
 
-                        <div class="detalles-container">
-                            <div class="seccion-header">
-                                Piso 2, sección 4:<br>
-                                Muros estructurales 2
-                            </div>
-
-                            <table class="tabla-detalles">
-                                <thead>
-                                    <tr>
-                                        <th>Cantidad</th>
-                                        <th>Longitud (m)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let dintel of dinteles[1].dinteles">
-                                        <td>{{ dintel.cantidad }}</td>
-                                        <td>{{ dintel.longitud }} m</td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>{{ dinteles[1].cantidadTotal }}</td>
-                                        <td>{{ dinteles[1].longitudTotal }} m</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
             <!--FIN2-->

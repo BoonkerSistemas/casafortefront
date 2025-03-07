@@ -12,6 +12,14 @@ interface Seccion {
     destacada: boolean;
 }
 
+interface Dintel {
+    longitudTotal: number;
+    cantidadTotal: number;
+    id: number;
+    nombre: string;
+    dinteles: any; // Cambia el tipo si es diferente
+}
+
 @Component({
     selector: 'app-cta-vista-3d',
     imports: [NgFor, NgForOf, CommonModule, NgIf],
@@ -26,36 +34,7 @@ export class CtaVista3dComponent implements OnInit {
     slider: any;
 
     secciones: Seccion[] = [];
-    dinteles: any = [
-        {
-            id: 2,
-            piso: 1,
-            nombre: 'Muros estructurales 1',
-            dinteles: [
-                { cantidad: 1, longitud: 0.63 },
-                { cantidad: 1, longitud: 1.13 },
-                { cantidad: 1, longitud: 1.25 },
-                { cantidad: 1, longitud: 1.63 },
-                { cantidad: 1, longitud: 3.13 }
-            ],
-            longitudTotal: 7.77,
-            cantidadTotal: 5
-        },
-        {
-            id: 4,
-            piso: 2,
-            nombre: 'Muros estructurales 2',
-            dinteles: [
-                { cantidad: 2, longitud: 0.63 },
-                { cantidad: 1, longitud: 0.88 },
-                { cantidad: 5, longitud: 1.13 },
-                { cantidad: 2, longitud: 1.63 },
-                { cantidad: 1, longitud: 2.13 }
-            ],
-            longitudTotal: 13.18,
-            cantidadTotal: 11
-        }
-    ];
+    dinteles: Dintel[] = [];
     seccionesFiltradas: Seccion[] = [];
 
     constructor(
@@ -71,9 +50,9 @@ export class CtaVista3dComponent implements OnInit {
 
     async ngOnInit(): Promise<void> {
         this.id = this.route.snapshot.paramMap.get('id');
-        console.log('ID de la galería:', this.id);
 
         if (this.id) {
+            console.log('ID1:', this.id);
             await this.inicio();
         } else {
             console.warn('No se encontró un ID válido en la URL.');
@@ -81,33 +60,74 @@ export class CtaVista3dComponent implements OnInit {
         this.filtrarSecciones();
     }
 
-    async inicio() {
-        try {
-            const element = await this._firstComponentService.getComponentSliderProyectosById(this.id);
-            console.log('Datos recibidos de la API:', element.data);
-            this.slider = element.data;
+    async inicio(): Promise<void> {
+        console.log('ID recibido:', this.id);
 
-            if (!this.slider.seccion || !Array.isArray(this.slider.seccion)) {
+        try {
+            // Ejecutamos ambas llamadas en paralelo para optimizar tiempos de carga
+            const [element, elementDinteles] = await Promise.all([
+                this._firstComponentService.getComponentSliderProyectosById(this.id),
+                this._firstComponentService.getComponentSliderProyectosByDinteles(this.id)
+            ]);
+
+            // Procesamos las secciones
+            this.slider = element.data;
+            console.log('Datos del slider cargados:', this.slider);
+
+            if (Array.isArray(this.slider.seccion)) {
+                this.secciones = this.slider.seccion.map((seccion: any) => ({
+                    id: Number(seccion.number),
+                    nombre: seccion.title,
+                    tipo: Number(seccion.number) % 2 !== 0 ? 'losas' : 'muros',
+                    volumen: seccion.content,
+                    ejecucion: 4,
+                    destacada: false
+                }));
+            } else {
                 console.warn('No hay secciones en los datos recibidos.');
-                return;
             }
 
-            this.secciones = this.slider.seccion.map((seccion: any) => ({
-                id: seccion.id,
-                nombre: seccion.title,
-                tipo: (typeof seccion.number === 'number' && seccion.number % 2 !== 0) ? 'losa' : 'muro',
-                volumen: seccion.description,
-                ejecucion: 4,
-                destacada: false
-            }));
+            console.log('Secciones procesadas:', this.secciones);
 
-            console.log('Secciones actualizadas:', this.secciones);
+            // Procesamos los dinteles
+            const dataDinteles = elementDinteles.data;
+            console.log('Datos de dinteles cargados:', dataDinteles);
+
+            if (Array.isArray(dataDinteles.dinteles)) {
+                this.dinteles = dataDinteles.dinteles.map((dintel: any) => {
+                    // Sumar los valores de button.title
+                    const cantidadTotal = dintel.button?.reduce((sum: number, button: any) => {
+                        const buttonTitle = Number(button.title) || 0;
+                        return sum + buttonTitle;
+                    }, 0);
+
+                    console.log('Suma de button titles:', cantidadTotal);
+
+                    return {
+                        longitudTotal: 13.18,
+                        cantidadTotal: cantidadTotal, // Sumar los valores de button.title
+                        id: Number(dintel.number),
+                        nombre: dintel.title,
+                        dinteles: dintel.button || [] // Evita errores si "content" es null
+                    };
+                });
+            } else {
+                console.warn('No hay dinteles en los datos recibidos.');
+            }
+
+            console.log('Dinteles procesados:', this.dinteles);
+
+            // Aplicamos filtrado y detectamos cambios
             this.filtrarSecciones();
             this.cdr.detectChanges();
+
         } catch (error) {
-            console.error('Error al obtener el componente Inicio', error);
+            console.error('Error al obtener datos del componente:', error);
         }
     }
+
+
+
 
     cambiarVista(vista: 'losas' | 'muros'): void {
         this.vistaActual = vista;
@@ -120,17 +140,13 @@ export class CtaVista3dComponent implements OnInit {
             return;
         }
         this.seccionesFiltradas = this.secciones.filter(seccion => seccion.tipo === this.vistaActual);
-        console.log('Secciones filtradas:', this.seccionesFiltradas);
         this.cdr.detectChanges();
     }
 
     mostrarInfoSeccion(seccion: Seccion): void {
         this.seccionSeleccionada = seccion;
-        this.secciones.forEach((s) => s.destacada = false);
-        const seccionActual = this.secciones.find(s => s.id === seccion.id);
-        if (seccionActual) {
-            seccionActual.destacada = true;
-        }
+        // Solo actualizamos la sección destacada
+        this.secciones.forEach((s) => s.destacada = s.id === seccion.id);
     }
 
     ocultarInfoSeccion(): void {
@@ -143,4 +159,5 @@ export class CtaVista3dComponent implements OnInit {
         seccion.cantidadTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + (dintel.cantidad || 0), 0);
         seccion.longitudTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + ((dintel.cantidad || 0) * (dintel.longitud || 0)), 0);
     }
+
 }
