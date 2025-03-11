@@ -14,20 +14,39 @@
                 <ng-template #imageContent>
                     <!-- Imagen como fondo -->
                     <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
-                         style="width: 60%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
+                        style="width: 60%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
                 </ng-template>
+
+
+
+
 
                 <div class="d-table">
                     <div class="  d-table-cell">
                         <div class="container-text">
                             <div class="main-banner-text">
 
+                                <div class=" container row" style="margin-left: 4%;">
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                </div>
+
                                 <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
                                     style="color: rgb(0, 0, 0) !important;text-align: left;text-align: left;margin: 4%; letter-spacing: -2px !important"
                                     [innerHTML]="slider?.Title"></h1>
 
                                 <p class=" container md:text-subtitle text-sm font-medium lg:text-[20px] white-text"
-                                   style="color: rgb(0, 0, 0) !important;text-align: left;
+                                    style="color: rgb(0, 0, 0) !important;text-align: left;
                                     font-size: 25px;
                                     line-height: 33px;
                                     letter-spacing: 0px !important;
@@ -38,10 +57,27 @@
                                 </b>
                                 <div class=" container flex-container">
                                     <button (click)="onClick('work')" class="btn btn-primary view-work custom-button"
-                                            style="max-width: 30%;margin-left: 4%;"> Cotiza Aquí
+                                        style="max-width: 30%;margin-left: 4%;"> Cotiza Aquí
                                     </button>
 
                                 </div>
+                                <b>
+                                </b>
+                                <div class=" container row" style="margin-left: 4%;margin-top: 2%;">
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                    <div class="col-md-3" style="padding-left: 0;">
+                                        <img [src]="environment.api_img + slider.image.url" alt="">
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -141,12 +141,21 @@
 .container-text {
     //background: linear-gradient(270deg, rgba(73, 73, 73, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
     //color: black;
+    /*padding: 8%;
+    padding-left: 55%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;*/
     padding: 8%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     padding-left: 55%;
     height: 100%;
     display: flex
 ;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
 }
 /* Max width 767px */
