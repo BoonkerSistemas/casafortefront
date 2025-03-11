@@ -68,6 +68,10 @@
             display: none; /* Ocultar el contenido adicional por defecto */
         }
     }
+    .cuadrado2{
+        visibility: hidden;
+        display: none;
+    }
    
     
     &:hover {
@@ -89,10 +93,17 @@
                 display: block; /* Mostrar el contenido en hover */
                 color: rgb(0, 0, 0); /* Cambiar color si es necesario */
             }
+        
 
         }
+        .cuadrado2{
+            visibility: visible;
+            display: flex;
+                    }
 
-        
+        .triangulo{
+            margin-top: 0vh;
+        }
 
        
     }
@@ -108,14 +119,27 @@
     height: 10vh;
     z-index: 999;
     position: relative;
-    clip-path: polygon(100% 10%, 0% 100%, 100% 100%);
+    //clip-path: polygon(100% 10%, 0% 100%, 100% 100%);
+    margin-top: 18vh;
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0% 100%);
 
 }
 
+.team-item{
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .team-item:hover {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     .triangulo {
         background-color: #f5a414;
-        top: 2px;
+        top: -1px;
+        margin-top: 0vh;
     }
     .single-team-box    {
         background: #f5a414;

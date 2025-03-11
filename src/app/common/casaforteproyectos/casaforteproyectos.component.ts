@@ -52,10 +52,10 @@ export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
 				items: 2
 			},
 			768: {
-				items: 4
+				items: 5
 			},
 			1200: {
-				items: 4
+				items: 5
 			}
 		}
     }
