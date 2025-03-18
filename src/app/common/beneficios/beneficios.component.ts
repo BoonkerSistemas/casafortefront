@@ -57,7 +57,7 @@ export class BeneficiosComponent implements OnInit, AfterViewInit  {
           this._firstComponentService.getComponentSliderBeneficios()
           .then((element) => {
             //let response = element.data;
-            console.log('Elemento de inicio', element.data);
+            //console.log('Elemento de inicio', element.data);
             
             this.sliders = element.data;
         

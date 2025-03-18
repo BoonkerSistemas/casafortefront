@@ -59,26 +59,29 @@ export class BannerComponent {
 
     inicio() {
         this._firstComponentService.getComponentSlider()
-        .then((element) => {
-          let response = element.data;
-          //this.sliders.element.data;
-          this.sliders = response.map((slider: any) => {
-            if (slider.image && slider.image.url) {
-                
-              slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl( environment.api_img + slider.image.url );
-            }
-            return slider;
-          });
-      
-          // Detecta manualmente los cambios después de la actualización de los datos
-          this.cdr.detectChanges();
-      
+            .then((element) => {
+                let response = element.data;
 
-        })
-        .catch((error) => {
-          console.error('Error al obtener el componente Inicio', error);
-        });
+                console.log(response, "232323")
+
+                // Ordenar por id en orden ascendente
+                response.sort((a: any, b: any) => a.id - b.id);
+
+                this.sliders = response.map((slider: any) => {
+                    if (slider.image && slider.image.url) {
+                        slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.api_img + slider.image.url);
+                    }
+                    return slider;
+                });
+
+                // Detectar manualmente los cambios en la vista
+                this.cdr.detectChanges();
+            })
+            .catch((error) => {
+                console.error('Error al obtener el componente Inicio', error);
+            });
     }
+
 
     protected readonly environment = environment;
 

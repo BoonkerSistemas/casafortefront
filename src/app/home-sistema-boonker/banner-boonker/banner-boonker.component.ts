@@ -68,22 +68,26 @@ export class BannerBoonkerComponent {
         this._firstComponentService.getComponentSlider()
             .then((element) => {
                 let response = element.data;
+
+                console.log('response aquiiiiiii', response);
+
+                // Ordenar por id antes de asignar
+                response.sort((a: any, b: any) => a.id - b.id);
+
                 this.sliders = response.map((slider: any) => {
                     if (slider.image && slider.image.url) {
-
                         slider.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.api_img + slider.image.url);
                     }
                     return slider;
                 });
 
                 this.cdr.detectChanges();
-
-
             })
             .catch((error) => {
                 console.error('Error al obtener el componente Inicio', error);
             });
     }
+
 
 
     isVideo(url: string): boolean {

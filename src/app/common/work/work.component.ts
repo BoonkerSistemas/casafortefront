@@ -74,11 +74,10 @@ export class WorkComponent implements OnInit {
             const element = await this.homeService.getComponentProduct();
             const response = element.data;
 
-            console.log('Datos cargados:', response);
+           // console.log('Datos cargados:', response);
 
             if (Array.isArray(response)) {  // 🔹 Verifica que `response` sea un array antes de iterar
                 response.forEach((work: any) => {
-                    console.log('------------------------', work);
 
                     let json: Work = {
                         img: 'images/Maestra.png',
@@ -105,7 +104,7 @@ export class WorkComponent implements OnInit {
     }
 
     switchTab2(event: Event, categoria: any) {
-        console.log('Tab seleccionado:', categoria);
+       // console.log('Tab seleccionado:', categoria);
         event.preventDefault();
         this.currentTab2 = categoria.id;
         this.workSelected = categoria;
@@ -120,7 +119,7 @@ export class WorkComponent implements OnInit {
             return work;
         });
 
-        console.log('Categoría seleccionada:', categoria);
+       // console.log('Categoría seleccionada:', categoria);
     }
 
 

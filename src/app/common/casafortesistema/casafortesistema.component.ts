@@ -90,7 +90,7 @@ export class CasafortesistemaComponent implements OnInit, AfterViewInit {
     switchTab2(event: Event, categoria: any) {
         event.preventDefault();
         this.currentTab2 = categoria.id;
-        console.log('Tab seleccionado:', categoria);
+        //console.log('Tab seleccionado:', categoria);
         this.workSelected = categoria;
 
         this.works = this.works.map(work => {
