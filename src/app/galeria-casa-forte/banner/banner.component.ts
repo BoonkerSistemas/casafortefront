@@ -1,6 +1,6 @@
 import {CarouselModule, OwlOptions} from 'ngx-owl-carousel-o';
 import { MarkdownPipe } from '../../../pipe/markdown.pipe';
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {CommonModule, ViewportScroller} from "@angular/common";
 import {HomeService} from "../../../service/home/home.service";
 import {DomSanitizer, Meta} from "@angular/platform-browser";
@@ -13,8 +13,12 @@ import { ChangeDetectorRef } from '@angular/core';
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss']
 })
-export class BannerComponent {
+export class BannerComponent implements OnInit {
     sliders: any = [];
+    currentSliders: any[] = []; // Sliders para la página actual
+  currentPage: number = 0;
+  itemsPerPage: number = 3;
+  pages: number[] = [];
 
     constructor(
         private viewportScroller: ViewportScroller,
@@ -52,7 +56,8 @@ export class BannerComponent {
     }
 
     ngOnInit(): void {
-        this.inicio();
+         this.inicio();
+      
     }
 
     inicio() {
@@ -69,6 +74,11 @@ export class BannerComponent {
             }
             return slider;
           });
+          // Calcular el número total de páginas
+       this.calculatePages();
+      
+       // Cargar los primeros 5 elementos
+        this.loadCurrentSliders();
       
           // Detecta manualmente los cambios después de la actualización de los datos
           this.cdr.detectChanges();
@@ -80,10 +90,32 @@ export class BannerComponent {
         });
     }
 
+    calculatePages() {
+      const totalPages = Math.ceil(this.sliders.length / this.itemsPerPage);
+      this.pages = Array(totalPages).fill(0).map((x, i) => i);
+      this.cdr.detectChanges();
+    }
+  
+    loadCurrentSliders() {
+      const start = this.currentPage * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      this.currentSliders = this.sliders.slice(start, end);
+      this.cdr.detectChanges();
+    }
+  
+    changePage(page: number) {
+      this.currentPage = page;
+      this.loadCurrentSliders();
+      this.cdr.detectChanges();
+    }
+  
+
     protected readonly environment = environment;
 
     isVideo(url: string): boolean {
         return url.endsWith('.mp4') || url.endsWith('.webm');  // Añade otros tipos de video si es necesario
     }
+
+    
     
 }

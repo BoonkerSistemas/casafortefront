@@ -28,7 +28,7 @@ import {CasaforteproyectosComponent} from '../common/casaforteproyectos/casafort
 
 @Component({
     selector: 'app-home-two',
-    imports: [BannerComponent, WelcomeComponent, CasaforteproyectosComponent, WorkComponent,],
+    imports: [BannerComponent, WelcomeComponent, CasaforteproyectosComponent, WorkComponent],
     templateUrl: './home-two.component.html',
     styleUrls: ['./home-two.component.scss']
 })

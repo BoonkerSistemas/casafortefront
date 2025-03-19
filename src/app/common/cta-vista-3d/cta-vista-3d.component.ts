@@ -37,6 +37,27 @@ export class CtaVista3dComponent implements OnInit {
     dinteles: Dintel[] = [];
     seccionesFiltradas: Seccion[] = [];
 
+
+    activeSection: string | null = null;
+    activeSectionPosterior: string | null = null;
+
+   
+      sections = [
+        { id: '4', name: 'Muros estructurales P2', area: 87.10, time: 4, color: '#f4a000',top: '35%', left: '12%', infoTop: '25%', infoLeft: '0%' },
+        { id: '2', name: 'Muros estructurales P1', area: 58.93, time: 3, color: '#f4a000',top: '70%', left: '12%', infoTop: '66%', infoLeft: '0%' },
+        { id: '5', name: 'Losa de cubierta', area: 41.83, time: 3,color: '#000', top: '20%', left: '95%', infoTop: '15%', infoLeft: '72%' },
+        { id: '3', name: 'Losa de entrepiso', area: 37.69, time: 4,color: '#000', top: '55%', left: '95%', infoTop: '55%', infoLeft: '72%' },
+        { id: '1', name: 'Losa de cimentación', area: 37.81, time: 4,color: '#000', top: '88%', left: '95%', infoTop: '88%', infoLeft: '72%' }
+      ];
+
+      sectionsPosterior = [
+        { id: '4', name: 'Muros estructurales P2', area: 87.10, time: 4, color: '#f4a000',top: '35%', left: '12%', infoTop: '25%', infoLeft: '0%' },
+        { id: '2', name: 'Muros estructurales P1', area: 58.93, time: 3, color: '#f4a000',top: '70%', left: '12%', infoTop: '66%', infoLeft: '0%' },
+        { id: '5', name: 'Losa de cubierta', area: 41.83, time: 3,color: '#000', top: '8%', left: '95%', infoTop: '10%', infoLeft: '72%' },
+        { id: '3', name: 'Losa de entrepiso', area: 37.69, time: 4,color: '#000', top: '45%', left: '95%', infoTop: '45%', infoLeft: '72%' },
+        { id: '1', name: 'Losa de cimentación', area: 37.81, time: 4,color: '#000', top: '80%', left: '95%', infoTop: '80%', infoLeft: '72%' }
+      ];
+
     constructor(
         private viewportScroller: ViewportScroller,
         private route: ActivatedRoute,
@@ -159,5 +180,13 @@ export class CtaVista3dComponent implements OnInit {
         seccion.cantidadTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + (dintel.cantidad || 0), 0);
         seccion.longitudTotal = seccion.dinteles.reduce((total: any, dintel: any) => total + ((dintel.cantidad || 0) * (dintel.longitud || 0)), 0);
     }
+
+    selectSection(sectionId: string) {
+        this.activeSection = this.activeSection === sectionId ? null : sectionId;
+      }
+
+      selectSectionPosterior(sectionId: string) {
+        this.activeSectionPosterior = this.activeSectionPosterior === sectionId ? null : sectionId;
+      }
 
 }

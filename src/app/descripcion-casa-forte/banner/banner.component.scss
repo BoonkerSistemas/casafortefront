@@ -216,10 +216,10 @@
 
     .main-banner {
         height: auto;
-        padding: {
+        /*padding: {
             top: 175px;
             bottom: 160px;
-        };
+        };*/
     }
     .main-banner-text {
         h4 {
@@ -263,9 +263,9 @@
 /* Min width 992px to Max width 1199px */
 @media only screen and (min-width : 992px) and (max-width : 1199px) {
 
-    .main-banner-text {
+    /*.main-banner-text {
         margin-top: 30px;
-    }
+    }*/
 
 }
 
@@ -275,9 +275,9 @@
 /* Min width 1600px */
 @media only screen and (min-width: 1600px) {
 
-    .main-banner {
-       // height: 100vh;
-    }
+    /*.main-banner {
+        height: 100vh;
+    }*/
 
 }
 
@@ -335,7 +335,7 @@
 }
 
  .banner-image {
-     width: 100%;
+     width: 50%;
      height: 100%;
      background-size: cover;
      background-position: center;
@@ -343,6 +343,3 @@
      z-index: 1;
  }
 
-.flex-container {
-
-}

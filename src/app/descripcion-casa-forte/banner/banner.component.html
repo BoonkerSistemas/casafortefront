@@ -2,8 +2,8 @@
     <div class="home-slides container" id="bannerSlides">
         <div style="text-align: center;padding-bottom: 2%;">
             <h2 style="font-weight: 600;">
-                Nuestro sistema constructivo por secciones reduce hasta un 60% el tiempo de ejecución de tus obras grises
-            </h2>
+                Reduce hasta un 60% el tiempo de ejecución de tus obras
+                grises y ahorra hasta un 20% de costos directos </h2>
         </div>
 
         <div class="main-banner" style="position: relative;">
@@ -16,23 +16,18 @@
             <ng-template #imageContent>
                 <!-- Imagen como fondo -->
                 <div *ngIf="sliders?.imagenes?.url"
-                     [style.background-image]="'url(' + environment.api_img + sliders.imagenes.url + ')'"
-                     class="banner-image">
+                    [style.background-image]="'url(' + environment.api_img + sliders.imagenes.url + ')'"
+                    class="banner-image">
                 </div>
             </ng-template>
 
             <div class="d-table table-new">
                 <div class="d-table-cell">
                     <div class="main-banner-text" style="background-color: black; padding: 4%;">
-                        <h1 *ngIf="sliders?.ubicacion" class="container mb-4 text-left text-[31px] lg:text-[20px]"
-                            style="color: rgb(255, 255, 255);">
-                            {{ sliders.ubicacion }}
-                        </h1>
-                        <div class="container flex-container">
-                            <button *ngIf="sliders?.titulo" class="btn btn-primary view-work custom-button">
-                                {{ sliders.titulo }}
-                            </button>
-                        </div>
+                        <p *ngIf="sliders?.titulo" class="container text-sm font-medium text-[25px]"
+                            style="color: var(--mainColor);">
+                            {{ sliders.titulo }}
+                        </p>
                         <p *ngIf="sliders?.m2" class="container text-sm font-medium text-[25px]">
                             {{ sliders.m2 }} m2
                         </p>
@@ -51,4 +46,3 @@
         </div>
     </div>
 </div>
-

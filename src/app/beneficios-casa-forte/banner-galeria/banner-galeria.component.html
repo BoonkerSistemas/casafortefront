@@ -1,0 +1,77 @@
+<div class="main-banner">
+
+
+    <div class="row h-100">
+        <div class="gallery-container">
+            <div class="container">
+                <div class="section-title-casa">
+                    <h2 style="letter-spacing: 0">Grandes beneficios para viviendas en serie </h2>
+                    <!--<p>La mejor solución estructural para proyectos de viviendas de 50m² a 120m²</p>-->
+                </div>
+            </div>
+
+            <div class="gallery-grid">
+                <div *ngFor="let image of paginatedImages" class="gallery-item" (click)="openLightbox(image)">
+                    <div class="thumbnail-container">
+                        <img [src]="image.thumbnailUrl || image.url" [alt]="image.title || 'Imagen de galería'"
+                            class="thumbnail">
+                        <div class="overlay">
+                            <span *ngIf="image.title" class="image-title">{{ image.title }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paginación -->
+            <div *ngIf="totalPages > 1" class="pagination">
+                <button class="pagination-button" [disabled]="currentPage === 1" (click)="previousPage()"
+                    [ngClass]="{'disabled': currentPage === 1}">
+                    &laquo;
+                </button>
+
+                <button *ngIf="getPageNumbers()[0] > 1" class="pagination-button" (click)="goToPage(1)">
+                    1
+                </button>
+
+                <span *ngIf="getPageNumbers()[0] > 2" class="pagination-ellipsis">...</span>
+
+                <button *ngFor="let page of getPageNumbers()" class="pagination-button"
+                    [ngClass]="{'active': page === currentPage}" (click)="goToPage(page)">
+                    {{ page }}
+                </button>
+
+                <span *ngIf="getPageNumbers()[getPageNumbers().length - 1] < totalPages - 1"
+                    class="pagination-ellipsis">...</span>
+
+                <button *ngIf="getPageNumbers()[getPageNumbers().length - 1] < totalPages" class="pagination-button"
+                    (click)="goToPage(totalPages)">
+                    {{ totalPages }}
+                </button>
+
+                <button class="pagination-button" [disabled]="currentPage === totalPages" (click)="nextPage()"
+                    [ngClass]="{'disabled': currentPage === totalPages}">
+                    &raquo;
+                </button>
+            </div>
+
+            <!-- Lightbox para vista ampliada -->
+            <div *ngIf="showLightbox && selectedImage" class="lightbox">
+                <div class="lightbox-content">
+                    <button class="close-btn" (click)="closeLightbox()">×</button>
+
+                    <div class="lightbox-image-container">
+                        <button class="nav-btn prev-btn" (click)="prevImage()">&lt;</button>
+                        <img [src]="selectedImage.url" [alt]="selectedImage.title || 'Imagen ampliada'"
+                            class="lightbox-image">
+                        <button class="nav-btn next-btn" (click)="nextImage()">&gt;</button>
+                    </div>
+
+                    <div *ngIf="selectedImage.title || selectedImage.description" class="image-info">
+                        <h3 *ngIf="selectedImage.title">{{ selectedImage.title }}</h3>
+                        <p *ngIf="selectedImage.description">{{ selectedImage.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

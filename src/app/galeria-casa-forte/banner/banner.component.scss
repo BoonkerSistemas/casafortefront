@@ -1,7 +1,10 @@
 .main-banner {
     overflow: hidden;
-	position: relative;
+    position: relative;
     line-height: 0.9;
+    padding-top: 1%;
+    padding-right: 1%;
+    padding-left: 1%;
 }
 ::ng-deep {
     #banner .owl-theme .owl-dots, .owl-theme .owl-nav {
@@ -16,7 +19,7 @@
     position: relative;
     //text-align: center;
     z-index: 1;
-    background: #ffffff;
+    background: #f5a414 !important;
     padding: 16px;
     padding-left: 32px;
     clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
@@ -45,7 +48,9 @@
     p {
         color: var(--whiteColor);
         font-size: 15.5px;
+        font-weight: 500;
         max-width: 650px;
+        line-height: 1.2;
         margin: {
             left: auto;
             right: auto;
@@ -127,9 +132,9 @@ display: none;
 .container-text {
     //background: linear-gradient(270deg, rgba(73, 73, 73, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
     //color: black;
-    padding: 8%;
+    //padding: 8%;
     padding-right: 5%;
-    padding-left: 50%;
+    padding-left: 56%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -260,9 +265,9 @@ display: none;
 /* Min width 992px to Max width 1199px */
 @media only screen and (min-width : 992px) and (max-width : 1199px) {
 
-    .main-banner-text {
+    /*.main-banner-text {
         margin-top: 30px;
-    }
+    }*/
 
 }
 

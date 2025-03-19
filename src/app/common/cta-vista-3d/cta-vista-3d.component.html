@@ -1,124 +1,116 @@
-<div class="cta-area ptb-100">
+<div class="cta-area ">
+    <h3 style="background: #f5a414;padding: 15px;text-align: center;font-weight: 600;">Pisos del proyecto</h3>
+
+
     <div class="container">
-        <div class="cta-content">
-            <!--INICIO-->
-            <div class="proyecto-container">
-                <h1 class="titulo">Secciones del Proyecto: {{ totalSecciones }}</h1>
-
-                <div class="botones-vista">
-                    <button [class.activo]="vistaActual === 'losas'" (click)="cambiarVista('losas')"
-                        class="btn-vista losas">
-                        Secciones impares: LOSAS
-                    </button>
-                    <button [class.activo]="vistaActual === 'muros'" (click)="cambiarVista('muros')"
-                        class="btn-vista muros">
-                        Secciones pares: MUROS
-                    </button>
-                </div>
-
-                <div class="navegacion-secciones" *ngIf="vistaActual === 'losas'">
-                    <div class="plano-container">
-                        <img src="images/CasaForte/plano.png" alt="Plano" class="plano-imagen" />
-
-                    </div>
-
-                    <div class="estructura-3d-container">
-                        <div class="estructura-3d">
-                            <img src="images/CasaForte/estructura3d.png" alt="Estructura 3D"
-                                class="estructura-imagen" />
-
-                            <!-- Áreas interactivas sobre la estructura 3D -->
-                            <div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva-3d"
-                                [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
-                                (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
-                            </div>
-                        </div>
-                    </div>
-                    <div style="flex: 1;">
-                        <!-- Tarjetas de información -->
-                        <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
-                            [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
-                            <div class="seccion-header">
-                                {{ seccion.nombre }}
-                            </div>
-                            <div class="seccion-info">
-                                <p> {{ seccion.volumen }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="navegacion-secciones" *ngIf="vistaActual === 'muros'">
-                    <div class="plano-container">
-                        <img src="images/CasaForte/planomuro.png" alt="Plano" class="plano-imagen" />
-                    </div>
-
-                    <div class="estructura-3d-container">
-                        <div class="estructura-3d">
-                            <img src="images/CasaForte/muro3d.png" alt="Estructura 3D" class="estructura-imagen" />
-                            <div *ngFor="let seccion of seccionesFiltradas" class="area-interactiva-3d"
-                                [class.destacada]="seccion.destacada" [attr.data-seccion-id]="seccion.id"
-                                (mouseenter)="mostrarInfoSeccion(seccion)" (mouseleave)="ocultarInfoSeccion()">
-                            </div>
-                        </div>
-                    </div>
-                    <div style="flex: 1;">
-                        <div *ngFor="let seccion of seccionesFiltradas" class="tarjeta-info"
-                            [class.visible]="seccion.destacada" [attr.data-seccion-id]="seccion.id">
-                            <div class="seccion-header">
-                               {{ seccion.nombre }}
-                            </div>
-                            <div class="seccion-info">
-                                <p> {{ seccion.volumen }}</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="plans">
+            <!-- Piso 1 -->
+            <div class="plan">
+                <img src="images/CasaForte/plano.png" alt="Plano Piso 1" />
+                <div class="label">
+                    <span class="circle1">P1</span> Piso 1
                 </div>
             </div>
-            <!--FINNNN-->
-            <!--INICIO 2-->
-            <div class="dinteles-container">
-                <h1 class="titulo">Dinteles por piso (secciones pares)</h1>
 
-                <div class="secciones-grid">
-                    <!-- Sección Piso 1 -->
-                    <div class="seccion-item " *ngFor="let dintel of dinteles">
-                        <div class="plano-container">
-                            <img src="images/CasaForte/dintel1.png" alt="Plano Piso 1" class="plano-imagen">
-                            <!-- Las líneas azules se pueden implementar como divs posicionados sobre la imagen -->
-                            <div class="lineas-estructurales"></div>
-                        </div>
-
-                        <div class="detalles-container">
-                            <div class="seccion-header">
-                                {{dintel.nombre }}
-                            </div>
-
-                            <table class="tabla-detalles">
-                                <thead>
-                                    <tr>
-                                        <th>Cantidad</th>
-                                        <th>Longitud (m)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let dintelN of dintel.dinteles">
-                                        <td>{{ dintelN.title }}</td>
-                                        <td>{{ dintelN.url }} </td>
-                                    </tr>
-                                    <tr class="total-row">
-                                        <td>{{ dinteles[0].cantidadTotal }}</td>
-                                        <td>{{ dinteles[0].longitudTotal }} m</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-
+            <!-- Piso 2 -->
+            <div class="plan">
+                <img src="images/CasaForte/plano.png" alt="Plano Piso 2" />
+                <div class="label">
+                    <span class="circle1">P2</span> Piso 2
                 </div>
             </div>
-            <!--FIN2-->
         </div>
     </div>
+
+
+    <h3 style="background: #f5a414;padding: 15px;text-align: center;font-weight: 600;margin-top: 3%;margin-bottom: 3%;">
+        Secciones,
+        metrajes y tiempos de
+        ejecución</h3>
+
+    <div class="container">
+
+        <div class="categories">
+            <div class="category" style="width: 60%;"><span class="icon">M</span> Muros</div>
+            <div class="category"><span class="icon">L</span> Losas</div>
+        </div>
+        <div *ngIf="vistaActual === 'losas'">
+            <div class="content">
+                <!-- Imagen central -->
+                <div class="image-container">
+                    <img src="images/CasaForte/estructura3d.png" alt="Casa en construcción" />
+
+                    <!-- Círculos interactivos -->
+                    <div *ngFor="let section of sections" class="circle"
+                        [ngClass]="{ active: activeSection === section.id }" [style.top]="section.top"
+                        [style.left]="section.left" (click)="selectSection(section.id)"></div>
+                </div>
+
+
+                <div class="info-box" *ngFor="let section of sections"
+                    [ngClass]="{ show: activeSection === section.id }"
+                    [ngStyle]="{'top': section.infoTop, 'left': section.infoLeft}">
+                    <div class="section-header">
+                        <span style="font-size: 12px;">Seccion {{ section.id }}</span>
+                        <span class="section-id">S{{ section.id }}</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-name">{{ section.name }}</div>
+                    </div>
+                    <div class="section-content2">
+                        <div class="section-details2">
+                            {{ section.area }} m² <br>
+                            {{ section.time }} días
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="vistaActual === 'muros'">
+            <div class="content">
+                <!-- Imagen central -->
+                <div class="image-container">
+                    <img src="images/CasaForte/muro3d.png" alt="Casa en construcción" />
+
+                    <!-- Círculos interactivos -->
+                    <div *ngFor="let section of sectionsPosterior" class="circle"
+                        [ngClass]="{ active: activeSectionPosterior === section.id }" [style.top]="section.top"
+                        [style.left]="section.left" (click)="selectSectionPosterior(section.id)"></div>
+                </div>
+
+
+                <div class="info-box" *ngFor="let section of sectionsPosterior"
+                    [ngClass]="{ show: activeSectionPosterior === section.id }"
+                    [ngStyle]="{'top': section.infoTop, 'left': section.infoLeft}">
+                    <div class="section-header">
+                        <span style="font-size: 12px;">Seccion {{ section.id }}</span>
+                        <span class="section-id">S{{ section.id }}</span>
+                    </div>
+                    <div class="section-content">
+                        <div class="section-name">{{ section.name }}</div>
+                    </div>
+                    <div class="section-content2">
+                        <div class="section-details2">
+                            {{ section.area }} m² <br>
+                            {{ section.time }} días
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="botones-vista">
+            <button [class.activo]="vistaActual === 'losas'" (click)="cambiarVista('losas')" class="btn-vista losas">
+                Vista Frontal
+            </button>
+            <button [class.activo]="vistaActual === 'muros'" (click)="cambiarVista('muros')" class="btn-vista muros">
+                Vista Posterior
+            </button>
+        </div>
+    </div>
+
+
 </div>

@@ -8,10 +8,12 @@ import {BannerBoonkerComponent} from "./banner-boonker/banner-boonker.component"
 import {Router, RouterLink, RouterModule} from "@angular/router";
 import { CasafortesistemaComponent } from '../common/casafortesistema/casafortesistema.component';
 import { BeneficiosComponent } from '../common/beneficios/beneficios.component';
+import { PasosCasaForteComponent } from './pasos-casa-Forte/pasos-casa-Forte.component';
 
 @Component({
     selector: 'app-home-sistema-boonker',
     imports: [
+        PasosCasaForteComponent,
         CasafortesistemaComponent,
         BeneficiosComponent,
         BannerBoonkerComponent,

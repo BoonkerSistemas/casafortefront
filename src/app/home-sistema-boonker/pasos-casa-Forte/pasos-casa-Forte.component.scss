@@ -1,0 +1,428 @@
+.casaforte-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .main-title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+  
+  .timeline-container {
+    position: relative;
+  }
+  
+  .level-container {
+    margin-bottom: 60px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .level-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .level-number {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 60px;
+    flex-shrink: 0;
+  }
+  
+  .level-images {
+    display: flex;
+    flex-grow: 1;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  
+  .level-image {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+  }
+  
+  .level-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .timeline-path {
+    position: relative;
+    margin-left: 80px;
+  }
+  
+  .sections-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 30px;
+    margin-top: 20px;
+  }
+  
+  .section {
+    display: flex;
+    align-items: center;
+    margin-right: 28%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .section-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #000; /* Color negro para estado inactivo */
+    margin-right: 10px;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: 0 0 0 4px #f0f0f0, 0 2px 4px rgba(0,0,0,0.1); /* Plato circular con sombra ligera */
+  }
+  
+  .section-marker.active {
+    background-color: #FFA500; /* Color naranja/amarillo para estado activo */
+  }
+  .section-info {
+    display: flex;
+    flex-direction: column;
+    top: 26px;
+    position: relative;
+  }
+  
+  .section-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .section-info p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Conectores entre niveles */
+  .level-connector {
+    position: absolute;
+    left: 0px;
+    top: 104px;
+    width: 40px;
+    height: calc(100% + 122px);
+    z-index: 1;
+    border-left: 6px solid #000000;
+    border-bottom: 6px solid #000000;
+    border-bottom-left-radius: 25px;
+    border-top: 6px solid #000000;
+    border-top-left-radius: 25px;
+  }
+  
+  .horizontal-connector {
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    height: 35px;
+    width: calc(100% - 80px);
+    z-index: 1;
+    margin-left: 60px;
+    border: 6px solid transparent;
+    border-top-right-radius: 25px;
+  }
+  
+  .horizontal-connector::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -1%;
+    width: 55%;
+    height: 6px;
+    background-color: #f5a414;
+    border-top-left-radius: 6px;
+  }
+  
+  .horizontal-connector::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 55%;
+    width: 45.8%;
+    height: 50px;
+    border-bottom: 0px solid #ffffff00 !important;
+    border-left: 0px !important;
+    border-top-right-radius: 25px !important;
+    border: 6px solid #000000;
+  }
+  
+  .horizontal-connector-final {
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    height: 35px;
+    width: calc(100% - 80px);
+    z-index: 1;
+    margin-left: 60px;
+    border: 6px solid transparent;
+    border-top-right-radius: 25px;
+  }
+  
+  .horizontal-connector-final::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -1%;
+    width: 55%;
+    height: 6px;
+    background-color: #f5a414;
+    border-top-left-radius: 6px;
+  }
+  
+  .horizontal-connector-final::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 55%;
+    width: 28%;
+    height: 6px;
+    background-color: #000000;
+  }
+  
+  .horizontal-connector-final .arrow {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: 16%;
+    width: 0;
+    height: 0;
+    border-left: 12px solid black;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+  }
+  
+  .curve-connector {
+    position: absolute;
+    right: 20px;
+    top: 75px;
+    width: 95%;
+    height: 35px;
+    border-right: 6px solid #000000;
+    border-bottom: 6px solid #000000;
+    border-bottom-right-radius: 25px;
+    z-index: 1;
+  }
+  
+  .final-stage {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 100px;
+    font-weight: bold;
+  }
+  
+  /* Responsive para tablets */
+  @media (max-width: 768px) {
+    .level-images {
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .level-image {
+      width: calc(50% - 4px);
+      height: 80px;
+    }
+    
+    .level-number {
+      margin-right: 20px;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+    }
+    
+    .sections-container {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-left: 15px;
+    }
+    
+    .section {
+      margin-right: 40px;
+      margin-bottom: 20px;
+    }
+    
+    .timeline-path {
+      margin-left: 40px;
+    }
+    
+    .horizontal-connector, 
+    .horizontal-connector-final,
+    .curve-connector {
+      width: calc(100% - 40px);
+    }
+    
+    .horizontal-connector::after,
+    .horizontal-connector-final::after {
+      width: 30%;
+    }
+    
+    .level-connector {
+      height: calc(100% + 80px);
+    }
+  }
+  
+  /* Responsive para móviles - VERSIÓN MEJORADA */
+  @media (max-width: 480px) {
+    .casaforte-container {
+      padding: 10px;
+    }
+    
+    .main-title {
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    
+    /* Mantener la estructura de fila pero ajustar tamaños */
+    .level-header {
+      align-items: center;
+    }
+    
+    .level-number {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+      margin-right: 15px;
+    }
+    
+    /* Disponer las imágenes en un carrusel horizontal scrolleable */
+    .level-images {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 10px;
+      width: calc(100% - 55px);
+    }
+    
+    .level-image {
+      flex: 0 0 85%;
+      width: 85%;
+      min-width: 200px;
+      height: 120px;
+      margin-right: 10px;
+      scroll-snap-align: start;
+    }
+    
+    /* Ajustar la ruta del timeline */
+    .timeline-path {
+      margin-left: 20px;
+    }
+    
+    /* Mantener conectores verticales pero ajustar dimensiones */
+    .level-connector {
+      left: -5px;
+      width: 25px;
+      height: calc(100% + 70px);
+      border-width: 4px;
+    }
+    
+    /* Simplificar los conectores horizontales pero mantenerlos visibles */
+    .horizontal-connector,
+    .horizontal-connector-final {
+      left: -5px;
+      width: calc(100% - 15px);
+      height: 25px;
+      margin-left: 25px;
+      border-width: 4px;
+    }
+    
+    .horizontal-connector::before,
+    .horizontal-connector-final::before {
+      width: 40%;
+      height: 4px;
+      top: -4px;
+    }
+    
+    .horizontal-connector::after,
+    .horizontal-connector-final::after {
+      width: 60%;
+      height: 30px;
+      top: -4px;
+      border-width: 4px;
+    }
+    
+    .horizontal-connector-final .arrow {
+      right: 25px;
+      top: -10px;
+      border-left-width: 8px;
+      border-top-width: 8px;
+      border-bottom-width: 8px;
+    }
+    
+    .curve-connector {
+      right: 10px;
+      width: 90%;
+      height: 25px;
+      border-width: 4px;
+    }
+    
+    /* Ajustar secciones para que se muestren claramente */
+    .sections-container {
+      flex-direction: column;
+      margin-left: 10px;
+      margin-top: 30px;
+    }
+    
+    .section {
+      margin-bottom: 25px;
+      margin-right: 0;
+    }
+    
+    .section-marker {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .section-info {
+      top: 8px;
+    }
+    
+    /* Ajustar la etapa final */
+    .final-stage {
+      position: relative;
+      right: auto;
+      bottom: auto;
+      width: auto;
+      margin-left: 30px;
+      margin-top: 15px;
+      padding: 8px 15px;
+      background-color: #f5a414;
+      color: white;
+      border-radius: 4px;
+      text-align: center;
+      display: inline-block;
+    }
+    
+    /* Añadir indicadores de scroll para imágenes */
+    .level-images:after {
+      content: "◄ desliza ►";
+      position: absolute;
+      bottom: -5px;
+      right: 10px;
+      font-size: 12px;
+      color: #666;
+      pointer-events: none;
+    }
+  }

@@ -20,11 +20,13 @@ import { ProductsSistemaBoonkerComponent } from './products-sistema-boonker/prod
 import {MapaEcuadorComponent} from "./mapa/mapa.component";
 import { GaleriaCasaForteComponent } from './galeria-casa-forte/galeria-casa-forte.component';
 import { DescripcionCasaForteComponent } from './descripcion-casa-forte/descripcion-casa-forte.component';
+import { BeneficiosCasaForteComponent } from './beneficios-casa-forte/beneficios-casa-forte';
 
 export const routes: Routes = [
     {path: '', component: HomeTwoComponent},
     {path: 'home', component: HomeTwoComponent},
     {path: 'sistema-casa-forte', component: HomeSistemaBoonkerComponent},
+    {path: 'beneficios-casa-forte', component: BeneficiosCasaForteComponent},
     {path: 'galeria-casa-forte', component: GaleriaCasaForteComponent},
     {path: 'galeria-casa-forte/:id', component: DescripcionCasaForteComponent},
     {path: 'sistema-muros-contencion', component: HomeSistemaMurosContencionComponent},

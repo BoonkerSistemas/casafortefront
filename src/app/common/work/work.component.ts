@@ -3,6 +3,7 @@ import { CommonModule, NgClass, NgFor, NgIf, ViewportScroller } from '@angular/c
 import { RouterLink } from '@angular/router';
 import { HomeService } from '../../../service/home/home.service';
 import {environment} from "@env/environment";
+import { log } from 'node:console';
 
 interface Categoria {
     titulo: string;
@@ -31,11 +32,51 @@ export class WorkComponent implements OnInit {
     description = 'casaforteproyectos';
     lists: any;
     content: any;
-    currentTab: string = '1';
-    currentTab2: string = '';
-    workSelected: any;
-    tabs: any;
-    works: Work[] = []; // 🔹 Se inicializa correctamente como un array vacío
+    currentTab: number = 1;
+    currentTab2: number | null = null;
+    workSelected: any = null;
+    filteredWorks: any[] = [];
+    //tabs: any;
+    //works: Work[] = []; // 🔹 Se inicializa correctamente como un array vacío
+    tabs = [
+        { number: 1, title: 'Mampostería' },
+        { number: 2, title: 'Concreto' },
+        { number: 3, title: 'Acabados' }
+      ];
+
+   // Datos de los trabajos (imágenes)
+   works = [
+    {
+      tab: 1,
+      img: 'images/demo-img/blog-details.jpg',
+      categorias: [
+        { id: 11, title: 'Ladrillo Rojo', icon: { url: 'images/CasaForte/categorias/1.jpg' }, content: 'Descripción del Ladrillo Rojo.' },
+        { id: 12, title: 'Bloques de Cemento', icon: { url: 'images/CasaForte/categorias/2.jpg' }, content: 'Descripción de los Bloques de Cemento.' }
+      ]
+    },
+    {
+      tab: 1,
+      img: 'images/demo-img/blog-details.jpg',
+      categorias: [
+        { id: 13, title: 'Ladrillo Refractario', icon: { url: 'images/CasaForte/categorias/3.jpg' }, content: 'Descripción del Ladrillo Refractario.' }
+      ]
+    },
+    {
+        tab: 1,
+        img: 'images/demo-img/blog-details.jpg',
+        categorias: [
+          { id: 14, title: 'Ladrillo Refractario', icon: { url: 'images/CasaForte/categorias/3.jpg' }, content: 'Descripción del Ladrillo Refractario.' }
+        ]
+      },
+    {
+      tab: 2,
+      img: 'images/demo-img/blog-details.jpg',
+      categorias: [
+        { id: 21, title: 'Hormigón Armado', icon: { url: 'images/CasaForte/categorias/4.jpg' }, content: 'Descripción del Hormigón Armado.' }
+      ]
+    }
+  ];
+
 
     constructor(
         private viewportScroller: ViewportScroller,
@@ -43,15 +84,50 @@ export class WorkComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.inicio();
-        this.product();
+       // this.inicio();
+        //this.product();
+        this.updateFilteredWorks();
     }
+
+    
+      updateFilteredWorks() {
+        this.filteredWorks = this.works.filter(work => work.tab === this.currentTab);
+        console.log('Filtrado:', this.filteredWorks);
+        
+      }
 
     public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
     }
 
-    async inicio() {
+    switchTab(tabNumber: number): void {
+        this.currentTab = tabNumber;
+        this.updateFilteredWorks();
+        //this.workSelected = null;
+        //this.currentTab2 = null;
+      }
+    
+      hasWorksForCurrentTab(): boolean {
+        return this.works.some(work => work.tab === this.currentTab);
+      }
+    
+      selectWork(work: any): void {
+        console.log('Work selected:', work);
+        
+        this.workSelected = work;
+        this.currentTab2 = null;
+      }
+    
+      switchTab2(categoria: any): void {
+        this.currentTab2 = categoria.id;
+      }
+    
+      getCategoriaContent(): string {
+        if (!this.workSelected || !this.currentTab2) return '';
+        const categoria = this.workSelected.categorias.find((c: any) => c.id === this.currentTab2);
+        return categoria ? categoria.content : '';
+      }
+    /*async inicio() {
         try {
             const element = await this.homeService.getComponentList('Proyectos');
             const response = element.data;
@@ -71,7 +147,7 @@ export class WorkComponent implements OnInit {
 
     async product() {
         try {
-            const element = await this.homeService.getComponentProduct();
+           const element = await this.homeService.getComponentProduct();
             const response = element.data;
 
            // console.log('Datos cargados:', response);
@@ -126,7 +202,7 @@ export class WorkComponent implements OnInit {
 
     hasWorksForCurrentTab(): boolean {
         return this.works.some((work) => work.tab === this.currentTab);
-    }
+    }*/
 
     protected readonly environment = environment;
 }
