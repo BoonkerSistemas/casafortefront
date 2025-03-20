@@ -126,6 +126,35 @@ export class HomeService {
         }
     }
 
+    async getComponentProductSistemaConstructivo() {
+        const url: string = `${environment.api_url}/solucion-constructivas?[populate]=*`;
+        const headers = {
+            Authorization: 'Bearer ' + environment.token,
+        };
+
+        try {
+            const response = await axios.get(url, {headers});
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener los datos', error);
+            throw error;
+        }
+    }
+    async getComponentProductSistemaConstructivoVariedad() {
+        const url: string = `${environment.api_url}/solucion-constructivas?[populate]=variedades.icon`;
+        const headers = {
+            Authorization: 'Bearer ' + environment.token,
+        };
+
+        try {
+            const response = await axios.get(url, {headers});
+            return response.data;
+        } catch (error) {
+            console.error('Error al obtener los datos', error);
+            throw error;
+        }
+    }
+
     async getComponentSliderBeneficios() {
         const url: string = `${environment.api_url}/beneficios?[populate]=*`;
         const headers = {
