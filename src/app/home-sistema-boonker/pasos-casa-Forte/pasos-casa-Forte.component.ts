@@ -4,7 +4,6 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
     selector: 'app-pasos-casa-Forte',
     imports: [
-        NgForOf,
         CarouselModule,
         CommonModule 
     ],

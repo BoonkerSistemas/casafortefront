@@ -7,6 +7,10 @@ import {DomSanitizer, Meta} from "@angular/platform-browser";
 import {environment} from "@env/environment";
 import { ChangeDetectorRef } from '@angular/core';
 
+interface ImageBanner {
+    url: string;
+}
+
 @Component({
     selector: 'app-banner',
     imports: [CommonModule, CarouselModule],
@@ -15,6 +19,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class BannerComponent {
     sliders: any = [];
+    slider: { banner: ImageBanner[] } = { banner: [] };
 
     constructor(
         private viewportScroller: ViewportScroller,
@@ -64,8 +69,10 @@ export class BannerComponent {
 
                 console.log(response, "232323")
 
+
                 // Ordenar por id en orden ascendente
-                response.sort((a: any, b: any) => a.id - b.id);
+                response.sort((a: any, b: any) => a.orden - b.orden);
+
 
                 this.sliders = response.map((slider: any) => {
                     if (slider.image && slider.image.url) {
