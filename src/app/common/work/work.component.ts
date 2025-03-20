@@ -36,13 +36,13 @@ export class WorkComponent implements OnInit {
     currentTab2: number | null = null;
     workSelected: any = null;
     filteredWorks: any[] = [];
-    //tabs: any;
+    tabs: any;
     //works: Work[] = []; // 🔹 Se inicializa correctamente como un array vacío
-    tabs = [
+    /*tabs = [
         { number: 1, title: 'Mampostería' },
         { number: 2, title: 'Concreto' },
         { number: 3, title: 'Acabados' }
-      ];
+      ];*/
 
    // Datos de los trabajos (imágenes)
    works = [
@@ -84,8 +84,8 @@ export class WorkComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-       // this.inicio();
-        //this.product();
+        this.inicio();
+        this.product();
         this.updateFilteredWorks();
     }
 
@@ -103,8 +103,6 @@ export class WorkComponent implements OnInit {
     switchTab(tabNumber: number): void {
         this.currentTab = tabNumber;
         this.updateFilteredWorks();
-        //this.workSelected = null;
-        //this.currentTab2 = null;
       }
     
       hasWorksForCurrentTab(): boolean {
@@ -127,10 +125,14 @@ export class WorkComponent implements OnInit {
         const categoria = this.workSelected.categorias.find((c: any) => c.id === this.currentTab2);
         return categoria ? categoria.content : '';
       }
-    /*async inicio() {
+
+
+    async inicio() {
         try {
             const element = await this.homeService.getComponentList('Proyectos');
             const response = element.data;
+            console.log('Datos cargados:', response);
+            
 
             if (response?.Proyectos) {
                 this.title = response.Proyectos.title;
@@ -150,7 +152,7 @@ export class WorkComponent implements OnInit {
            const element = await this.homeService.getComponentProduct();
             const response = element.data;
 
-           // console.log('Datos cargados:', response);
+            console.log('Datos cargados 222:', response);
 
             if (Array.isArray(response)) {  // 🔹 Verifica que `response` sea un array antes de iterar
                 response.forEach((work: any) => {
@@ -163,7 +165,7 @@ export class WorkComponent implements OnInit {
                         categorias: work.variedades
                     };
 
-                    this.works.push(json);
+                    //this.works.push(json);
                     console.log('------------------------');
                 });
             } else {
@@ -174,7 +176,7 @@ export class WorkComponent implements OnInit {
         }
     }
 
-    switchTab(event: Event, tabId: string) {
+  /*switchTab(event: Event, tabId: string) {
         event.preventDefault();
         this.currentTab = tabId;
     }
