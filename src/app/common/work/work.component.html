@@ -35,7 +35,8 @@
                                         <li *ngFor="let categoria of workSelected.categorias" class="nav-tab-categorias"
                                             [ngClass]="{ 'active': currentTab2 === categoria.id }">
                                             <span (click)="switchTab2(categoria)">
-                                                <img class="imgCategorias" [src]="categoria.icon.url"
+                                                <img class="imgCategorias"
+                                                    [src]="environment.api_img + (categoria.icon?.url || 'images/Maestra.png')"
                                                     alt="categoria-img">
                                                 <p style="margin-top:10px;letter-spacing: 0; font-size: 14px;">
                                                     {{ categoria.title }}

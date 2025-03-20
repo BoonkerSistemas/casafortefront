@@ -37,7 +37,7 @@ export class WorkComponent implements OnInit {
     workSelected: any = null;
     filteredWorks: any[] = [];
     tabs: any;
-    //works: Work[] = []; // 🔹 Se inicializa correctamente como un array vacío
+    works: any[] = []; // 🔹 Se inicializa correctamente como un array vacío
     /*tabs = [
         { number: 1, title: 'Mampostería' },
         { number: 2, title: 'Concreto' },
@@ -45,7 +45,7 @@ export class WorkComponent implements OnInit {
       ];*/
 
    // Datos de los trabajos (imágenes)
-   works = [
+   /*works = [
     {
       tab: 1,
       img: 'images/demo-img/blog-details.jpg',
@@ -75,7 +75,7 @@ export class WorkComponent implements OnInit {
         { id: 21, title: 'Hormigón Armado', icon: { url: 'images/CasaForte/categorias/4.jpg' }, content: 'Descripción del Hormigón Armado.' }
       ]
     }
-  ];
+  ];*/
 
 
     constructor(
@@ -157,7 +157,7 @@ export class WorkComponent implements OnInit {
             if (Array.isArray(response)) {  // 🔹 Verifica que `response` sea un array antes de iterar
                 response.forEach((work: any) => {
 
-                    let json: Work = {
+                    let json2: Work = {
                         img: 'images/Maestra.png',
                         title: work.Titulo,
                         descripcion: work.Descripcion,
@@ -165,12 +165,21 @@ export class WorkComponent implements OnInit {
                         categorias: work.variedades
                     };
 
-                    //this.works.push(json);
+                    let json :any ={
+                      tab: work.numero,
+                      img: 'images/Maestra.png',
+                      categorias: work.variedades
+                    }
+
+                    this.works.push(json);
                     console.log('------------------------');
                 });
             } else {
                 console.warn('El formato de `response` no es el esperado:', response);
             }
+
+            
+            
         } catch (error) {
             console.error('Error al obtener el componente Productos:', error);
         }
