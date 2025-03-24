@@ -39,7 +39,8 @@ background: #dcdddc;
                         <p class="text-black">Altura de entrepisos: <span [innerHTML]="slider?.altura"></span></p>
                         <p class="text-black">Luz máxima: <span [innerHTML]="slider?.luz"></span></p>
                         <div class="mt-2">
-                            <button (click)="onClick('work')"
+                            <button [routerLink]="['/galeria-casa-forte/' + slider.documentId]"
+                                routerLinkActive="router-link-active"
                                 class="bg-black text-white px-4 py-2 rounded-md font-bold hover:bg-gray-800">
                                 Conocer proyecto
                             </button>
@@ -84,10 +85,13 @@ background: #dcdddc;
                         <p class="text-black">Altura de entrepisos: <span [innerHTML]="slider?.altura"></span></p>
 
                         <div class="mt-2">
-                            <button (click)="onClick('work')"
+                            <button [routerLink]="['/galeria-casa-forte/' + slider.documentId]"
+                                routerLinkActive="router-link-active"
                                 class="bg-black text-white px-4 py-2 rounded-md font-bold hover:bg-gray-800">
                                 Conocer proyecto
                             </button>
+
+
                         </div>
                     </div>
                 </div>

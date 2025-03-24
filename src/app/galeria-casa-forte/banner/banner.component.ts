@@ -6,10 +6,11 @@ import {HomeService} from "../../../service/home/home.service";
 import {DomSanitizer, Meta} from "@angular/platform-browser";
 import {environment} from "@env/environment";
 import { ChangeDetectorRef } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-banner',
-    imports: [CommonModule, CarouselModule],
+    imports: [RouterLink,CommonModule, CarouselModule],
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss']
 })
