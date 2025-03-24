@@ -116,16 +116,21 @@ export class WorkComponent implements OnInit {
 
 
             if (Array.isArray(response)) {
-                response.forEach((work: any) => {
+                for (const work of response) {
+
+                    const elementProduct = await this.homeService.getComponentProductSistemaConstructivoVariedad(work.documentId);
+
+                    console.log(elementProduct);
+
                     let json :any ={
                       tab: work.numero,
                       img: environment.api_img + work.img.url,
-                      categorias: work.variedades
+                      categorias: elementProduct.data.variedades
                     }
 
                     this.works.push(json);
                     console.log('------------------------');
-                });
+                }
             } else {
                 console.warn('El formato de `response` no es el esperado:', response);
             }

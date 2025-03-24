@@ -140,8 +140,8 @@ export class HomeService {
             throw error;
         }
     }
-    async getComponentProductSistemaConstructivoVariedad() {
-        const url: string = `${environment.api_url}/solucion-constructivas?[populate]=variedades.icon`;
+    async getComponentProductSistemaConstructivoVariedad(id: any) {
+        const url: string = `${environment.api_url}/solucion-constructivas/${id}?[populate]=variedades.icon`;
         const headers = {
             Authorization: 'Bearer ' + environment.token,
         };
