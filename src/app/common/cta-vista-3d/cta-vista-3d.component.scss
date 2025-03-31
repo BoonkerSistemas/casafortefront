@@ -133,22 +133,24 @@
 
 .category {
   display: flex;
-  align-items: center;
-  font-weight: bold;
+    align-items: center;
+    font-weight: 500;
+    font-size: 25px;
   
 }
 
 .icon {
   display: inline-block;
-  background: black;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 30px;
-  font-weight: bold;
-  margin-right: 5px;
+    background: black;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    margin-right: 5px;
+    font-size: x-large;
 }
 
 .content {
@@ -204,9 +206,10 @@
 .section-id {
   background: #f5a414;
   color: rgb(0, 0, 0);
-  padding: 5px;
   border-radius: 50%;
-  margin-right: 5px;
+  padding: 8px;
+  font-size: 25px;
+  font-weight: 600;
 }
 
 .view-toggle {
@@ -253,14 +256,14 @@
   border: 1px solid #000;
   border-right: 0px  !important;
   margin-top: 5%;
-  width: 250px;
+  //width: 250px;
   display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .section-content2 {
-  flex: 1;
+  flex: none;
   background-color: #ffa60000; 
   padding: 0px 10px;
   position: relative;
@@ -268,4 +271,7 @@
   border-left: 0px  !important;
   margin-top: 5%;
 }
-
+.section-name{
+  line-height: 18px;
+    font-weight: 600;
+}

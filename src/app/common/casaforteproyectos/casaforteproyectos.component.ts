@@ -72,6 +72,7 @@ export class CasaforteproyectosComponent implements OnInit, AfterViewInit {
                 this.title = response.Quality.title;
                 this.description = response.Quality.description;
                 this.lists = response.Quality.listado;
+console.log(this.lists);
 
             })
             .catch((error) => {

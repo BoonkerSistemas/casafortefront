@@ -6,6 +6,7 @@ import {HomeService} from "../../../service/home/home.service";
 import {DomSanitizer, Meta} from "@angular/platform-browser";
 import {environment} from "@env/environment";
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface ImageBanner {
     url: string;
@@ -25,11 +26,20 @@ export class BannerComponent {
         private viewportScroller: ViewportScroller,
         private _firstComponentService: HomeService,
         private sanitizer: DomSanitizer,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private router: Router,
     ) {}
 
     public onClick(elementId: string): void {
-        this.viewportScroller.scrollToAnchor(elementId);
+
+        //this.viewportScroller.scrollToAnchor(elementId);
+         // Navega a la URL y espera hasta que termine la navegación
+    this.router.navigate(['/beneficios-casa-forte']).then(() => {
+        // Usa setTimeout para asegurar que la página haya renderizado antes de hacer scroll
+        setTimeout(() => {
+          this.viewportScroller.scrollToAnchor(elementId);
+        }, 500); // Ajusta el tiempo si es necesario
+      });
     }
 
     homeSlides: OwlOptions = {
