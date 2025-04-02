@@ -8,7 +8,11 @@ import { ViewportScroller } from '@angular/common';
     styleUrls: ['./cta-casa-forte.component.scss']
 })
 export class CtaCasaFOrteComponent {
-
+    images = [
+        { src: 'assets/images/imagen1.jpg', alt: 'Imagen 1' },
+        { src: 'assets/images/imagen2.jpg', alt: 'Imagen 2' },
+        { src: 'assets/images/imagen3.jpg', alt: 'Imagen 3' }
+      ];
     constructor(
         private viewportScroller: ViewportScroller
     ) {}
