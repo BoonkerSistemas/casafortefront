@@ -130,7 +130,7 @@ export class PasosCasaForteComponent implements OnInit, AfterViewInit {
     
     
                     // Ordenar por id en orden ascendente
-                    response.sort((a: any, b: any) => a.orden - b.orden);
+                    response.sort((a: any, b: any) => a.Nivel - b.Nivel);
 
                     this.constructionLevels = response;
     

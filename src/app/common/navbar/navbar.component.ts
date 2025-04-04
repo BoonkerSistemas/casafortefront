@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, HostListener, OnInit, Renderer2} from '@angular/core';
 import {Location} from '@angular/common';
 import {NgClass, NgForOf, NgIf, ViewportScroller} from '@angular/common';
 import {MenuService} from '../../../service/menu/menu.service';
@@ -27,6 +27,8 @@ interface MenuItem {
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+    // Añade esta propiedad para controlar la visibilidad del menú móvil
+public isMobileMenuVisible = false;
     menus: MenuItem[] = [];
     menuCliente = [{
         "id": 320,
@@ -64,6 +66,9 @@ export class NavbarComponent implements OnInit {
     logos: string = '';
     logoBlanco: string = '';
     logoNegro: string = '';
+    logoMobile: string = '';
+    logoMobile2: string = '';
+    isMobile: boolean = false;
     mail: string = '';
     phone: string = '';
     whatsapp: string = '';
@@ -80,7 +85,8 @@ export class NavbarComponent implements OnInit {
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private location: Location,
-        private changeDetectorRef: ChangeDetectorRef
+        private changeDetectorRef: ChangeDetectorRef,
+        private renderer: Renderer2
     ) {
     }
 
@@ -88,6 +94,8 @@ export class NavbarComponent implements OnInit {
         await this.loadMenu();
         await this.loadGeneralData();
         await this.setupResizeObserver();
+        await this.checkMobileView(); // Verificar estado móvil al inicio
+    return Promise.resolve();
     }
 
     private async loadMenu(): Promise<void> {
@@ -105,9 +113,19 @@ export class NavbarComponent implements OnInit {
         if (this.navbarResizeObserver) {
             this.navbarResizeObserver.disconnect();
         }
+        // Verificar si document está disponible antes de usarlo
+  if (typeof document !== 'undefined') {
+    // Asegurar que se elimine la clase del body si se destruye el componente
+    this.renderer.removeClass(document.body, 'menu-open');
+  }
     }
 
     setupResizeObserver() {
+        // Verificar si estamos en un entorno de navegador
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return; // Salir si no estamos en un navegador
+  }
+
         const navbarElement = document.querySelector('.navbar');
 
         if (navbarElement && 'ResizeObserver' in window) {
@@ -147,28 +165,76 @@ export class NavbarComponent implements OnInit {
                     case 'logoNegro':
                         this.logoNegro = element.icon.url;
                         break;
+                    case 'logoMobile': // Añade esta opción
+                        this.logoMobile = environment.api_img + element.icon.url;
+                        break;
+                    case 'logoMobile2': // Añade esta opción
+                        this.logoMobile2 = environment.api_img + element.icon.url;
+                        break;
                 }
             });
-            this.logos = environment.api_img + this.logoBlanco;
+           // Establece los logos según el estado actual
+        this.updateLogos();
+        
+        // Si no hay logo móvil definido, usa el logo normal pero con una ruta diferente
+        if (!this.logoMobile) {
+            console.log('Logo móvil no definido, usando logo normal');
+            
+            this.logoMobile = environment.api_img + this.logoBlanco;
+        }
         } catch (error) {
             console.error('Error al obtener datos generales', error);
         }
     }
 
+    // Método para verificar si estamos en vista móvil
+private checkMobileView(): void {
+    if (typeof window !== 'undefined') {
+        this.isMobile = window.innerWidth < 768;
+        this.isMobile = window.innerWidth < 992;
+        console.log('Is mobile:', this.isMobile);
+        
+        this.updateLogos(); // Actualiza los logos cuando cambie el tamaño
+    }
+}
+
+// Actualiza los logos según el tamaño de pantalla y el estado sticky
+private updateLogos(): void {
+    if (!this.isSticky) {
+        this.logos = environment.api_img + this.logoBlanco;
+    } else {
+        this.logos = environment.api_img + this.logoNegro;
+    }
+}
+
+
     @HostListener('window:scroll', ['$event'])
     checkScroll(): void {
+        // Verificar si estamos en un entorno de navegador
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
         this.logos = '';
         this.isSticky = (window.scrollY || document.documentElement.scrollTop || document.body.scrollTop) >= 50;
         // Cambiar el logo cuando la navbar sea sticky
-        if (!this.isSticky) {
+        this.updateLogos();
+        /*if (!this.isSticky) {
             this.logos = environment.api_img + this.logoBlanco; // Cambia el logo cuando es sticky
         } else {
             this.logos = environment.api_img + this.logoNegro; // Logo original cuando no es sticky
-        }
+        }*/
     }
 
     @HostListener('window:scroll', [])
     onWindowScroll() {
+
+        // Verificar si estamos en un entorno de navegador
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
+
         const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
         if (scrollPosition > 100) {
@@ -188,6 +254,42 @@ export class NavbarComponent implements OnInit {
             this.isSticky = false;
         }
     }
+
+    // Añade este método para detectar cambios de tamaño de pantalla
+@HostListener('window:resize', ['$event'])
+onResize(event: any) {
+    // Verificar si estamos en un entorno de navegador
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return;
+  }
+
+  // Si la pantalla es mayor a 768px y el menú móvil está abierto, cerrarlo
+  if (window.innerWidth > 768 && this.isMobileMenuVisible) {
+    this.isNavbarOpen = false;
+    this.isMobileMenuVisible = false;
+    this.renderer.removeClass(document.body, 'menu-open');
+  }
+  this.checkMobileView();
+  
+  // Actualizar posición de navbar2 si está sticky
+  this.updateNavbar2Position();
+}
+
+// Método para actualizar la posición del navbar2
+private updateNavbar2Position() {
+    // Verificar si estamos en un entorno de navegador
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+    if (this.isSticky) {
+      const navbar1Height = document.querySelector('.navbar')?.clientHeight || 0;
+      const navbar2 = document.querySelector('.navbar2') as HTMLElement;
+      if (navbar2) {
+        navbar2.style.top = `${navbar1Height}px`;
+      }
+    }
+  }
 
     public onClick(elementId: string): void {
         this.viewportScroller.scrollToAnchor(elementId);
@@ -222,6 +324,24 @@ export class NavbarComponent implements OnInit {
 
     toggleNavbar() {
         this.isNavbarOpen = !this.isNavbarOpen;
+        this.isMobileMenuVisible = this.isNavbarOpen;
+
+        // Verificar si estamos en un entorno de navegador
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+
+        // Bloquear el scroll del body cuando el menú está abierto
+  if (this.isNavbarOpen) {
+    this.renderer.addClass(document.body, 'menu-open');
+    // Forzar la detección de cambios para asegurar que la UI se actualice
+    this.changeDetectorRef.detectChanges();
+  } else {
+    this.renderer.removeClass(document.body, 'menu-open');
+  }
+  // Registra el estado para depuración
+  console.log('Navbar toggle:', this.isNavbarOpen);
     }
 
 
@@ -234,6 +354,7 @@ export class NavbarComponent implements OnInit {
 
         this.activeItem = title;
         this.dropdownOpen[title] = false;  // Cerrar el dropdown después de seleccionar el item
+        this.closeMenuOnNavigation(); 
     }
 
     checkActiveLink(url: string): boolean {
@@ -277,6 +398,7 @@ export class NavbarComponent implements OnInit {
 
         this.selectItem(item.title);
         this.navigateToLandingAndSectionSimple(item.url);
+        this.closeMenuOnNavigation();  
     }
 
     /*async navigateToLandingAndSectionSimple(landingUrl: string) {
@@ -346,6 +468,7 @@ export class NavbarComponent implements OnInit {
                 console.log('Already on landing, scrolling to section:', sectionUrl);
                 this.viewportScroller.scrollToAnchor(sectionUrl);
             }
+            this.closeMenuOnNavigation();
         }
 
 
@@ -353,4 +476,13 @@ export class NavbarComponent implements OnInit {
         const currentUrl = this.location.path();
         return currentUrl.includes(url);
     }
+
+    public closeMenuOnNavigation(): void {
+        this.isNavbarOpen = false;
+        this.isMobileMenuVisible = false;
+       // Verificar si estamos en un entorno de navegador
+  if (typeof document !== 'undefined') {
+    this.renderer.removeClass(document.body, 'menu-open');
+  }
+      }
 }

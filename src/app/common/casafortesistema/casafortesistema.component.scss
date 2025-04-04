@@ -276,6 +276,15 @@
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
 
+  .work-tabs .nav-tabset-categorias {
+    text-align: center;
+    display: block;
+    .nav-tab-categorias{
+      width: 110px;
+    }
+    
+}
+
   .work-tabs {
     .nav-tabset {
       padding: 0;

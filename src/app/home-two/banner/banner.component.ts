@@ -1,6 +1,6 @@
 import {CarouselModule, OwlOptions} from 'ngx-owl-carousel-o';
 import { MarkdownPipe } from '../../../pipe/markdown.pipe';
-import {Component} from "@angular/core";
+import {Component, OnDestroy, OnInit} from "@angular/core";
 import {CommonModule, ViewportScroller} from "@angular/common";
 import {HomeService} from "../../../service/home/home.service";
 import {DomSanitizer, Meta} from "@angular/platform-browser";
@@ -18,9 +18,12 @@ interface ImageBanner {
     templateUrl: './banner.component.html',
     styleUrls: ['./banner.component.scss']
 })
-export class BannerComponent {
+export class BannerComponent  implements OnInit, OnDestroy{
     sliders: any = [];
     slider: { banner: ImageBanner[] } = { banner: [] };
+    isMobile: boolean = false;
+    private resizeListener: (() => void) | null = null;
+
 
     constructor(
         private viewportScroller: ViewportScroller,
@@ -69,8 +72,30 @@ export class BannerComponent {
     }
 
     ngOnInit(): void {
-        this.inicio();
+      // Verificar si estamos en el navegador antes de usar window
+      if (typeof window !== 'undefined') {
+        this.checkScreenSize();
+        this.resizeListener = () => this.checkScreenSize();
+        window.addEventListener('resize', this.resizeListener);
     }
+      this.inicio();
+    }
+
+    ngOnDestroy(): void {
+      // Verificar si estamos en el navegador antes de usar window
+      /*if (typeof window !== 'undefined' && this.resizeListener) {
+        window.removeEventListener('resize', this.resizeListener);
+        this.resizeListener = null;
+    }*/
+  }
+
+  checkScreenSize(): void {
+    if (typeof window !== 'undefined') {
+      this.isMobile = window.innerWidth < 768;
+      this.cdr.detectChanges();
+  }
+}
+
 
     inicio() {
         this._firstComponentService.getComponentSlider()

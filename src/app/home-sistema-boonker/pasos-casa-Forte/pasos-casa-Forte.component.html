@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-title" style="margin-left: 40px">
             <h1 style="font-weight: 600; letter-spacing: 0 !important; display: inline-block;">El paso a paso del
-                Sistema CasaForte</h1>
+                Sistema Constructivo CasaForte</h1>
         </div>
 
         <div class="casaforte-container">
@@ -33,8 +33,10 @@
                         </div>
                         <div class="sections-container">
                             <div class="section" *ngFor="let section of item.sections">
-                                <div class="section-marker active"></div>
+                                <div class="section-marker " *ngIf="!section.active"></div>
+                                <div class="section-marker active" *ngIf="section.active"></div>
                                 <div class="section-info">
+
                                     <h3>{{section.title}}</h3>
                                     <p>{{section.subtitle}}</p>
                                 </div>

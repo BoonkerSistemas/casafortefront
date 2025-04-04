@@ -1,9 +1,6 @@
 <div class="home-slides" id="banner">
     <owl-carousel-o [options]="homeSlides">
-
         <ng-template carouselSlide *ngFor="let slider of sliders">
-            <!--<div class="main-banner" [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'">
-            -->
             <div class="main-banner">
                 <ng-container *ngIf="isVideo(slider.image.url); else imageContent">
                     <!-- Video como fondo -->
@@ -14,19 +11,15 @@
                 <ng-template #imageContent>
                     <!-- Imagen como fondo -->
                     <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
-                        style="width: 56%;height: 100%;z-index: -1;position: absolute;background-size: cover;"></div>
+                        class="video-background"></div>
                 </ng-template>
 
-
-
-
-
                 <div class="d-table">
-                    <div class="  d-table-cell">
+                    <div class="d-table-cell">
                         <div class="container-text">
                             <div class="main-banner-text">
-
-                                <div class="container row" style="margin-left: 4%;">
+                                <!-- Primera fila de imágenes - Solo visible en desktop/tablet -->
+                                <div class="container row d-none d-md-flex" style="margin-left: 4%;">
                                     <div class="col-md-3" style="padding-left: 0;">
                                         <img [src]="environment.api_img + slider.banner[0].url" alt="">
                                     </div>
@@ -41,30 +34,26 @@
                                     </div>
                                 </div>
 
-                                <h1 class=" container mb-4 text-left text-[31px] lg:text-[20px]"
-                                    style="color: rgb(0, 0, 0) !important;text-align: left;text-align: left;margin: 4%; letter-spacing: -2px !important; margin-bottom: 1% !important;"
+                                <h1 class="container mb-4 text-left"
+                                    style="color: rgb(0, 0, 0) ;text-align: left;margin: 4%; letter-spacing: -2px !important; margin-bottom: 1% !important;"
                                     [innerHTML]="slider?.Title"></h1>
 
-                                <p class=" container md:text-subtitle text-sm font-medium lg:text-[20px] white-text"
-                                    style="color: rgb(0, 0, 0) !important;text-align: left;
+                                <p class="container md:text-subtitle text-sm font-medium white-text" style="color: rgb(0, 0, 0) !important;text-align: left;
                                     font-size: 25px;
                                     line-height: 33px;
                                     letter-spacing: 0px !important;
                                     margin: 4%; margin-top: 1% !important;"
-                                    [innerHTML]="slider.description[0].children[0].text "></p>
+                                    [innerHTML]="slider.description[0].children[0].text"></p>
 
-
-                                <b>
-                                </b>
-                                <div class=" container flex-container">
-                                    <button (click)="onClick('contact')" class="btn btn-primary view-work custom-button"
-                                        style="max-width: 30%;margin-left: 5%;"> Cotiza Aquí
+                                <div class="container flex-container">
+                                    <button (click)="onClick('contact')"
+                                        class="btn btn-primary view-work custom-button">
+                                        Cotiza Aquí
                                     </button>
-
                                 </div>
-                                <b>
-                                </b>
-                                <div class=" container row" style="margin-left: 4%;margin-top: 2%;">
+
+                                <!-- Segunda fila de imágenes - Solo visible en desktop/tablet -->
+                                <div class="container row d-none d-md-flex" style="margin-left: 4%;margin-top: 2%;">
                                     <div class="col-md-3" style="padding-left: 0;">
                                         <img [src]="environment.api_img + slider.banner[4].url" alt="">
                                     </div>
@@ -78,14 +67,11 @@
                                         <img [src]="environment.api_img + slider.banner[7].url" alt="">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </ng-template>
-
-
     </owl-carousel-o>
 </div>
