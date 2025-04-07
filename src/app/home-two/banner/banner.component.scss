@@ -209,11 +209,15 @@ img {
         }
         
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             line-height: 36px;
             margin: 15px 4%;
             margin-bottom: 10px !important;
             color: white !important; /* Cambiamos a texto blanco para mejor contraste */
+            font-weight: 600;
+            padding-left: 0px;
+            padding-right: 8%;
+            text-align: center !important;
         }
         
         p {
@@ -232,7 +236,9 @@ img {
     .container-text {
         padding: 8% 4%;
         background: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente oscuro para mejor contraste */
-        width: 100%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
     
     .video-background {

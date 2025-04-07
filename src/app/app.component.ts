@@ -7,11 +7,12 @@ import { FooterComponent } from './common/footer/footer.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MarkdownModule } from 'ngx-markdown';
 
 @Component({
     selector: 'app-root',
     imports: [RouterOutlet, CommonModule, NavbarComponent, FooterComponent, 
-    NgxSpinnerModule,],
+    NgxSpinnerModule, MarkdownModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

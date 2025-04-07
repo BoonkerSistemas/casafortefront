@@ -166,7 +166,7 @@
   position: relative;
   padding: 10px;
   text-align: center;
-  background-color: var(--mainColor);
+  box-shadow: 0 5px 10px rgba(0, 9, 128, 0.035), 0 7px 18px rgba(0, 9, 128, 0.05);
 
   &::before {
     top: 0;
@@ -177,7 +177,8 @@
     content: '';
     position: absolute;
     visibility: hidden;
-    background: var(--blackColor);
+    //background: var(--blackColor);
+    background: var(--background-color);
     transition: var(--transition);
   }
 

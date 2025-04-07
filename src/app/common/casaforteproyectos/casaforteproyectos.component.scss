@@ -221,6 +221,16 @@
 
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
+    .cuadrado1{
+        padding-bottom: 0px !important;
+                }
+
+                .cuadrado2{
+                    padding-top: 0px !important;
+                            }
+    .section-title-casa{
+        padding-left: 0px; 
+    }
 
     .team-area {
         .section-title {
@@ -238,6 +248,10 @@
             }
             .post {
                 font-size: 14px;
+            }
+            .subtitle {
+                font-size: 20px !important;
+                text-align: center !important;
             }
         }
     }

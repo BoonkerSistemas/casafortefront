@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { HomeService } from '../../../service/home/home.service';
 import {environment} from "@env/environment";
 import { log } from 'node:console';
+import e from 'express';
 
 interface Categoria {
     titulo: string;
@@ -85,6 +86,7 @@ export class WorkComponent implements OnInit {
       getCategoriaContent(): string {
         if (!this.workSelected || !this.currentTab2) return '';
         const categoria = this.workSelected.categorias.find((c: any) => c.id === this.currentTab2);
+
         return categoria ? categoria.content : '';
       }
 
@@ -123,14 +125,19 @@ export class WorkComponent implements OnInit {
                     console.log(elementProduct);
 
                     let json :any ={
+                        orden: elementProduct.data.Titulo2,
                       tab: work.numero,
                       img: environment.api_img + work.img.url,
-                      categorias: elementProduct.data.variedades
+                      categorias: elementProduct.data.variedades,
+                      color: elementProduct.data.color,
                     }
 
+                    
                     this.works.push(json);
                     console.log('------------------------');
                 }
+
+                this.works = this.works.sort((a: any, b: any) => a.orden - b.orden);
             } else {
                 console.warn('El formato de `response` no es el esperado:', response);
             }

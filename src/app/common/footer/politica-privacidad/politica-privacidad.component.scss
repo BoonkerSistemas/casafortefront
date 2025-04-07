@@ -1,0 +1,358 @@
+.markdown-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.markdown-header {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    color: #666;
+  }
+}
+
+/* Estilos para contenido Markdown */
+.markdown-content {
+  /* Estilos base para todo el contenido */
+  color: #333 !important;
+  line-height: 1.6 !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 30px !important;
+  background-color: #fff !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 8px !important;
+
+  /* Encabezado principal */
+  h1 {
+    font-size: 32px !important;
+    color: #333 !important;
+    margin-bottom: 20px !important;
+    border-bottom: 2px solid #FFA500 !important;
+    padding-bottom: 15px !important;
+    text-align: center !important;
+    font-weight: 700 !important;
+    position: relative !important;
+  }
+
+  h1::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -2px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100px !important;
+    height: 4px !important;
+    background-color: #FFA500 !important;
+  }
+
+  /* Subtítulo */
+  h1 + p {
+    text-align: center !important;
+    font-size: 18px !important;
+    color: #666 !important;
+    margin-bottom: 30px !important;
+    font-style: italic !important;
+  }
+
+  /* Encabezados secundarios */
+  h2 {
+    font-size: 24px !important;
+    color: #444 !important;
+    margin-top: 40px !important;
+    margin-bottom: 20px !important;
+    padding-left: 15px !important;
+    border-left: 4px solid #FFA500 !important;
+    background-color: #fcfcfc !important;
+    padding: 10px 15px !important;
+    border-radius: 0 4px 4px 0 !important;
+  }
+
+  /* Encabezados terciarios */
+  h3 {
+    font-size: 20px !important;
+    color: #555 !important;
+    margin-top: 30px !important;
+    margin-bottom: 15px !important;
+    position: relative !important;
+    padding-bottom: 8px !important;
+  }
+
+  h3::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 40px !important;
+    height: 3px !important;
+    background-color: #FFA500 !important;
+  }
+
+  /* Párrafos */
+  p {
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    margin-bottom: 20px !important;
+    color: #444 !important;
+  }
+
+  /* Listas */
+  ul, ol {
+    margin: 20px 0 !important;
+    padding-left: 30px !important;
+    
+    li {
+      margin-bottom: 12px !important;
+      line-height: 1.6 !important;
+      position: relative !important;
+    }
+  }
+
+  /* Marcadores de lista personalizados */
+  ul li::before {
+    content: "•" !important;
+    color: #FFA500 !important;
+    font-weight: bold !important;
+    display: inline-block !important; 
+    width: 1em !important;
+    margin-left: -1em !important;
+    font-size: 1.2em !important;
+  }
+
+  /* Enlaces */
+  a {
+    color: #FFA500 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid transparent !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      color: #cc8400 !important; /* versión más oscura del naranja */
+      border-bottom-color: currentColor !important;
+    }
+  }
+
+  /* Texto enfatizado */
+  em {
+    font-style: italic !important;
+    color: #666 !important;
+  }
+
+  /* Texto fuerte */
+  strong {
+    font-weight: 700 !important;
+    color: #333 !important;
+  }
+
+  /* Destacado para CASAFORTE */
+  strong:contains("CASAFORTE") {
+    color: #FFA500 !important;
+    font-weight: 800 !important;
+  }
+
+  /* Código inline */
+  code {
+    background-color: #f5f5f5 !important;
+    padding: 2px 6px !important;
+    border-radius: 3px !important;
+    font-size: 0.9em !important;
+    color: #d63384 !important;
+    border: 1px solid #eee !important;
+  }
+
+  /* Bloques de código */
+  pre {
+    background-color: #f8f8f8 !important;
+    padding: 15px !important;
+    border-radius: 5px !important;
+    overflow-x: auto !important;
+    border: 1px solid #e0e0e0 !important;
+    margin: 20px 0 !important;
+    
+    code {
+      background: none !important;
+      padding: 0 !important;
+      border: none !important;
+      color: #333 !important;
+    }
+  }
+
+  /* Líneas divisorias */
+  hr {
+    height: 1px !important;
+    background-color: #e0e0e0 !important;
+    margin: 30px 0 !important;
+    border: none !important;
+    position: relative !important;
+  }
+
+  hr::before {
+    content: "§" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    background-color: #fff !important;
+    padding: 0 15px !important;
+    color: #FFA500 !important;
+    font-size: 20px !important;
+  }
+
+  /* Bloques de cita */
+  blockquote {
+    margin: 25px 0 !important;
+    padding: 15px 20px 15px 30px !important;
+    border-left: 5px solid #FFA500 !important;
+    background-color: #fff8e6 !important;
+    font-style: italic !important;
+    position: relative !important;
+    
+    p {
+      margin: 0 !important;
+      color: #555 !important;
+    }
+    
+    &::before {
+      content: "" !important;
+      font-size: 40px !important;
+      color: rgba(255, 165, 0, 0.3) !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 10px !important;
+      opacity: 0.1 !important;
+    }
+    
+  }
+
+  /* Tablas */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin: 30px 0 !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+    
+    th {
+      background-color: #f5f5f5 !important;
+      font-weight: 600 !important;
+      text-align: left !important;
+      padding: 12px 15px !important;
+      border: 1px solid #e0e0e0 !important;
+      color: #444 !important;
+    }
+    
+    td {
+      padding: 10px 15px !important;
+      border: 1px solid #e0e0e0 !important;
+      vertical-align: top !important;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f9f9f9 !important;
+    }
+
+    tr:hover {
+      background-color: #fff8e6 !important;
+    }
+  }
+
+  /* Cajas de información destacadas */
+  .info-box {
+    background-color: #e5f6fd !important;
+    border-left: 4px solid #3498db !important;
+    padding: 15px !important;
+    margin: 20px 0 !important;
+    color: #2980b9 !important;
+    border-radius: 0 4px 4px 0 !important;
+  }
+
+  /* Cajas de advertencia */
+  .warning-box {
+    background-color: #fff3e0 !important;
+    border-left: 4px solid #f39c12 !important;
+    padding: 15px !important;
+    margin: 20px 0 !important;
+    color: #e67e22 !important;
+    border-radius: 0 4px 4px 0 !important;
+  }
+
+  /* Imágenes */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 20px 0 !important;
+    border-radius: 4px !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  /* Pie de página */
+  .footer {
+    margin-top: 40px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #e0e0e0 !important;
+    font-size: 14px !important;
+    color: #777 !important;
+    text-align: center !important;
+  }
+
+  /* Fecha de actualización */
+  .update-date {
+    display: block !important;
+    text-align: center !important;
+    font-style: italic !important;
+    color: #777 !important;
+    margin-bottom: 30px !important;
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .markdown-content {
+    padding: 20px !important;
+    
+    h1 {
+      font-size: 28px !important;
+    }
+    
+    h2 {
+      font-size: 22px !important;
+    }
+    
+    h3 {
+      font-size: 18px !important;
+    }
+    
+    p, li {
+      font-size: 15px !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .markdown-content {
+    padding: 15px !important;
+    
+    h1 {
+      font-size: 24px !important;
+    }
+    
+    h2 {
+      font-size: 20px !important;
+    }
+    
+    h3 {
+      font-size: 17px !important;
+    }
+  }
+}

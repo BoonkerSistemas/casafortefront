@@ -23,7 +23,8 @@
                         <div class="row">
                             <!-- Imágenes de los trabajos -->
                             <div class="col-lg-4" *ngFor="let workItem of filteredWorks">
-                                <div class="single-work" (click)="selectWork(workItem)">
+                                <div class="single-work" (click)="selectWork(workItem)"
+                                    [ngStyle]="{'--background-color': workItem.color}">
                                     <img [src]="workItem.img" alt="work-img">
                                 </div>
                             </div>
@@ -38,8 +39,14 @@
                                                 <img class="imgCategorias"
                                                     [src]="environment.api_img + (categoria.icon?.url || 'images/Maestra.png')"
                                                     alt="categoria-img">
-                                                <p style="margin-top:10px;letter-spacing: 0; font-size: 14px;">
-                                                    {{ categoria.title }}
+                                                <p
+                                                    style="margin-top:10px;letter-spacing: 0; font-size: 14px;display: flex;justify-content: space-evenly;">
+                                                    <span style=" width: 20px;
+                                                    height: 20px;
+                                                    margin-right: 8px;
+                                                    border: 1px solid #ddd;"
+                                                        [style.background-color]="workSelected.color"></span>
+                                                    {{categoria.title }}
                                                 </p>
                                             </span>
                                         </li>

@@ -21,6 +21,10 @@ import {MapaEcuadorComponent} from "./mapa/mapa.component";
 import { GaleriaCasaForteComponent } from './galeria-casa-forte/galeria-casa-forte.component';
 import { DescripcionCasaForteComponent } from './descripcion-casa-forte/descripcion-casa-forte.component';
 import { BeneficiosCasaForteComponent } from './beneficios-casa-forte/beneficios-casa-forte';
+import { PreguntasFrecuentesComponent } from './common/footer/preguntas_frecuentes/preguntas_frecuentes.component';
+import { TerminosCondicionesComponent } from './common/footer/terminos-condiciones/terminos-condiciones.component';
+import { PoliticaPrivacidadComponent } from './common/footer/politica-privacidad/politica-privacidad.component';
+import { PoliticaCookiesComponent } from './common/footer/politica-cookies/politica-cookies.component';
 
 export const routes: Routes = [
     {path: '', component: HomeTwoComponent},
@@ -45,6 +49,11 @@ export const routes: Routes = [
     {path: 'preguntas-inquietudes', component: BlogDetailsComponent},
     {path: 'certificaciones', component: BlogDetailsComponent},
     {path: 'mapa', component: MapaEcuadorComponent},
+
+    { path: 'terminos-condiciones', component: TerminosCondicionesComponent },
+  { path: 'politica-privacidad', component: PoliticaPrivacidadComponent },
+  { path: 'politica-cookies', component: PoliticaCookiesComponent },
+  { path: 'preguntas-frecuentes', component: PreguntasFrecuentesComponent },
     // Here add new pages component
     {path: 'sistema-boonker-products/:id', component: ProductsSistemaBoonkerComponent},
     {path: '**', component: NotFoundComponent} // This line will remain down from the whole pages component list
