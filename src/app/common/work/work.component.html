@@ -10,11 +10,15 @@
         <div class="work-tabs">
             <!-- Pestañas principales -->
             <ul class="nav-tabset">
-                <li *ngFor="let tab of tabs" class="nav-tab" [ngClass]="{ 'active': currentTab === tab.number }">
-                    <span (click)="switchTab(tab.number)">
-                        {{ tab.title }}
-                    </span>
-                </li>
+                <ng-container *ngFor="let tab of tabs">
+                    <li class="nav-tab" *ngIf="tab.number !== 'null'"
+                        [ngClass]="{ 'active': currentTab === tab.number }">
+                        <span (click)="switchTab(tab.number)">
+                            {{ tab.title }}
+                        </span>
+                    </li>
+                </ng-container>
+
             </ul>
 
             <div class="tabs-container">
@@ -54,9 +58,7 @@
 
                                     <!-- Contenido de la categoría seleccionada -->
                                     <div *ngIf="currentTab2 && workSelected"
-                                        style="max-width: 643px; padding-bottom: 16px; color: #6f6f6e; font-size: 15px;">
-                                        Speech explicativo del uso del producto y su función. Speech explicativo del uso
-                                        del producto y su función. Speech explicativo del uso del producto y su función.
+                                        style=" padding-bottom: 32px; color: #6f6f6e; font-size: 15px; ">
                                         {{ getCategoriaContent() }}
                                     </div>
                                 </div>

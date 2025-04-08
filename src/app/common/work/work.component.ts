@@ -106,6 +106,8 @@ export class WorkComponent implements OnInit {
             } else {
                 console.warn('No se encontraron datos en Proyectos');
             }
+            console.log('Tabs:', this.tabs);
+            
         } catch (error) {
             console.error('Error al obtener el componente Inicio:', error);
         }

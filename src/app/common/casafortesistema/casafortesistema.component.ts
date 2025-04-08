@@ -52,6 +52,8 @@ export class CasafortesistemaComponent implements OnInit, AfterViewInit {
             } else {
                 console.warn('No se encontraron datos en CasaForte');
             }
+            console.log('Inicio:', this.title, this.description, this.content, this.tabs);
+            
         } catch (error) {
             console.error('Error al obtener el componente Inicio:', error);
         }
