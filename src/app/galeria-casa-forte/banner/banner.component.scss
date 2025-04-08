@@ -6,6 +6,7 @@
     padding-right: 1%;
     padding-left: 1%;
 }
+
 ::ng-deep {
     #banner .owl-theme .owl-dots, .owl-theme .owl-nav {
     top: -5vh !important;
@@ -15,14 +16,18 @@
         border: 2px solid #dddddd;
     }
 }}
+
+.container-text-right {
+    width: 100%;padding-left: 56% ;padding-right: 2%;
+}
+
 .main-banner-text {
     position: relative;
-    //text-align: center;
     z-index: 1;
     background: #f5a414 !important;
     padding: 16px;
     padding-left: 32px;
-    //clip-path: polygon(0 0, 95% 0, 100% 100%, 0 100%);
+    
     h4 {
         color: var(--whiteColor);
         font: {
@@ -76,13 +81,11 @@
         }
     }
 }
+
 ::ng-deep {
     
-    #banner    .owl-theme {
+    #banner .owl-theme {
             .owl-nav {
-                /*opacity: 0;
-                margin-top: 0;
-                visibility: visible;*/
                 transition: var(--transition);
                 z-index: 9;
                 [class*="owl-"] {
@@ -95,7 +98,6 @@
                     font-size: 25px;
                     line-height: 58px;
                     position: absolute;
-                    //border-radius: 50%;
                     text-align: center;
                     color: var(--mainColor);
                     transform: translateY(-50%);
@@ -106,7 +108,7 @@
                         left: auto;
                         right: 40px;
                         top: 42%;
-display: none;
+                        display: none;
                     }
                     &.owl-prev {
                         left: auto;
@@ -126,13 +128,9 @@ display: none;
                 }
             }
         }
-    
 }
 
 .container-text {
-    //background: linear-gradient(270deg, rgba(73, 73, 73, 0) 0%, rgba(0, 0, 0, 0.78) 100%);
-    //color: black;
-    //padding: 8%;
     padding-right: 5%;
     padding-left: 56%;
     height: 100%;
@@ -141,166 +139,8 @@ display: none;
     flex-direction: column;
     background: #e4e4e4;
 }
-/* Max width 767px */
-@media only screen and (max-width : 767px) {
 
-    .main-banner {
-        height: auto;
-        padding: {
-            top: 175px;
-            bottom: 150px;
-        };
-    }
-    .main-banner-text {
-
-        h4 {
-            font-size: 15px;
-        }
-        h1 {
-            font-size: 30px;
-            line-height: 40px;
-            margin: {
-                top: 15px;
-                bottom: 15px;
-            };
-        }
-        p {
-            font-size: 14px;
-            max-width: 100%;
-        }
-        .btn {
-            margin: {
-                left: 4px;
-                right: 4px;
-            };
-        }
-    }
-    ::ng-deep {
-        #banner .home-slides {
-            .owl-theme {
-                .owl-nav {
-                    opacity: 1;
-                    visibility: visible;
-    
-                    [class*=owl-] {
-                        top: auto;
-                        left: 15px;
-                        width: 40px;
-                        height: 40px;
-                        bottom: 15px;
-                        font-size: 20px;
-                        transform: unset;
-                        line-height: 43px;
-    
-                        &.owl-next {
-                            left: auto;
-                            right: 15px;
-                            top: 40%;
-                        }
-                        &.owl-prev {
-                            left: auto;
-                            right: 15px;
-                            top: 46%;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-}
-
-/* Min width 576px to Max width 767px */
-@media only screen and (min-width : 576px) and (max-width : 767px) {}
-
-/* Min width 768px to Max width 991px */
-@media only screen and (min-width : 768px) and (max-width : 991px) {
-
-    .main-banner {
-        height: auto;
-        padding: {
-            top: 175px;
-            bottom: 160px;
-        };
-    }
-    .main-banner-text {
-        h4 {
-            font-size: 17px;
-        }
-        h1 {
-            font-size: 40px;
-            margin: {
-                bottom: 20px;
-                top: 25px;
-            };
-        }
-    }
-    #banner .home-slides {
-        .owl-theme {
-            .owl-nav {
-                opacity: 1;
-                visibility: visible;
-
-                [class*=owl-] {
-                    top: auto;
-                    left: 30px;
-                    width: 50px;
-                    bottom: 30px;
-                    height: 50px;
-                    font-size: 23px;
-                    line-height: 52px;
-                    transform: translateY(0);
-
-                    &.owl-next {
-                        left: auto;
-                        right: 30px;
-                    }
-                }
-            }
-        }
-    }
-
-}
-
-/* Min width 992px to Max width 1199px */
-@media only screen and (min-width : 992px) and (max-width : 1199px) {
-
-    /*.main-banner-text {
-        margin-top: 30px;
-    }*/
-
-}
-
-/* Min width 1200px to Max width 1399px */
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {}
-
-/* Min width 1600px */
-@media only screen and (min-width: 1600px) {
-
-    .main-banner {
-       // height: 100vh;
-    }
-
-}
-
-
-.flex-container {
-    display: flex;
-    justify-content: space-between; /* Espacio entre los elementos */
-    align-items: center; /* Centra los elementos verticalmente */
-    //gap: 20px; /* Espacio entre las columnas */
-  }
-  
-  .view-work {
-    flex: 1; /* Hace que el enlace ocupe una columna */
-  }
-  
-  img {
-    flex: 1; /* Hace que la imagen ocupe la otra columna */
-    width: 2rem; /* Mantén el tamaño de la imagen */
-  }
-
-  .video-background {
+.video-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -311,17 +151,31 @@ display: none;
     background-size: cover;
 }
 
-@media (min-width: 1400px) {
-    .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
-        max-width: 1320px;
-        //padding-left: 16%;
-    }
+.video-right {
+    left: auto;
+    right: 0;
+    width: 54%;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.view-work {
+    flex: 1;
+}
+  
+img {
+    flex: 1;
+    width: 2rem;
 }
 
 .custom-button {
-    background-color: #F4A623 !important; /* Color de fondo similar al de la imagen */
-    color: black; /* Color del texto */
-    font-weight: bold; /* Negrita */
+    background-color: #F4A623 !important;
+    color: black;
+    font-weight: bold;
     border: none;
     padding: 8px 16px;
     cursor: pointer;
@@ -333,5 +187,91 @@ display: none;
 }
 
 .custom-button:hover {
-    background-color: #d98d1a; /* Efecto hover con un tono más oscuro */
+    background-color: #d98d1a;
+}
+
+@media only screen and (max-width: 991px) {
+    .main-banner {
+        min-height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .media-container-left, .media-container-right {
+        position: relative !important;
+        width: 100% !important;
+        height: 300px !important;
+    }
+    
+    .container-text-right, .container-text-left {
+        position: absolute !important;
+        width: 100% !important;
+        padding: 20px !important;
+        padding-right: 40px !important;
+        padding-top: 40px !important;
+    }
+    
+    .video-background, .video-right {
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
+    
+    .main-banner-text {
+        max-width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .main-banner {
+        padding: 10px;
+    }
+    
+    .media-container-left, .media-container-right, .video-background, .video-right {
+        height: 250px !important;
+    }
+    
+    .image-samples {
+        flex-wrap: wrap;
+        display: none !important;
+    }
+
+    .main-banner-text {
+        position: relative;
+        z-index: 1;
+        background: #ecececb5 !important;
+        padding: 16px;
+        padding-top: 25px;
+    }
+
+    
+    .sample-image {
+        width: 45% !important;
+    }
+    
+    h1 {
+        font-size: 24px !important;
+        z-index: 999;
+        position: absolute;
+        padding-left: 16px;
+    }
+    
+    .main-banner-text p.text-black {
+        font-size: 16px;
+    }
+    
+    .main-banner-text p.text-black:first-of-type {
+        font-size: 20px !important;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .sample-image {
+        width: 100% !important;
+        margin-bottom: 10px;
+    }
+    
+    .image-samples {
+        flex-direction: column;
+    }
 }

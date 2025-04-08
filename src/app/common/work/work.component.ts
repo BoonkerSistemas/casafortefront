@@ -54,12 +54,14 @@ export class WorkComponent implements OnInit {
     }
 
     
-      updateFilteredWorks() {
+       updateFilteredWorks() {
         console.log(this.currentTab);
         console.log(this.works);
         
-        this.filteredWorks = this.works.filter(work => work.tab === this.currentTab.toString());
+         this.filteredWorks = this.works.filter(work => work.tab === this.currentTab.toString());
         console.log('Filtrado:', this.filteredWorks);
+         this.selectWork(this.filteredWorks[0]);
+         this.switchTab2(this.filteredWorks[0].categorias[0]);
         
       }
 
@@ -69,6 +71,7 @@ export class WorkComponent implements OnInit {
 
     switchTab(tabNumber: any): void {
         this.currentTab = tabNumber;
+        this.workSelected = null;
         this.updateFilteredWorks();
       }
     
@@ -81,10 +84,12 @@ export class WorkComponent implements OnInit {
         
         this.workSelected = work;
         this.currentTab2 = null;
+        this.switchTab2(work.categorias[0]);
       }
     
       switchTab2(categoria: any): void {
         this.currentTab2 = categoria.id;
+        console.log('Categoria seleccionada:', this.currentTab2);
       }
     
       getCategoriaContent(): string {

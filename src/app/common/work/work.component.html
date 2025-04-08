@@ -24,12 +24,13 @@
             <div class="tabs-container">
                 <div *ngIf="filteredWorks.length > 0">
                     <div class="pane">
-                        <div class="row">
+                        <div class="row" style="justify-content: center;">
                             <!-- Imágenes de los trabajos -->
                             <div class="col-lg-4" *ngFor="let workItem of filteredWorks">
                                 <div class="single-work" (click)="selectWork(workItem)"
                                     [ngStyle]="{'--background-color': workItem.color}">
-                                    <img [src]="workItem.img" alt="work-img">
+                                    <img [src]="workItem.img" alt="work-img" class="work-img"
+                                        [ngClass]="{ 'active': workItem.img === workSelected.img }">
                                 </div>
                             </div>
 
