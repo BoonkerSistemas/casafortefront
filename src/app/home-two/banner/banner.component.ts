@@ -50,7 +50,7 @@ export class BannerComponent  implements OnInit, OnDestroy{
         nav: true,
         loop: true,
         dots: true,
-        autoplay: false,
+        autoplay: true,
         smartSpeed: 500,
         autoHeight: true,
         autoplayHoverPause: false,

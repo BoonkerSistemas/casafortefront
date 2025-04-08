@@ -18,6 +18,10 @@
         color: rgb(255, 255, 255);
     }
 }
+
+.altofto{
+    height: -webkit-fill-available;
+}
 .shape1 {
     right: 0;
     z-index: 0;
@@ -290,15 +294,20 @@
     justify-content: center;
     flex-direction: column;
 }
+
 /* Max width 767px */
 @media only screen and (max-width : 767px) {
 
+    .altofto{
+        height: 350px;
+    }
+
     .main-banner {
         height: auto;
-        padding: {
+       /* padding: {
             top: 175px;
             bottom: 150px;
-        };
+        };*/
     }
     .main-banner-text {
 

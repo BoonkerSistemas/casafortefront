@@ -12,8 +12,10 @@ background: #dcdddc;
                     </video>
                 </ng-container>
                 <ng-template #imageLeftContent>
-                    <div [style.background-image]="'url(' + environment.api_img + slider.imagenes.url + ')'"
-                        style="width: 55%; height: 100%; z-index: 1; position: absolute; background-size: cover; left: 0;">
+                    <div
+                        style="width: 55%; height: 100%; z-index: 1; position: absolute; background-size: contain; left: 0;">
+                        <img [src]=" environment.api_img + slider.imagenes.url " alt=""
+                            style="width: 100%; height: 100%;">
                     </div>
                 </ng-template>
 
@@ -23,9 +25,9 @@ background: #dcdddc;
                     <h1 class="text-2xl font-bold text-black mt-2" [innerHTML]="slider?.titulo"
                         style="display: flex;justify-content: flex-start;font-weight: 600;font-size: 30px;"></h1>
                     <div style="display: flex;justify-content: flex-start;">
-                        <img [src]="environment.api_img + slider?.imagenes.url" alt="Casa Forte"
+                        <img [src]="environment.api_img + slider?.imagenlosas?.url" alt="Casa Forte"
                             style="padding: 1%;width: 40%;flex: none;">
-                        <img [src]="environment.api_img + slider?.imagenes.url" alt="Casa Forte"
+                        <img [src]="environment.api_img + slider?.imagenmuros?.url" alt="Casa Forte"
                             style="padding: 1%;width: 40%;flex: none;">
                     </div>
 
@@ -57,8 +59,10 @@ background: #dcdddc;
                     </video>
                 </ng-container>
                 <ng-template #imageRightContent>
-                    <div [style.background-image]="'url(' + environment.api_img + slider.imagenes.url + ')'"
-                        style="width: 54%; height: 100%; z-index: 1; position: absolute; background-size: cover; right: 0;">
+                    <div
+                        style="width: 54%; height: 100%; z-index: 1; position: absolute; background-size: contain; right: 0;">
+                        <img [src]=" environment.api_img + slider.imagenes.url " alt=""
+                            style="width: 100%; height: 100%; ">
                     </div>
                 </ng-template>
 
@@ -67,14 +71,15 @@ background: #dcdddc;
                     <h1 class="text-2xl font-bold text-black mt-2" [innerHTML]="slider?.titulo"
                         style="display: flex;justify-content: flex-end;font-weight: 600;font-size: 30px;"></h1>
                     <div style="display: flex;justify-content: flex-end;">
-                        <img [src]="environment.api_img + slider?.imagenes.url" alt="Casa Forte"
+                        <img [src]="environment.api_img + slider?.imagenmuros?.url" alt="Casa Forte"
                             style="padding: 1%;width: 40%;flex: none;">
-                        <img [src]="environment.api_img + slider?.imagenes.url" alt="Casa Forte"
+                        <img [src]="environment.api_img + slider?.imagenlosas?.url" alt="Casa Forte"
                             style="padding: 1%;width: 40%;flex: none;">
+
                     </div>
 
                     <div class="main-banner-text bg-white p-6 shadow-lg rounded-lg max-w-md"
-                        style="clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%) !important; ">
+                        style="/*clip-path: polygon(5% 0, 100% 0, 100% 100%, 0% 100%) !important; */">
 
                         <p class="text-black mt-2" style="font-size: 25px;font-weight: 600;">
                             <span [innerHTML]="slider?.m2"></span> m² / <span [innerHTML]="slider?.pisos"></span>
@@ -102,7 +107,7 @@ background: #dcdddc;
     </div>
     <!-- Paginación -->
     <div class="pagination-container mt-4 flex justify-center mb-4" style="display: flex;justify-content: center;"
-        *ngIf="currentSliders.length > itemsPerPage">
+        *ngIf="sliders.length > itemsPerPage">
         <button *ngFor="let page of pages; let p = index" (click)="changePage(p)" class="mx-1 px-3 py-1 rounded"
             [ngClass]="{'bg-black text-white': currentPage === p, 'bg-gray-200': currentPage !== p}">
             {{ p + 1 }}

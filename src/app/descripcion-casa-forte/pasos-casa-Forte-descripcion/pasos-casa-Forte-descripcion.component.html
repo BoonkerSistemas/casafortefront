@@ -1,0 +1,54 @@
+<div class="team-area ptb-100" style="background-color: #dcdddc;">
+    <div class="container">
+        <div class="section-title" style="margin-left: 40px">
+            <h1 style="font-weight: 600; letter-spacing: 0 !important; display: inline-block;">El paso a paso del
+                Sistema Constructivo CasaForte {{dtaProyecto.titulo}}</h1>
+        </div>
+
+        <div class="casaforte-container">
+
+            <div class="timeline-container">
+                <!-- Nivel 1 -->
+                <h4>Nivel</h4>
+                <div class="level-container" *ngFor="let item of constructionLevels">
+                    <div class="level-header">
+
+                        <div class="level-number">
+                            <span>{{item.Nivel}}</span>
+                        </div>
+
+                        <div class="level-images">
+                            <div class="level-image" *ngFor="let url of item.images">
+                                <img [src]="environment.api_img + url.url" alt="Nivel 1 construcción">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-path">
+                        <div class="level-connector" *ngIf="!item.final"></div>
+                        <div class="horizontal-connector" *ngIf="!item.final"></div>
+                        <div class="curve-connector" *ngIf="!item.final"></div>
+                        <div class="horizontal-connector-final" *ngIf="item.final">
+                            <div class="arrow"></div>
+                        </div>
+                        <div class="sections-container">
+                            <div class="section" *ngFor="let section of item.sections">
+                                <div class="section-marker " *ngIf="!section.active"></div>
+                                <div class="section-marker active" *ngIf="section.active"></div>
+                                <div class="section-info">
+
+                                    <h3>{{section.title}}</h3>
+                                    <p>{{section.subtitle}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="final-stage">
+                    <span>Etapa de acabados</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

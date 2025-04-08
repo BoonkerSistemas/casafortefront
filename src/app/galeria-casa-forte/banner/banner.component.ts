@@ -98,9 +98,12 @@ export class BannerComponent implements OnInit {
     }
   
     loadCurrentSliders() {
+      
       const start = this.currentPage * this.itemsPerPage;
       const end = start + this.itemsPerPage;
       this.currentSliders = this.sliders.slice(start, end);
+      console.log('ITEMSSSSS',this.currentSliders);
+      
       this.cdr.detectChanges();
     }
   

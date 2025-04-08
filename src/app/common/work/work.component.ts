@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule, NgClass, NgFor, NgIf, ViewportScroller } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HomeService } from '../../../service/home/home.service';
@@ -43,7 +43,8 @@ export class WorkComponent implements OnInit {
 
     constructor(
         private viewportScroller: ViewportScroller,
-        private homeService: HomeService
+        private homeService: HomeService,
+        private cdr: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
@@ -54,7 +55,10 @@ export class WorkComponent implements OnInit {
 
     
       updateFilteredWorks() {
-        this.filteredWorks = this.works.filter(work => work.tab === this.currentTab);
+        console.log(this.currentTab);
+        console.log(this.works);
+        
+        this.filteredWorks = this.works.filter(work => work.tab === this.currentTab.toString());
         console.log('Filtrado:', this.filteredWorks);
         
       }
@@ -63,7 +67,7 @@ export class WorkComponent implements OnInit {
         this.viewportScroller.scrollToAnchor(elementId);
     }
 
-    switchTab(tabNumber: number): void {
+    switchTab(tabNumber: any): void {
         this.currentTab = tabNumber;
         this.updateFilteredWorks();
       }
@@ -139,7 +143,9 @@ export class WorkComponent implements OnInit {
                     console.log('------------------------');
                 }
 
-                this.works = this.works.sort((a: any, b: any) => a.orden - b.orden);
+                 this.works = this.works.sort((a: any, b: any) => a.orden - b.orden);
+                await this.switchTab('1');
+                this.cdr.detectChanges();
             } else {
                 console.warn('El formato de `response` no es el esperado:', response);
             }

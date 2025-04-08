@@ -39,12 +39,12 @@ public isMobileMenuVisible = false;
             {
                 "id": 128,
                 "title": "Boonker Manager",
-                "url": null
+                "url": 'https://boonkerdigital.com:4200/#/sign-in?redirectURL=%2Facademy'
             },
             {
                 "id": 129,
                 "title": "Boonker Cloud",
-                "url": null
+                "url": 'https://boonkerdigital.com:4210/sign-in?redirectURL=%2Facademy'
             },
             {
                 "id": 130,

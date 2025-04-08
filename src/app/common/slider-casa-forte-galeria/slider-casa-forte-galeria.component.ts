@@ -30,7 +30,7 @@ export class SliderCasaForteGaleriaComponent implements OnInit, AfterViewInit  {
             nav: false,
             loop: true,
             dots: true,
-            autoplay: false,
+            autoplay: true,
             smartSpeed: 500,
             autoHeight: true,
             autoplayHoverPause: false,
@@ -40,10 +40,10 @@ export class SliderCasaForteGaleriaComponent implements OnInit, AfterViewInit  {
             ],*/
       responsive: {
         0: {
-          items: 3
+          items: 1
         },
         600: {
-          items: 3
+          items: 1
         },
         1000: {
           items: 3

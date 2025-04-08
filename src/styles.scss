@@ -7,6 +7,16 @@
     --blackColor: #000000;
     --fontFamily: 'Poppins', sans-serif;
 }
+
+.wa-chat-box-brand {
+    border: 0px solid #363636 !important;
+    border-radius: 0px !important;
+    background-color: #f5141400 !important;
+}
+.wa-chat-box-poweredby {
+    display: none !important;
+}
+
 .h3{
     margin-top: 8px;
     color: #767895 !important;

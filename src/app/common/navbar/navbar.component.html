@@ -111,9 +111,8 @@
                             <ul class="dropdown-menu" [ngClass]="{'show': dropdownOpen[item.title]}"
                                 *ngIf="item.submenu?.length">
                                 <li *ngFor="let subItem of item.submenu">
-                                    <a class="dropdown-item" [routerLink]="subItem.url" routerLinkActive="active"
-                                        [routerLinkActiveOptions]="{exact: true}"
-                                        (click)="selectItem(item.title); $event.stopPropagation();">
+                                    <a class="dropdown-item" (click)="selectItem(item.title); $event.stopPropagation();"
+                                        [href]="subItem.url" target="_blank">
                                         {{ subItem.title }}
                                     </a>
                                 </li>
@@ -194,9 +193,8 @@
                     <ul class="mobile-dropdown-menu" [ngClass]="{'show': dropdownOpen[item.title]}"
                         *ngIf="item.submenu?.length">
                         <li *ngFor="let subItem of item.submenu">
-                            <a class="dropdown-item" [routerLink]="subItem.url" routerLinkActive="active"
-                                [routerLinkActiveOptions]="{exact: true}"
-                                (click)="selectItem(item.title); $event.stopPropagation();">
+                            <a class="dropdown-item" (click)="selectItem(item.title); $event.stopPropagation();"
+                                [href]="subItem.url" target="_blank">
                                 {{ subItem.title }}
                             </a>
                         </li>

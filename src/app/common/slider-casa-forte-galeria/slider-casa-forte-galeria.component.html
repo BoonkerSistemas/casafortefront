@@ -11,8 +11,7 @@
                 <div class="main-banner">
                     <div class="banner-container">
                         <div class="single-work">
-                            <img [src]=" environment.api_img + slider.imagenes.url " alt="work-img"
-                                style="height: -webkit-fill-available;">
+                            <img [src]=" environment.api_img + slider.imagenes.url " alt="work-img" class="altofto">
                             <div class="work-content">
                                 <h3>{{slider.titulo}}</h3>
                                 <button class="button-img" [routerLink]="['/galeria-casa-forte/' + slider.documentId]"
