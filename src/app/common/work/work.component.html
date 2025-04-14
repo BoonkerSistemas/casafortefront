@@ -27,7 +27,7 @@
                         <div class="row" style="justify-content: center;">
                             <!-- Imágenes de los trabajos -->
                             <div class="col-lg-4" *ngFor="let workItem of filteredWorks">
-                                <div class="single-work" (click)="selectWork(workItem)"
+                                <div class="single-work" (mouseenter)="selectWork(workItem)"
                                     [ngStyle]="{'--background-color': workItem.color}">
                                     <img [src]="workItem.img" alt="work-img" class="work-img"
                                         [ngClass]="{ 'active': workItem.img === workSelected.img }">
@@ -40,7 +40,7 @@
                                     <ul class="nav-tabset-categorias" *ngIf="workSelected.categorias?.length">
                                         <li *ngFor="let categoria of workSelected.categorias" class="nav-tab-categorias"
                                             [ngClass]="{ 'active': currentTab2 === categoria.id }">
-                                            <span (click)="switchTab2(categoria)">
+                                            <span (mouseenter)="switchTab2(categoria)">
                                                 <img class="imgCategorias"
                                                     [src]="environment.api_img + (categoria.icon?.url || 'images/Maestra.png')"
                                                     alt="categoria-img">

@@ -44,7 +44,7 @@ public isMobileMenuVisible = false;
             {
                 "id": 129,
                 "title": "Boonker Cloud",
-                "url": 'https://boonkerdigital.com:4210/sign-in?redirectURL=%2Facademy'
+                "url": 'https://boonkerdigital.com:4210'
             },
             {
                 "id": 130,
