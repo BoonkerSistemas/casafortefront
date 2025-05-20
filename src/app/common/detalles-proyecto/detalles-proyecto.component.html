@@ -1,0 +1,94 @@
+<!-- mi-componente.component.html -->
+<div class="contenedor-principal">
+
+    <!-- Estructura de dos columnas principales 50%-50% -->
+    <div class="fila">
+        <div class="columna-50">
+            <!-- Primera franja amarilla con título -->
+            <div class="franja-amarilla">
+                <h2 class="titulo">Plano Arquitectonico</h2>
+            </div>
+
+            <!-- Card con imagen -->
+            <div class="card">
+                <div class="imagen-contenedor">
+                    <img src="images/CasaForte/plano.png" alt="Imagen primera columna">
+                </div>
+                <!--<div class="card-contenido">
+                    <h3>Título de la Card</h3>
+                    <p>Descripción o contenido adicional para esta card.</p>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="columna-50">
+            <!-- Segunda franja amarilla con título -->
+            <div class="franja-amarilla">
+                <h2 class="titulo">Plano Estructural</h2>
+            </div>
+
+            <!-- Card con imagen -->
+            <div class="card">
+                <div class="imagen-contenedor">
+                    <img src="images/CasaForte/plano.png" alt="Imagen segunda columna">
+                </div>
+                <!--<div class="card-contenido">
+                    <h3>Título de la Card</h3>
+                    <p>Descripción o contenido adicional para esta card.</p>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+    <!-- Franja al 100% con título de secciones -->
+    <div class="franja-completa">
+        <h2 class="titulo-seccion">Secciones, metrajes y tiempos de ejecución</h2>
+    </div>
+
+    <!-- Estructura de dos columnas 70%-30% -->
+    <div class="fila">
+        <div class="columna-70">
+            <!-- Imagen en columna del 70% -->
+            <div class="imagen-grande">
+                <img src="images/blog-details.jpg" alt="Imagen principal">
+            </div>
+        </div>
+
+        <div class="columna-30">
+            <!-- Tabla con tiempos de ejecución -->
+            <div class="tabla-tiempos">
+                <h3>Tiempos de Ejecución</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sección</th>
+                            <th>Descripción</th>
+                            <th>Area</th>
+                            <th>Tiempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let tiempo of sections">
+                            <td>S{{ tiempo.id }}</td>
+                            <td>{{ tiempo.name }}</td>
+                            <td>{{ tiempo.area }} m²</td>
+                            <td>{{ tiempo.time }} dias</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galería de imágenes -->
+    <div class="galeria-contenedor">
+        <h2 class="titulo-galeria">Galería de Imágenes</h2>
+        <div class="galeria">
+            <div class="imagen-galeria" *ngFor="let imagen of imagenes">
+                <img [src]="imagen.url" [alt]="imagen.titulo">
+                <p class="titulo-imagen">{{ imagen.titulo }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

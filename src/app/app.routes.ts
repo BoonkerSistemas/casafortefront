@@ -25,12 +25,14 @@ import { PreguntasFrecuentesComponent } from './common/footer/preguntas_frecuent
 import { TerminosCondicionesComponent } from './common/footer/terminos-condiciones/terminos-condiciones.component';
 import { PoliticaPrivacidadComponent } from './common/footer/politica-privacidad/politica-privacidad.component';
 import { PoliticaCookiesComponent } from './common/footer/politica-cookies/politica-cookies.component';
+import { KitConstructivoComponent } from './kit-constructivo/kit-constructivo';
 
 export const routes: Routes = [
     {path: '', component: HomeTwoComponent},
     {path: 'home', component: HomeTwoComponent},
     {path: 'sistema-casa-forte', component: HomeSistemaBoonkerComponent},
     {path: 'beneficios-casa-forte', component: BeneficiosCasaForteComponent},
+    {path: 'kit-constructivo', component: KitConstructivoComponent},
     {path: 'galeria-casa-forte', component: GaleriaCasaForteComponent},
     {path: 'galeria-casa-forte/:id', component: DescripcionCasaForteComponent},
     {path: 'sistema-muros-contencion', component: HomeSistemaMurosContencionComponent},

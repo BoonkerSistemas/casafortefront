@@ -28,8 +28,9 @@ export class BeneficiosComponent implements OnInit, AfterViewInit  {
             nav: true,
             loop: true,
             dots: true,
-            autoplay: false,
-            smartSpeed: 500,
+            autoplay: true,
+            autoplayTimeout: 15000,
+            smartSpeed: 800,
             autoHeight: true,
             autoplayHoverPause: false,
            /* navText: [

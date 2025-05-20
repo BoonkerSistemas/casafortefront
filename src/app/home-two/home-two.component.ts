@@ -25,10 +25,11 @@ import {CotizacionComponent} from '../common/cotizacion/cotizacion.component';
 import {ProyectosComponent} from '../common/proyectos/proyectos.component';
 import {TestimoniosComponent} from '../common/testimonios/testimonios.component';
 import {CasaforteproyectosComponent} from '../common/casaforteproyectos/casaforteproyectos.component';
+import { BeneficiosComponent } from '../common/beneficios/beneficios.component';
 
 @Component({
     selector: 'app-home-two',
-    imports: [BannerComponent, CasaforteproyectosComponent, WorkComponent],
+    imports: [BannerComponent,BeneficiosComponent, CasaforteproyectosComponent, WorkComponent],
     templateUrl: './home-two.component.html',
     styleUrls: ['./home-two.component.scss']
 })

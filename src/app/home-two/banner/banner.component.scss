@@ -33,11 +33,12 @@
         color: rgb(0, 0, 0) !important;
         margin: 30px 0;
         font-weight: 400;
-        font-size: 50px;
+        font-size: 45px;
         letter-spacing: -2px !important;
         text-align: left;
         margin: 4%;
         margin-bottom: 1% !important;
+        margin-top: 15% !important;
         
         span {
             color: #ff2c57;
@@ -130,7 +131,7 @@
     padding-right: 4%;
     padding-top: 2%;
     padding-bottom: 2%;
-    padding-left: 55%;
+    padding-left: 70%;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -156,7 +157,7 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 55%;
+    width: 70%;
     height: 100%;
     object-fit: cover;
     z-index: -1;
@@ -185,7 +186,7 @@ img {
     display: inline-block;
     font-size: 18px;
     border-radius: 0px !important;
-    max-width: 30%;
+    //max-width: 30%;
     margin-left: 5%;
 }
 

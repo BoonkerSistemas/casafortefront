@@ -100,7 +100,7 @@
 .section-info {
   display: flex;
   flex-direction: column;
-  top: 26px;
+  top: 35px;
   position: relative;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .section-info p {
-  margin: 5px 0 0;
+ // margin: 5px 0 0;
   font-size: 14px;
   color: #666;
 }
@@ -147,7 +147,7 @@
   content: "";
   position: absolute;
   top: -6px;
-  left: -1%;
+  left: -2%;
   width: 55%;
   height: 6px;
   background-color: #f5a414;

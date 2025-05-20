@@ -1,24 +1,24 @@
 <div class="main-banner">
     <div class="row h-100">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div *ngFor="let slider of sliders" class="video-container">
-                <ng-container *ngIf="isVideo(slider.image.url); else imageContent">
+                <ng-container>
                     <video autoplay loop [muted]="true" playsinline class="video-background">
-                        <source [src]="slider.videoUrl" type="video/mp4">
+                        <source src="video/slider.mp4" type="video/mp4">
                     </video>
                 </ng-container>
-                <ng-template #imageContent>
+                <!--<ng-template #imageContent>
                     <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"
                         style="width: 100%; height: 100%; position: absolute; background-size: cover;"></div>
-                </ng-template>
+                </ng-template>-->
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="d-table" *ngFor="let slider of sliders">
                 <div class="d-table-cell">
                     <div class="container">
                         <div class="main-banner-text">
-                            <h1 class="custom-button" > {{ slider.title }}</h1>
+                            <!--<h1 class="custom-button"> {{ slider.title }}</h1>-->
                             <h4 style="letter-spacing: -1px; line-height: 46px">{{ slider.description }}</h4>
 
                         </div>

@@ -13,9 +13,9 @@ export class CtaCasaFOrteComponent {
         private viewportScroller: ViewportScroller
     ) {
        this.images = [
-            { src: 'https://29d9f0f08711.ngrok.app/uploads/thumbnail_Galeria_Banner1_3339f5e927.png', alt: 'Imagen 1' },
-            { src: 'https://29d9f0f08711.ngrok.app/uploads/thumbnail_Galeria_Banner2_411fc68102.png?updatedAt=2025-04-04T21%3A44%3A49.353Z', alt: 'Imagen 2' },
-            { src: 'https://29d9f0f08711.ngrok.app/uploads/thumbnail_Galeria_Banner3_ba51e959c6.png?updatedAt=2025-04-04T21%3A44%3A48.026Z', alt: 'Imagen 3' }
+            { src: 'https://2c66e6b620e0.ngrok.app/uploads/thumbnail_Galeria_Banner1_3339f5e927.png', alt: 'Imagen 1' },
+            { src: 'https://2c66e6b620e0.ngrok.app/uploads/thumbnail_Galeria_Banner2_411fc68102.png?updatedAt=2025-04-04T21%3A44%3A49.353Z', alt: 'Imagen 2' },
+            { src: 'https://2c66e6b620e0.ngrok.app/uploads/thumbnail_Galeria_Banner3_ba51e959c6.png?updatedAt=2025-04-04T21%3A44%3A48.026Z', alt: 'Imagen 3' }
           ];
           console.log(this.images);
           

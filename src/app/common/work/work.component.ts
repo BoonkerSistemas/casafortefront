@@ -112,6 +112,7 @@ export class WorkComponent implements OnInit {
                 this.description = response.Proyectos.description;
                 this.content = response.Proyectos.content;
                 this.tabs = response.Proyectos.listado;
+                this.cdr.detectChanges();
             } else {
                 console.warn('No se encontraron datos en Proyectos');
             }

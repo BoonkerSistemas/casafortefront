@@ -76,11 +76,11 @@ export class BannerComponent implements OnInit {
             return slider;
           });
           // Calcular el número total de páginas
-       this.calculatePages();
+       //this.calculatePages();
       
        // Cargar los primeros 5 elementos
-        this.loadCurrentSliders();
-      
+        //this.loadCurrentSliders();
+        this.currentSliders = this.sliders;
           // Detecta manualmente los cambios después de la actualización de los datos
           this.cdr.detectChanges();
       
