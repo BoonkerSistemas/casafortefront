@@ -12,41 +12,21 @@ import { Renderer2 } from '@angular/core';
 export class BoonkerSidebarComponent implements OnInit, AfterViewInit{
     menuItems = [
         {
-            text: 'Cotizar',
+            text: 'Cotiza Aquí',
             link: 'about',
             target: '_blank',
             icon: 'https://www.bancointernacional.com.ec/wp-content/uploads/2020/11/ico-banca-empresas.png',
-            alt: 'Cotizar',
+            alt: 'Cotiza Aquí',
             iconWidth: 20,
             iconHeight: 20,
             class: 'menu-item'
         },
         {
-            text: 'Calendario',
+            text: 'Agenda reunión',
             link: 'https://www.bancointernacional.com.ec/actualizacion-datos/',
             target: '_blank',
             icon: 'https://www.bancointernacional.com.ec/wp-content/uploads/2020/11/ico-nuevo.png',
-            alt: 'Calendario',
-            iconWidth: 20,
-            iconHeight: 20,
-            class: 'menu-item'
-        },
-        {
-            text: 'Hazte Cliente',
-            link: 'https://www.bancointernacional.com.ec/nueva-cuenta/',
-            target: '_blank',
-            icon: 'https://www.bancointernacional.com.ec/wp-content/uploads/2020/11/ico-haztecliente.png',
-            alt: 'Hazte Cliente',
-            iconWidth: 20,
-            iconHeight: 20,
-            class: 'menu-item hazte-cliente-link'
-        },
-        {
-            text: 'Buscar',
-            link: 'https://www.bancointernacional.com.ec/destacados/',
-            target: '_blank',
-            icon: 'https://www.bancointernacional.com.ec/wp-content/uploads/2020/11/ico-destacados.png',
-            alt: 'Buscar',
+            alt: 'Agenda reunión',
             iconWidth: 20,
             iconHeight: 20,
             class: 'menu-item'

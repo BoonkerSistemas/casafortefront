@@ -1,10 +1,20 @@
+:root {
+    --transition: .5s;
+    --mainColor: #f5a414;
+    --whiteColor: #ffffff;
+    --blackColor: #000000;
+    --fontFamily: 'Poppins', sans-serif !important;
+    --textColor: #333333; // Agregué esta variable para mejor consistencia
+    --borderColor: rgba(0, 0, 0, 0.1); // Para bordes más suaves
+}
 
 /* Estilos generales del footer */
 .footer-area {
     background: var(--mainColor);
     color: var(--blackColor);
-    padding: 50px 0 20px;
+    padding: 60px 0 30px; // Aumenté el padding superior e inferior
     position: relative;
+    line-height: 1.6; // Interlineado base mejorado
 }
 
 .container {
@@ -16,12 +26,12 @@
 /* Logo y título principal */
 .logo-container {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 40px; // Más espacio después del logo
 }
 
 .footer-area h3 {
-    line-height: 22px;
-    margin-bottom: 30px;
+    line-height: 1.4; // Mejorado para títulos
+    margin-bottom: 25px; // Más espacio consistente
 }
 
 .footer-area h3 a.logo-link {
@@ -31,11 +41,12 @@
     font-size: 35px;
     font-weight: 600;
     text-decoration: none;
-    transition: color var(--transitionDuration) ease-in-out;
+    line-height: 1.2; // Específico para el logo
+    transition: color var(--transition) ease-in-out;
 }
 
 .footer-area h3 a:hover {
-    color: var(--textColor);
+    color: var(--whiteColor);
 }
 
 .footer-area h3 span {
@@ -43,6 +54,7 @@
     color: var(--mainColor);
     font-size: 35px;
     font-weight: 700;
+    line-height: 1.2; // Consistente con el logo
 }
 
 /* Estructura principal del footer */
@@ -54,15 +66,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 40px; // Más espacio entre secciones
+    margin-bottom: 40px; // Más espacio antes del footer bottom
 }
 
 /* Secciones del footer */
 .footer-section {
     flex: 1;
-    min-width: 200px;
-    transition: transform var(--transitionDuration) ease;
+    min-width: 220px; // Ligeramente más ancho
+    transition: transform var(--transition) ease;
 }
 
 .footer-section:hover {
@@ -72,15 +84,16 @@
 .footer-section h3 {
     font-size: 18px;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 20px; // Más espacio después del título
     color: var(--blackColor);
     position: relative;
-    padding-bottom: 10px;
-    transition: color var(--transitionDuration) ease-in-out;
+    padding-bottom: 12px; // Más espacio para el subrayado
+    line-height: 1.3; // Interlineado específico para títulos de sección
+    transition: color var(--transition) ease-in-out;
 }
 
 .footer-section:hover h3 {
- //   color: var(--mainColor);
+    color: var(--whiteColor);
 }
 
 .footer-section h3::after {
@@ -90,30 +103,34 @@
     bottom: 0;
     width: 50px;
     height: 2px;
-    background-color: var(--mainColor);
-    transition: width var(--transitionDuration) ease;
+    background-color: var(--blackColor);
+    transition: width var(--transition) ease;
 }
 
 .footer-section:hover h3::after {
     width: 70px;
+    background-color: var(--whiteColor);
 }
 
 .footer-section p {
-    margin-bottom: 15px;
+    margin-bottom: 18px; // Más espacio entre párrafos
     font-size: 14px;
-    line-height: 1.6;
-    color: var(--textColor);
+    line-height: 1.7; // Interlineado más generoso para párrafos
+    color: var(--blackColor);
+    text-align: justify; // Justificado para mejor presentación
 }
 
 /* Enlaces del footer */
 .footer-links {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 .footer-links li {
-   // margin-bottom: 10px;
-    transition: transform var(--transitionDuration) ease;
+   // margin-bottom: 12px; // Más espacio entre elementos de lista
+    transition: transform var(--transition) ease;
+    //line-height: 1.5; // Interlineado específico para enlaces
 }
 
 .footer-links li:hover {
@@ -121,19 +138,21 @@
 }
 
 .footer-links a {
-    color: var(--textColor);
+    color: var(--blackColor);
     text-decoration: none;
     font-size: 14px;
-    transition: color var(--transitionDuration) ease;
+    transition: color var(--transition) ease;
     display: inline-block;
     position: relative;
+    line-height: 1.5; // Consistente con el li
+    padding: 2px 0; // Pequeño padding para mejor área de click
 }
 
 .footer-links a::before {
     content: '›';
     margin-right: 5px;
     opacity: 0;
-    transition: opacity var(--transitionDuration) ease, transform var(--transitionDuration) ease;
+    transition: opacity var(--transition) ease, transform var(--transition) ease;
 }
 
 .footer-links a:hover {
@@ -148,11 +167,13 @@
 /* Información de contacto */
 .contact-info {
     display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-    color: var(--textColor);
+    align-items: flex-start; // Cambié a flex-start para mejor alineación
+    margin-bottom: 15px; // Más espacio entre elementos de contacto
+    color: var(--blackColor);
     font-size: 14px;
-    transition: transform var(--transitionDuration) ease;
+    line-height: 1.6; // Interlineado mejorado
+    transition: transform var(--transition) ease;
+    padding: 3px 0; // Pequeño padding para mejor espaciado
 }
 
 .contact-info:hover {
@@ -161,31 +182,40 @@
 }
 
 .contact-info i {
-    margin-right: 10px;
-    //color: var(--whiteColor);
+    margin-right: 12px; // Más espacio después del icono
+    color: var(--blackColor);
     width: 20px;
     text-align: center;
+    margin-top: 2px; // Pequeño ajuste para alineación vertical
+    flex-shrink: 0; // Evita que el icono se comprima
+}
+
+.contact-info span {
+    line-height: 1.5; // Interlineado específico para el texto
+    word-break: break-word; // Para emails largos
 }
 
 /* Iconos sociales */
 .social-icons {
     display: flex;
     gap: 15px;
-    margin-top: 20px;
+    margin-top: 25px; // Más espacio antes de los iconos sociales
+    flex-wrap: wrap; // Para responsividad
 }
 
 .social-icons a {
     display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background-color: rgb(0 0 0);
-        color: #f5a414;
-        border-radius: 50%;
-        transition: all var(--transitionDuration) ease;
-        text-decoration: none;
-        border: 1px solid var(--textColor);
+    align-items: center;
+    justify-content: center;
+    width: 38px; // Ligeramente más grande
+    height: 38px;
+    background-color: rgb(0 0 0);
+    color: #f5a414;
+    border-radius: 50%;
+    transition: all var(--transition) ease;
+    text-decoration: none;
+    border: 1px solid var(--blackColor);
+    line-height: 1; // Para iconos, line-height 1 es ideal
 }
 
 .social-icons a:hover {
@@ -197,117 +227,188 @@
 
 /* Formulario de suscripción */
 .subscribe-form {
-    margin-top: 20px;
+    margin-top: 25px; // Más espacio antes del formulario
 }
 
 .subscribe-form input {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 14px; // Más padding para mejor usabilidad
+    margin-bottom: 12px; // Más espacio entre input y botón
     border: none;
-    border-radius: 4px;
-    background-color: rgb(255 255 255 / 50%);
-    color: var(--whiteColor);
-    transition: background-color var(--transitionDuration) ease;
+    border-radius: 6px; // Bordes más redondeados
+    background-color: rgb(255 255 255 / 90%); // Más opacidad
+    color: var(--blackColor);
+    font-size: 14px;
+    line-height: 1.4; // Interlineado para el input
+    transition: background-color var(--transition) ease;
+    box-sizing: border-box; // Para mejor control de tamaño
+}
+
+.subscribe-form input::placeholder {
+    color: rgba(0, 0, 0, 0.6);
+    line-height: 1.4;
 }
 
 .subscribe-form input:focus {
     outline: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid var(--mainColorLight);
+    background-color: rgba(255, 255, 255, 1);
+    border: 2px solid var(--blackColor);
 }
 
 .subscribe-form button {
-    padding: 10px 15px;
+    padding: 14px 20px; // Más padding
     background-color: #000000;
     color: #ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px; // Consistente con el input
     cursor: pointer;
-    transition: all var(--transitionDuration) ease;
+    transition: all var(--transition) ease;
     font-weight: 600;
+    font-size: 14px;
+    line-height: 1.4; // Interlineado para el botón
     width: 100%;
+    box-sizing: border-box;
 }
 
 .subscribe-form button:hover {
-    background-color: var(--mainColorDark);
+    background-color: var(--whiteColor);
+    color: var(--blackColor);
     box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
-    border: 1px solid;
+    border: 2px solid var(--blackColor);
     transform: translateY(-2px);
 }
 
 /* Parte inferior del footer */
 .footer-bottom {
-    padding-top: 20px;
-    border-top: 1px solid var(--borderColor);
+    padding-top: 25px; // Más padding superior
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
     text-align: center;
     font-size: 13px;
-    color: var(--textColor);
+    color: var(--blackColor);
+    line-height: 1.5; // Interlineado mejorado
 }
 
 .footer-bottom p {
     position: relative;
     display: inline-block;
+    margin: 0; // Remover margin por defecto
+    padding: 10px 0; // Más espacio vertical
+    line-height: 1.6; // Específico para el copyright
 }
 
 .footer-bottom p::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 25%;
     width: 50%;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--mainColor), transparent);
-    opacity: 0.5;
+    background: linear-gradient(to right, transparent, var(--blackColor), transparent);
+    opacity: 0.3;
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
     .footer-area {
-        padding: 30px 0 20px;
+        padding: 40px 0 25px;
+        line-height: 1.5; // Reducir interlineado en móvil
     }
     
     .footer-content {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
     }
     
     .footer-section {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
     
     .footer-area h3 a.logo-link {
-        font-size: 26px;
+        font-size: 28px;
+        line-height: 1.3;
     }
     
     .footer-area h3 span {
-        font-size: 26px;
+        font-size: 28px;
+        line-height: 1.3;
     }
     
     .footer-section h3 {
         font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+    
+    .footer-section p {
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    
+    .contact-info {
+        font-size: 13px;
         margin-bottom: 12px;
+        line-height: 1.5;
+    }
+    
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+        font-size: 13px;
+        line-height: 1.4;
     }
     
     .social-icons a {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
+    }
+    
+    .subscribe-form input,
+    .subscribe-form button {
+        padding: 12px;
+        font-size: 13px;
+        line-height: 1.3;
+    }
+    
+    .footer-bottom {
+        font-size: 12px;
+        line-height: 1.4;
+        padding-top: 20px;
     }
 }
 
 @media screen and (min-width: 769px) and (max-width: 991px) {
     .footer-content {
         flex-wrap: wrap;
+        gap: 35px;
     }
     
     .footer-section {
-        flex: 0 0 calc(50% - 15px);
+        flex: 0 0 calc(50% - 17.5px);
         min-width: auto;
+    }
+    
+    .footer-section p {
+        line-height: 1.6;
+    }
+    
+    .contact-info {
+        line-height: 1.5;
     }
 }
 
 @media screen and (min-width: 992px) {
     .footer-section {
         flex: 1;
+    }
+    
+    .footer-section p {
+        line-height: 1.7; // Más generoso en pantallas grandes
+    }
+    
+    .contact-info {
+        line-height: 1.6;
     }
 }

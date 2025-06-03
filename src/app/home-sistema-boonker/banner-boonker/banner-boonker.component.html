@@ -3,9 +3,22 @@
         <div class="col-lg-8">
             <div *ngFor="let slider of sliders" class="video-container">
                 <ng-container>
-                    <video autoplay loop [muted]="true" playsinline class="video-background">
+                    <video #videoElement autoplay loop [muted]="audio" playsinline class="video-background">
                         <source src="video/slider.mp4" type="video/mp4">
                     </video>
+
+                    <button class="sound-toggle-btn" [class.muted]="!audio" (click)="enableAudio()">
+                        <i [class]="audio ? 'fa fa-volume-up' : 'fa fa-volume-off'"></i>
+                        {{ audio ? 'Activar Sonido ' : 'Silenciar' }}
+                    </button>
+
+                    <div class="video-controls">
+                        <!-- Botón Play/Pausa -->
+                        <button class="control-btn play-pause-btn" (click)="togglePlayPause(videoElement)"
+                            [title]="isPlaying ? 'Pausar' : 'Reproducir'">
+                            <i [class]="isPlaying ? 'fa fa-pause' : 'fa fa-play'"></i>
+                        </button>
+                    </div>
                 </ng-container>
                 <!--<ng-template #imageContent>
                     <div [style.background-image]="'url(' + environment.api_img + slider.image.url + ')'"

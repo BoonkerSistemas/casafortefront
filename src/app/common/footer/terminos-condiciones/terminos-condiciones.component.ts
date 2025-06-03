@@ -82,7 +82,7 @@ CASAFORTE puede, a su sola discreción, terminar o suspender su acceso a nuestro
 
 ## 10. Legislación Aplicable
 
-Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de España, sin consideración a sus disposiciones sobre conflictos de leyes.
+Estos Términos y Condiciones se regirán e interpretarán de acuerdo con las leyes de Ecuador, sin consideración a sus disposiciones sobre conflictos de leyes.
 
 ## 11. Contacto
 

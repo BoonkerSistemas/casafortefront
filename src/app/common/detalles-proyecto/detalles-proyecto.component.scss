@@ -60,6 +60,29 @@ $sombra-card: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 }
 
+.columna-60 {
+  flex: 0 0 60%;
+  max-width: 60%;
+  padding: 0 ($espaciado-base/2);
+  
+  @media (max-width: 768px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: $espaciado-base;
+  }
+}
+
+.columna-40 {
+  flex: 0 0 40%;
+  max-width: 40%;
+  padding: 0 ($espaciado-base/2);
+  
+  @media (max-width: 768px) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 // Franja amarilla
 .franja-amarilla {
   background-color: $color-primario;
@@ -81,14 +104,16 @@ $sombra-card: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 0 0 $radio-borde $radio-borde;
   box-shadow: $sombra-card;
-  overflow: hidden;
+  //overflow: hidden;
   margin-bottom: $espaciado-base * 2;
+    height: 75%;
+    overflow-y: scroll;
 }
 
 .imagen-contenedor {
   display: flex;
   justify-content: center;
-  overflow: hidden;
+  //overflow: hidden;
   
   img {
     //width: 100%;
@@ -262,5 +287,83 @@ $sombra-card: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0;
     text-align: center;
     transition: background-color 0.3s ease;
+  }
+}
+
+
+// Tabla de tiempos - Modificación para columna Descripción más amplia
+.tabla-tiempos {
+  background-color: white;
+  border-radius: $radio-borde;
+  padding: $espaciado-base;
+  box-shadow: $sombra-card;
+  height: 100%;
+  
+  h3 {
+    color: $color-secundario;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: $espaciado-base;
+    border-bottom: 2px solid $color-primario;
+    padding-bottom: $espaciado-base/2;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; // Esto permite controlar el ancho de las columnas
+    
+    th, td {
+      padding: $espaciado-base/2;
+      text-align: left;
+      border-bottom: 1px solid rgba($color-secundario, 0.1);
+      word-wrap: break-word; // Permite que las palabras largas se rompan si es necesario
+    }
+    
+    // Definir anchos específicos para cada columna
+    th:nth-child(1), td:nth-child(1) { // Sección
+      width: 20%;
+    }
+    
+    th:nth-child(2), td:nth-child(2) { // Descripción - LA MÁS AMPLIA
+      width: 40%;
+      white-space: nowrap; // Evita saltos de línea
+      overflow: hidden;
+      text-overflow: ellipsis; // Añade "..." si el texto es muy largo
+    }
+    
+    th:nth-child(3), td:nth-child(3) { // Área
+      width: 20%;
+      text-align: center;
+    }
+    
+    th:nth-child(4), td:nth-child(4) { // Tiempo
+      width: 20%;
+      text-align: center;
+    }
+    
+    th {
+      font-weight: bold;
+      color: $color-secundario;
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    tr:hover td {
+      background-color: rgba($color-primario, 0.05);
+    }
+  }
+  
+  // Responsivo: en pantallas pequeñas, permitir saltos de línea
+  @media (max-width: 768px) {
+    table {
+      th:nth-child(2), td:nth-child(2) {
+        white-space: normal; // Permite saltos de línea en móviles
+        overflow: visible;
+        text-overflow: initial;
+      }
+    }
   }
 }

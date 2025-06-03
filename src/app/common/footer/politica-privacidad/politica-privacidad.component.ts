@@ -14,116 +14,193 @@ import { Title, Meta } from '@angular/platform-browser';
 })
 export class PoliticaPrivacidadComponent implements OnInit {
   markdownContent: string = `
-
 *Última actualización: 7 de abril de 2025*
 
 ---
 
 ## 1. Introducción
 
-En CASAFORTE, valoramos y respetamos su privacidad. Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información personal cuando utiliza nuestro sitio web y servicios.
+En **CASAFORTE**, su privacidad es fundamental para nosotros. Esta Política de Privacidad describe cómo recopilamos, utilizamos, protegemos y gestionamos su información personal cuando visita nuestro sitio web, utiliza nuestros servicios o interactúa con nosotros.
+
+Al usar nuestros servicios, usted acepta las prácticas descritas en esta política. Le recomendamos leer este documento completo para comprender nuestros compromisos con su privacidad.
 
 ## 2. Información que Recopilamos
 
-### 2.1 Información Personal
+### 2.1 Información Personal Directa
 
-Podemos recopilar la siguiente información personal:
+Recopilamos información que usted nos proporciona voluntariamente:
 
-| Tipo de datos | Finalidad | Base legal |
-|---------------|-----------|------------|
-| Nombre y apellidos | Identificación y comunicación | Consentimiento |
-| Dirección de correo electrónico | Comunicación y marketing | Consentimiento |
-| Número de teléfono | Asistencia al cliente | Consentimiento |
-| Dirección postal | Entrega de productos | Ejecución contractual |
-| Datos de pago | Procesamiento de transacciones | Ejecución contractual |
+| **Tipo de Información** | **Finalidad** | **Base Legal** | **Retención** |
+|-------------------------|---------------|----------------|---------------|
+| Nombre y apellidos | Identificación y comunicación personal | Consentimiento | 5 años desde último contacto |
+| Correo electrónico | Comunicación, soporte y marketing | Consentimiento | Hasta revocación del consentimiento |
+| Número de teléfono | Asistencia técnica y comercial | Consentimiento | 3 años desde último contacto |
+| Dirección postal | Entrega de productos y servicios | Ejecución contractual | Durante la relación comercial |
+| Datos de facturación | Procesamiento de pagos y contabilidad | Obligación legal | 7 años (requisito fiscal) |
+| Información del proyecto | Personalización de soluciones estructurales | Ejecución contractual | 10 años (archivo técnico) |
 
-### 2.2 Información Automática
+### 2.2 Información Técnica Automática
 
-También recopilamos automáticamente:
-- Dirección IP
-- Tipo de navegador
-- Sistema operativo
-- Páginas visitadas
-- Tiempo de permanencia
-- Cookies y tecnologías similares
+Recopilamos automáticamente cuando visita nuestro sitio:
+
+✅ **Datos de navegación**: Dirección IP, tipo de navegador, idioma del sistema  
+✅ **Comportamiento web**: Páginas visitadas, tiempo de permanencia, clicks realizados  
+✅ **Información del dispositivo**: Sistema operativo, resolución de pantalla, tipo de dispositivo  
+✅ **Datos de rendimiento**: Velocidad de carga, errores encontrados  
+✅ **Geolocalización aproximada**: Ciudad y país (basado en IP)  
+✅ **Referencia de origen**: Sitio web desde el cual llegó a nosotros  
+
+### 2.3 Cookies y Tecnologías de Seguimiento
+
+Utilizamos diferentes tipos de cookies:
+
+- **Cookies esenciales**: Necesarias para el funcionamiento básico del sitio
+- **Cookies de rendimiento**: Para analizar y mejorar la experiencia del usuario
+- **Cookies de funcionalidad**: Para recordar sus preferencias
+- **Cookies de marketing**: Para mostrar contenido relevante (solo con su consentimiento)
 
 ## 3. Cómo Utilizamos su Información
 
-Utilizamos su información personal para:
+### 3.1 Finalidades Principales
 
-✅ Proporcionar y mejorar nuestros servicios  
-✅ Procesar transacciones y pedidos  
-✅ Responder a sus consultas y solicitudes  
-✅ Enviar comunicaciones de marketing (con su consentimiento)  
-✅ Personalizar su experiencia  
-✅ Cumplir con nuestras obligaciones legales  
+✅ **Prestación de servicios**: Diseño, fabricación y entrega de soluciones estructurales  
+✅ **Comunicación**: Responder consultas, brindar soporte técnico y actualizaciones de proyectos  
+✅ **Mejora continua**: Optimizar nuestros productos y servicios basados en su feedback  
+✅ **Cumplimiento legal**: Satisfacer obligaciones fiscales, contables y regulatorias  
+✅ **Seguridad**: Prevenir fraudes y proteger la integridad de nuestros sistemas  
 
-## 4. Divulgación de su Información
+### 3.2 Marketing y Comunicaciones (Solo con Consentimiento)
 
-Podemos compartir su información personal con:
+✅ **Newsletters**: Información sobre nuevos productos y soluciones  
+✅ **Ofertas personalizadas**: Promociones basadas en sus intereses  
+✅ **Invitaciones a eventos**: Seminarios técnicos y ferias del sector  
+✅ **Contenido educativo**: Guías y recursos sobre construcción estructural  
 
-### 4.1 Proveedores de Servicios
-Terceros que nos ayudan a operar nuestro negocio (procesadores de pago, servicios de alojamiento, etc.)
+> **Nota importante**: Puede retirar su consentimiento para comunicaciones de marketing en cualquier momento usando el enlace de "desuscribirse" en nuestros emails o contactándonos directamente.
 
-### 4.2 Cumplimiento Legal
-Cuando sea necesario para cumplir con la ley, procesos legales o solicitudes gubernamentales.
+## 4. Compartir su Información
 
-### 4.3 Protección de Derechos
-Para proteger nuestros derechos, propiedad o seguridad, así como los de nuestros usuarios u otros.
+### 4.1 Terceros Autorizados
 
-## 5. Seguridad de Datos
+Compartimos información únicamente con:
 
-Implementamos medidas de seguridad técnicas, administrativas y físicas para proteger su información personal contra el acceso, uso o divulgación no autorizados.
+**🏢 Proveedores de servicios esenciales:**
+- Procesadores de pago (para transacciones seguras)
+- Servicios de alojamiento web y almacenamiento en la nube
+- Empresas de logística y transporte
+- Proveedores de análisis web (Google Analytics, etc.)
 
-![Seguridad de datos](https://via.placeholder.com/800x300)
+**⚖️ Requerimientos legales:**
+- Autoridades gubernamentales cuando sea legalmente obligatorio
+- Procesos judiciales o investigaciones oficiales
+- Protección de derechos legales propios o de terceros
 
-## 6. Sus Derechos de Privacidad
+**🤝 Socios comerciales:**
+- Solo para completar servicios solicitados por usted
+- Arquitectos e ingenieros en proyectos colaborativos
+- Instaladores certificados para montaje de estructuras
 
-Usted tiene derecho a:
+### 4.2 Transferencias Internacionales
 
-- **Acceder** a los datos personales que tenemos sobre usted
-- **Rectificar** cualquier información incorrecta
-- **Eliminar** sus datos personales
-- **Oponerse** al procesamiento de sus datos
-- **Limitar** el procesamiento de sus datos
-- **Portabilidad de datos** para transferir sus datos a otro servicio
-- **Retirar su consentimiento** en cualquier momento
+Algunos de nuestros proveedores pueden estar ubicados fuera de Ecuador. En estos casos:
+- Verificamos que ofrezcan protección adecuada de datos
+- Utilizamos cláusulas contractuales estándar aprobadas
+- Aplicamos medidas de seguridad adicionales según sea necesario
 
-## 7. Cookies y Tecnologías Similares
+## 5. Seguridad y Protección de Datos
 
-Utilizamos cookies y tecnologías similares para:
-- Mantener su sesión
-- Recordar sus preferencias
-- Analizar el uso del sitio
-- Personalizar el contenido y la publicidad
+### 5.1 Medidas Técnicas
 
-Para más información, consulte nuestra [Política de Cookies](#).
+🔒 **Cifrado**: Utilizamos SSL/TLS para proteger datos en tránsito  
+🔒 **Almacenamiento seguro**: Servidores con cifrado y acceso restringido  
+🔒 **Respaldos**: Copias de seguridad regulares con cifrado  
+🔒 **Monitoreo**: Supervisión continua de actividades sospechosas  
 
-## 8. Transferencias Internacionales de Datos
+### 5.2 Medidas Organizacionales
 
-Sus datos personales pueden ser transferidos y procesados en países distintos al suyo. Tomamos medidas para garantizar que sus datos reciban un nivel adecuado de protección.
+🛡️ **Acceso limitado**: Solo personal autorizado puede acceder a datos personales  
+🛡️ **Capacitación**: Formación regular del equipo en protección de datos  
+🛡️ **Políticas internas**: Procedimientos estrictos de manejo de información  
+🛡️ **Auditorías**: Revisiones periódicas de nuestras prácticas de seguridad  
 
-## 9. Privacidad de los Niños
+## 6. Sus Derechos como Titular de Datos
 
-Nuestros servicios no están dirigidos a personas menores de 18 años. No recopilamos conscientemente información personal de niños.
+Usted tiene los siguientes derechos sobre sus datos personales:
 
-## 10. Cambios a esta Política
+### 6.1 Derechos de Acceso y Control
 
-Podemos actualizar esta Política de Privacidad periódicamente. La versión más reciente estará siempre disponible en nuestro sitio web.
+**📋 Derecho de acceso**: Solicitar una copia de todos los datos que tenemos sobre usted  
+**✏️ Derecho de rectificación**: Corregir información incorrecta o incompleta  
+**🗑️ Derecho de eliminación**: Solicitar la eliminación de sus datos (con limitaciones legales)  
+**⏸️ Derecho de limitación**: Restringir el procesamiento en ciertas circunstancias  
 
-## 11. Contacto
+### 6.2 Derechos de Oposición y Consentimiento
 
-Si tiene preguntas o inquietudes sobre esta Política de Privacidad, contáctenos en:
+**🚫 Derecho de oposición**: Oponerse al procesamiento por motivos legítimos  
+**↩️ Retirada de consentimiento**: Retirar su consentimiento en cualquier momento  
+**🚫 Oposición al marketing**: Oponerse específicamente a comunicaciones comerciales  
 
-**CASAFORTE**  
-Departamento de Privacidad  
-Vía Calacalí, Quito, Ecuador  
-Email: comercial@boonkerconstrucciones.com  
-Teléfono: +593 988 539 589
+### 6.3 Cómo Ejercer sus Derechos
+
+Para ejercer cualquiera de estos derechos:
+1. Envíe una solicitud a: **comercial@boonkerconstrucciones.com**
+2. Incluya una identificación válida para verificar su identidad
+3. Especifique claramente qué derecho desea ejercer
+4. Responderemos dentro de **15 días hábiles**
+
+## 7. Retención de Datos
+
+Conservamos sus datos personales solo el tiempo necesario para:
+
+- **Datos contractuales**: Durante la relación comercial + 7 años (obligación fiscal)
+- **Datos de marketing**: Hasta que retire su consentimiento
+- **Datos técnicos**: 2 años desde la última interacción
+- **Registros de comunicación**: 3 años para soporte y mejora del servicio
+
+## 8. Datos de Menores de Edad
+
+Nuestros servicios están dirigidos a profesionales y empresas del sector construcción. **No recopilamos conscientemente información de menores de 18 años**. Si descubrimos que hemos recopilado datos de un menor, los eliminaremos inmediatamente.
+
+## 9. Cambios a esta Política
+
+Podemos actualizar esta Política de Privacidad para reflejar:
+- Cambios en nuestros servicios o procesos
+- Nuevos requerimientos legales
+- Mejoras en nuestras prácticas de privacidad
+
+**Le notificaremos cambios significativos:**
+- Por email si tiene una cuenta activa con nosotros
+- Mediante aviso prominente en nuestro sitio web
+- Los cambios entrarán en vigor 30 días después de la notificación
+
+## 10. Base Legal para el Procesamiento
+
+Procesamos sus datos personales basados en:
+
+- **Consentimiento**: Para marketing y cookies no esenciales
+- **Ejecución contractual**: Para prestación de servicios solicitados
+- **Interés legítimo**: Para mejorar servicios y seguridad
+- **Obligación legal**: Para cumplir requisitos fiscales y regulatorios
+
+## 11. Contacto y Consultas
+
+**📧 Email**: comercial@boonkerconstrucciones.com  
+**📱 Teléfono**: +593 988 539 589  
+**📍 Dirección**: Vía Calacalí, Quito, Ecuador  
+**🕒 Horario de atención**: Lunes a Viernes, 8:00 AM - 6:00 PM  
+
+**Para consultas específicas sobre privacidad:**
+**Oficial de Protección de Datos**: privacidad@boonkerconstrucciones.com
+
+### Autoridad de Control
+
+Si considera que hemos violado sus derechos de privacidad, puede presentar una queja ante la **Superintendencia de Protección de Datos del Ecuador**.
 
 ---
 
-© 2025 CASAFORTE. Todos los derechos reservados.`;
+**© 2025 CASAFORTE - Todos los derechos reservados.**
+
+*Esta política está diseñada para cumplir con las mejores prácticas internacionales de protección de datos y la legislación ecuatoriana aplicable.*`;
   
   constructor(
     private titleService: Title,
